@@ -1,4 +1,4 @@
-package configuration;
+package ASOserver.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,12 +17,12 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-//@EnableJpaRepositories(basePackages = "pl.touristguide.springapp.dao")
+@EnableJpaRepositories(basePackages = "ASOserver.springapp.dao")
 public class JPAConfiguration {
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
         dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
         dataSource.setUsername("hr");
         dataSource.setPassword("hr");
@@ -34,7 +34,7 @@ public class JPAConfiguration {
         LocalContainerEntityManagerFactoryBean entityManager = new LocalContainerEntityManagerFactoryBean();
         entityManager.setDataSource(getDataSource());
         entityManager.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManager.setPackagesToScan("data");
+        entityManager.setPackagesToScan(new String[] { "ASOserver.model" });
 
         Properties jpaProperties = new Properties();
         jpaProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
