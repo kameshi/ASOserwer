@@ -1,44 +1,21 @@
-package ASOserver.model;
+package ASOserver.springapp.dto;
 
+import ASOserver.model.CustomerVehicle;
 
-import javax.persistence.*;
-import javax.xml.crypto.Data;
+import java.io.Serializable;
 import java.util.List;
-@Entity
-@Table(name = "VEHICLE")
-public class Vehicle{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "VEHICLE_ID")
+public class VehicleDTO implements Serializable {
+
     private Long vehicleId;
-
-    @Column(name = "MARK", nullable = false, unique = true)
     private String mark;
-
-    @Column(name = "MODEL", nullable = false, unique = true)
     private String model;
-
-    @Column(name = "REGISTRATION_NUMBER", nullable = false, unique = true)
     private String registrationNumber;
-
-    @Column(name = "VIN", nullable = false, unique = true)
     private String vin;
-
-    @Column(name = "CAPACITY", nullable = false, unique = true)
     private float  capacity;
-
-    @Column(name = "POWER", nullable = false, unique = true)
     private float  power;
-
-    @Column(name = "REVIEW_DATE", nullable = false, unique = true)
     private String reviewDate;
-
-    @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CustomerVehicle> customerVehicle;
-
-    public Vehicle() {
-    }
 
     public Long getVehicleId() {
         return vehicleId;
@@ -111,5 +88,4 @@ public class Vehicle{
     public void setCustomerVehicle(List<CustomerVehicle> customerVehicle) {
         this.customerVehicle = customerVehicle;
     }
-
 }
