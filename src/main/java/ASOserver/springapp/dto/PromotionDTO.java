@@ -1,34 +1,18 @@
-package ASOserver.model;
+package ASOserver.springapp.dto;
 
-import javax.persistence.*;
-import java.util.List;
-@Entity
-@Table(name = "PROMOTION")
-public class Promotion{
+import sun.misc.Queue;
+import java.io.Serializable;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "PROMOTION_ID")
+public class PromotionDTO implements Serializable {
+
     private Long PromotionId;
-
-    @Column(name = "NAME", nullable = false, unique = true)
     private String name;
-
-    @Column(name = "DESCRIPTION", nullable = false, unique = true)
     private String description;
-    @Column(name = "DATE_FROM", nullable = false, unique = true)
     private String dateFrom;
-    @Column(name = "DATE_TO", nullable = false, unique = true)
     private String dateTo;
-    @Column(name = "PRECENR", nullable = false, unique = true)
     private double percent;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "SERVICE_ID")
-    private Service service;
-
-    @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<SpecificService> specificService;
+    private ServiceDTO service;
+    private Queue<SpecificServiceDTO> specificService;
 
     public Long getPromotionId() {
         return PromotionId;
@@ -78,20 +62,19 @@ public class Promotion{
         this.percent = percent;
     }
 
-    public Service getService() {
+    public ServiceDTO getService() {
         return service;
     }
 
-    public void setService(Service service) {
+    public void setService(ServiceDTO service) {
         this.service = service;
     }
 
-    public List<SpecificService> getSpecificService() {
+    public Queue<SpecificServiceDTO> getSpecificService() {
         return specificService;
     }
 
-    public void setSpecificService(List<SpecificService> specificService) {
+    public void setSpecificService(Queue<SpecificServiceDTO> specificService) {
         this.specificService = specificService;
     }
-
 }
