@@ -1,28 +1,25 @@
 package ASOserver.springapp.dto;
 
-import ASOserver.model.Account;
-import sun.misc.Queue;
-
 import java.io.Serializable;
 
+/**
+ * Created by user on 2018-06-12.
+ */
 public class CustomerDTO implements Serializable {
-
     private Long customerId;
     private String name;
     private String surname;
-    private String pesel;
     private String eMail;
+    private String pesel;
     private String phoneNumber;
-    private Account account;
-    private Queue<CustomerReplacementVehicleDTO> CustomerReplacementVehicle;
-    private Queue<CustomerVehicleDTO> CustomerVehicle;
+    private AccountDTO accountDTO;
 
     public Long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setCustomerId(Long employeeId) {
+        this.customerId = employeeId;
     }
 
     public String getName() {
@@ -41,20 +38,20 @@ public class CustomerDTO implements Serializable {
         this.surname = surname;
     }
 
-    public String getPesel() {
-        return pesel;
-    }
-
-    public void setPesel(String pesel) {
-        this.pesel = pesel;
-    }
-
     public String geteMail() {
         return eMail;
     }
 
     public void seteMail(String eMail) {
         this.eMail = eMail;
+    }
+
+    public String getPesel() {
+        return pesel;
+    }
+
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
     }
 
     public String getPhoneNumber() {
@@ -65,27 +62,11 @@ public class CustomerDTO implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public Account getAccount() {
-        return account;
+    public AccountDTO getAccountDTO() {
+        return accountDTO;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Queue<CustomerReplacementVehicleDTO> getCustomerReplacementVehicle() {
-        return CustomerReplacementVehicle;
-    }
-
-    public void setCustomerReplacementVehicle(Queue<CustomerReplacementVehicleDTO> customerReplacementVehicle) {
-        CustomerReplacementVehicle = customerReplacementVehicle;
-    }
-
-    public Queue<CustomerVehicleDTO> getCustomerVehicle() {
-        return CustomerVehicle;
-    }
-
-    public void setCustomerVehicle(Queue<CustomerVehicleDTO> customerVehicle) {
-        CustomerVehicle = customerVehicle;
+    public void setAccountDTO(AccountDTO accountDTO) {
+        this.accountDTO = accountDTO;
     }
 }

@@ -10,8 +10,6 @@ public class AccountDTO implements Serializable {
     private String login;
     private String password;
     private String accessRights;
-    private Customer customer;
-    private Employee employee;
 
     public Long getAccountId() {
         return accountId;
@@ -43,21 +41,5 @@ public class AccountDTO implements Serializable {
 
     public void setAccessRights(String accessRights) {
         this.accessRights = accessRights;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 }

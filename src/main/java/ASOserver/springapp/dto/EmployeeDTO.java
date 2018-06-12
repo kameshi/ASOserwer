@@ -1,20 +1,18 @@
 package ASOserver.springapp.dto;
 
-import ASOserver.model.Account;
-import sun.misc.Queue;
-
 import java.io.Serializable;
 
-public class EmployeeDTO implements Serializable{
-
+/**
+ * Created by user on 2018-06-12.
+ */
+public class EmployeeDTO implements Serializable {
     private Long employeeId;
     private String name;
     private String surname;
     private String eMail;
     private String pesel;
     private String phoneNumber;
-    private Account account;
-    private Queue<SpecificServiceDTO> specificService;
+    private AccountDTO accountDTO;
 
     public Long getEmployeeId() {
         return employeeId;
@@ -64,19 +62,11 @@ public class EmployeeDTO implements Serializable{
         this.phoneNumber = phoneNumber;
     }
 
-    public Account getAccount() {
-        return account;
+    public AccountDTO getAccountDTO() {
+        return accountDTO;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Queue<SpecificServiceDTO> getSpecificService() {
-        return specificService;
-    }
-
-    public void setSpecificService(Queue<SpecificServiceDTO> specificService) {
-        this.specificService = specificService;
+    public void setAccountDTO(AccountDTO accountDTO) {
+        this.accountDTO = accountDTO;
     }
 }

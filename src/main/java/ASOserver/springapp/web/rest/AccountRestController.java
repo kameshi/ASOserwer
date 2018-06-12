@@ -1,40 +1,55 @@
 package ASOserver.springapp.web.rest;
 
 
+import ASOserver.model.Employee;
 import ASOserver.springapp.dto.AccountDTO;
+import ASOserver.springapp.dto.CustomerDTO;
+import ASOserver.springapp.dto.EmployeeDTO;
+import ASOserver.springapp.mapper.EmployeeMapper;
 import ASOserver.springapp.service.AccountService;
+import ASOserver.springapp.service.CustomerService;
+import ASOserver.springapp.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/ASOserver/rest/accountRest")
+@RequestMapping(value = "/ASOserver/rest/account")
 public class AccountRestController {
     private final AccountService accountService;
+    private final CustomerService customerService;
+    private final EmployeeService employerService;
 
     @Autowired
-    public AccountRestController(AccountService accountService) {
+    public AccountRestController(AccountService accountService, CustomerService customerService, EmployeeService employerService) {
         this.accountService = accountService;
+        this.customerService = customerService;
+        this.employerService = employerService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    private ResponseEntity getCategories(){
+
+    @RequestMapping(method = RequestMethod.POST)
+    private ResponseEntity insertCategory(@RequestBody CustomerDTO customerDTO){
         try {
-            List<AccountDTO> categoryDTOList = this.accountService.getAccount();
-            return new ResponseEntity(categoryDTOList, HttpStatus.OK);
+           this.accountService.insertAccount(customerDTO.getAccountDTO());
+           if(!customerDTO.getAccountDTO().getAccessRights().equals("klient")){
+               this.customerService.insertCustomer(customerDTO);
+           }else{
+               this.employerService.insertEmployee(EmployeeMapper.toEmployeeDTO(customerDTO));
+           }
+            return new ResponseEntity(HttpStatus.OK);
         }
         catch(Exception e){
             e.printStackTrace();
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 }
