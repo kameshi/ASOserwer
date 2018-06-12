@@ -2,31 +2,36 @@ package ASOserver.springapp.service;
 
 import ASOserver.model.Account;
 import ASOserver.springapp.dao.AccountDAO;
-import ASOserver.springapp.dto.AccountDTO;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import ASOserver.springapp.dto.AccountDTO;
+import ASOserver.springapp.mapper.AccountMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class AccountService {
-
     private final AccountDAO accountDAO;
 
+    @Autowired
     public AccountService(AccountDAO accountDAO) {
         this.accountDAO = accountDAO;
     }
 
-    public List<AccountDTO> getAccount() throws Exception{
-        ModelMapper modelMapper = new ModelMapper();
-        Iterable<Account> accountIterable = this.accountDAO.findAll();
-        List<AccountDTO> accountDTOList = new ArrayList<>();
+    public Account getAccount(Long accountId) throws Exception {
+        return accountDAO.findById(accountId).get();
+    }
 
-        for (Account account : accountIterable){
-            accountDTOList.add(modelMapper.map(account, AccountDTO.class));
-        }
-        return accountDTOList;
+    public void insertAccount(AccountDTO accountDTO) throws Exception {
+        this.accountDAO.save(AccountMapper.toAccount(accountDTO));
+    }
+
+    public void updateAccount(Long accountId, AccountDTO accountDTO) {
+        accountDTO.setAccountId(accountId);
+        this.accountDAO.save(AccountMapper.toAccount(accountDTO));
+    }
+
+    public void deleteAccount(Long accountId) {
+        this.accountDAO.deleteById(accountId);
     }
 
 }
