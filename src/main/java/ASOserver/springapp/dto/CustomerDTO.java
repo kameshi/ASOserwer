@@ -12,7 +12,7 @@ public class CustomerDTO implements Serializable {
     private String eMail;
     private String pesel;
     private String phoneNumber;
-    private AccountDTO accountDTO;
+    private AccountDTO accountDTO = new AccountDTO();
 
     public Long getCustomerId() {
         return customerId;

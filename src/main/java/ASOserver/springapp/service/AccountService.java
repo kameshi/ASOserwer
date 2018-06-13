@@ -8,6 +8,8 @@ import ASOserver.springapp.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AccountService {
     private final AccountDAO accountDAO;
@@ -19,6 +21,10 @@ public class AccountService {
 
     public Account getAccount(Long accountId) throws Exception {
         return accountDAO.findById(accountId).get();
+    }
+
+    public long getAccountId(String login) throws Exception {
+        return accountDAO.findAccountIdByLogin(login);
     }
 
     public void insertAccount(AccountDTO accountDTO) throws Exception {

@@ -38,6 +38,7 @@ public class AccountRestController {
     private ResponseEntity insertCategory(@RequestBody CustomerDTO customerDTO){
         try {
            this.accountService.insertAccount(customerDTO.getAccountDTO());
+            customerDTO.getAccountDTO().setAccountId(accountService.getAccountId(customerDTO.getAccountDTO().getLogin()));
            if(!customerDTO.getAccountDTO().getAccessRights().equals("klient")){
                this.customerService.insertCustomer(customerDTO);
            }else{
