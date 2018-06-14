@@ -1,15 +1,17 @@
 package ASOserver.springapp.web.rest;
 
-
 import ASOserver.common.HashUtils;
 import ASOserver.model.Employee;
+import ASOserver.model.ReplacementVehicle;
 import ASOserver.springapp.dto.AccountDTO;
 import ASOserver.springapp.dto.CustomerDTO;
 import ASOserver.springapp.dto.EmployeeDTO;
+import ASOserver.springapp.dto.ReplacementVehicleDTO;
 import ASOserver.springapp.mapper.EmployeeMapper;
 import ASOserver.springapp.service.AccountService;
 import ASOserver.springapp.service.CustomerService;
 import ASOserver.springapp.service.EmployeeService;
+import ASOserver.springapp.service.ReplacementVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
@@ -21,30 +23,21 @@ import java.util.List;
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/ASOserver/rest/account")
-public class AccountRestController {
-    private final AccountService accountService;
-    private final CustomerService customerService;
-    private final EmployeeService employerService;
+@RequestMapping(value = "/ASOserver/rest/replacementVehicle")
+public class ReplacementVehicleRestController {
+
+    private final ReplacementVehicleService replacementVehicleService;
 
     @Autowired
-    public AccountRestController(AccountService accountService, CustomerService customerService, EmployeeService employerService) {
-        this.accountService = accountService;
-        this.customerService = customerService;
-        this.employerService = employerService;
+    public ReplacementVehicleRestController(ReplacementVehicleService replacementVehicleService) {
+        this.replacementVehicleService = replacementVehicleService;
     }
 
 
     @RequestMapping(method = RequestMethod.POST)
-    private ResponseEntity insertCategory(@RequestBody CustomerDTO customerDTO){
+    private ResponseEntity insertCategory(@RequestBody ReplacementVehicleDTO replacementVehicleDTO){
         try {
-           this.accountService.insertAccount(customerDTO.getAccountDTO());
-            customerDTO.getAccountDTO().setAccountId(accountService.getAccountId(customerDTO.getAccountDTO().getLogin()));
-           if(customerDTO.getAccountDTO().getAccessRights().equals("klient")){
-               this.customerService.insertCustomer(customerDTO);
-           }else{
-               this.employerService.insertEmployee(EmployeeMapper.toEmployeeDTO(customerDTO));
-           }
+            this.replacementVehicleService.insertReplacementVehicle(replacementVehicleDTO);
             return new ResponseEntity(HttpStatus.OK);
         }
         catch(Exception e){
@@ -52,6 +45,5 @@ public class AccountRestController {
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
 }

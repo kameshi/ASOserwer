@@ -19,6 +19,9 @@ public class CustomerService {
     public Customer getCustomer(Long customerId) throws Exception {
         return customerDAO.findById(customerId).get();
     }
+    public CustomerDTO getCustomerDTO(Long customerId) throws Exception {
+        return CustomerMapper.toCustomerDTO(customerDAO.findById(customerId).get());
+    }
 
     public void insertCustomer(CustomerDTO customerDTO) throws Exception {
         this.customerDAO.save(CustomerMapper.toCustomer(customerDTO));

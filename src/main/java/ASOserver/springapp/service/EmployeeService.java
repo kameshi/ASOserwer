@@ -28,7 +28,7 @@ public class EmployeeService{
         this.employeeDAO.save(EmployeeMapper.toEmployee(employeeDTO));
     }
 
-    public void deleteCustomer(Long customerId) {
+    public void deleteEmployee(Long customerId) {
         this.employeeDAO.deleteById(customerId);
     }
 }

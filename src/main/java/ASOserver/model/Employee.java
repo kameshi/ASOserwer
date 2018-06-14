@@ -26,7 +26,7 @@ public class Employee{
     @Column(name = "PHONE_NUMBER", nullable = false, unique = true)
     private String phoneNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOUNT_ID")
     private Account account;
 

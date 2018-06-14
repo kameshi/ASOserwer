@@ -12,7 +12,20 @@ public class CustomerDTO implements Serializable {
     private String eMail;
     private String pesel;
     private String phoneNumber;
-    private AccountDTO accountDTO = new AccountDTO();
+    private AccountDTO accountDTO;
+
+    @Override
+    public String toString() {
+        return "CustomerDTO{" +
+                "customerId=" + customerId +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", eMail='" + eMail + '\'' +
+                ", pesel='" + pesel + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", accountDTO=" + accountDTO.toString() +
+                '}';
+    }
 
     public Long getCustomerId() {
         return customerId;

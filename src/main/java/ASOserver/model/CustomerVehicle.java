@@ -22,6 +22,14 @@ public class CustomerVehicle {
     public CustomerVehicle() {
     }
 
+    public Long getCustomerVehicle() {
+        return customerVehicle;
+    }
+
+    public void setCustomerVehicle(Long customerVehicle) {
+        this.customerVehicle = customerVehicle;
+    }
+
     public Customer getCustomer() {
         return customer;
     }

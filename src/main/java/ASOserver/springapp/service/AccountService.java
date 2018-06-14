@@ -1,5 +1,6 @@
 package ASOserver.springapp.service;
 
+import ASOserver.common.HashUtils;
 import ASOserver.model.Account;
 import ASOserver.springapp.dao.AccountDAO;
 
@@ -28,6 +29,7 @@ public class AccountService {
     }
 
     public void insertAccount(AccountDTO accountDTO) throws Exception {
+        accountDTO.setPassword(HashUtils.generateHash(accountDTO.getPassword(), 10));
         this.accountDAO.save(AccountMapper.toAccount(accountDTO));
     }
 
