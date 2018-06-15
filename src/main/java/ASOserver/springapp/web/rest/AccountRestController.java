@@ -1,11 +1,6 @@
 package ASOserver.springapp.web.rest;
 
-
-import ASOserver.common.HashUtils;
-import ASOserver.model.Employee;
-import ASOserver.springapp.dto.AccountDTO;
 import ASOserver.springapp.dto.CustomerDTO;
-import ASOserver.springapp.dto.EmployeeDTO;
 import ASOserver.springapp.mapper.EmployeeMapper;
 import ASOserver.springapp.service.AccountService;
 import ASOserver.springapp.service.CustomerService;
@@ -52,6 +47,8 @@ public class AccountRestController {
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 
 
 }

@@ -41,7 +41,7 @@ public class JPAConfiguration {
         jpaProperties.setProperty("hibernate.show_sql", "false");
         jpaProperties.setProperty("hibernate.format_sql", "true");
         jpaProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-        //jpaProperties.setProperty("jadira.usertype.autoRegisterUserTypes", "true");
+        jpaProperties.setProperty("hibernate.hbm2ddl.import_files", "import.sql");
         jpaProperties.setProperty("hibernate.temp.use_jdbc_metadata_defaults", "false");
 
         entityManager.setJpaProperties(jpaProperties);

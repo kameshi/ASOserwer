@@ -20,7 +20,7 @@ public class Promotion{
     private String dateFrom;
     @Column(name = "DATE_TO", nullable = false, unique = true)
     private String dateTo;
-    @Column(name = "PRECENR", nullable = false, unique = true)
+    @Column(name = "PERCENT", nullable = false, unique = true)
     private double percent;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

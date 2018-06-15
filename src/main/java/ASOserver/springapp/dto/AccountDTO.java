@@ -1,7 +1,5 @@
 package ASOserver.springapp.dto;
 
-import ASOserver.model.Customer;
-import ASOserver.model.Employee;
 import java.io.Serializable;
 
 public class AccountDTO implements Serializable {
