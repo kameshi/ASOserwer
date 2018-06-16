@@ -2,10 +2,7 @@ package ASOserver.springapp.web.rest;
 
 import ASOserver.common.HashUtils;
 import ASOserver.model.Employee;
-import ASOserver.springapp.dto.AccountDTO;
-import ASOserver.springapp.dto.CustomerDTO;
-import ASOserver.springapp.dto.EmployeeDTO;
-import ASOserver.springapp.dto.VehicleDTO;
+import ASOserver.springapp.dto.*;
 import ASOserver.springapp.mapper.EmployeeMapper;
 import ASOserver.springapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +48,18 @@ public class VehicleRestController {
         catch(Exception e){
             e.printStackTrace();
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{getVehicle}")
+    private ResponseEntity<Object> getReplacementVehicle(){
+        try {
+            List<VehicleDTO> vehicleDTOList = this.vehicleService.getVehicle();
+            return new ResponseEntity<Object>(vehicleDTOList, HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

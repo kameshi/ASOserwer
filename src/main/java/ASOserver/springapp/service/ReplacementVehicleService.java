@@ -7,6 +7,9 @@ import ASOserver.springapp.mapper.ReplacementVehicleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ReplacementVehicleService {
     private final ReplacementVehicleDAO replacementVehicleDAO;
@@ -14,10 +17,6 @@ public class ReplacementVehicleService {
     @Autowired
     public ReplacementVehicleService(ReplacementVehicleDAO replacementVehicleDAO) {
         this.replacementVehicleDAO = replacementVehicleDAO;
-    }
-
-    public ReplacementVehicle getReplacementVehicle(Long replacementVehicleId) throws Exception {
-        return replacementVehicleDAO.findById(replacementVehicleId).get();
     }
 
     public void insertReplacementVehicle(ReplacementVehicleDTO replacementVehicleDTO) {
@@ -30,5 +29,15 @@ public class ReplacementVehicleService {
 
     public void deleteReplacementVehicle(Long replacementVehicleId) {
         this.replacementVehicleDAO.deleteById(replacementVehicleId);
+    }
+
+    public List<ReplacementVehicleDTO> getReplacementVehicle() throws Exception {
+        Iterable<ReplacementVehicle> replacementVehicleIterable = this.replacementVehicleDAO.findAll();
+        List<ReplacementVehicleDTO> replacementVehicleDTOList = new ArrayList<>();
+        for(ReplacementVehicle replacementVehicle : replacementVehicleIterable){
+            replacementVehicleDTOList.add(ReplacementVehicleMapper.toReplacementVehicleDTO(replacementVehicle));
+        }
+
+        return replacementVehicleDTOList;
     }
 }

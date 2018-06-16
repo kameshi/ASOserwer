@@ -20,4 +20,17 @@ public class VehicleMapper {
         vehicle.setReviewDate(vehicleDTO.getReviewDate());
         return vehicle;
     }
+
+    public static VehicleDTO toVehicleDTO(Vehicle vehicle) {
+        VehicleDTO vehicleDTO = new VehicleDTO();
+        vehicleDTO.setVehicleId(vehicle.getVehicleId());
+        vehicleDTO.setMark(vehicle.getMark());
+        vehicleDTO.setModel(vehicle.getModel());
+        vehicleDTO.setRegistrationNumber(vehicle.getRegistrationNumber());
+        vehicleDTO.setVin(vehicle.getVin());
+        vehicleDTO.setCapacity(vehicle.getCapacity());
+        vehicleDTO.setPower(vehicle.getPower());
+        vehicleDTO.setReviewDate(vehicle.getReviewDate());
+        return vehicleDTO;
+    }
 }

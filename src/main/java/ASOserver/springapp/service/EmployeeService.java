@@ -7,6 +7,9 @@ import ASOserver.springapp.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class EmployeeService{
     private final EmployeeDAO employeeDAO;
@@ -30,5 +33,14 @@ public class EmployeeService{
 
     public void deleteEmployee(Long customerId) {
         this.employeeDAO.deleteById(customerId);
+    }
+
+    public List<EmployeeDTO> getEmployee() {
+        Iterable<Employee> employeeIterable = this.employeeDAO.findAll();
+        List<EmployeeDTO> employeeDTOList = new ArrayList<>();
+        for(Employee employee : employeeIterable){
+            employeeDTOList.add(EmployeeMapper.toEmployeeDTOWitchOutAccount(employee));
+        }
+        return employeeDTOList;
     }
 }

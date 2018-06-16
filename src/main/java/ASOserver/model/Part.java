@@ -18,7 +18,7 @@ public class Part{
     private int quantity;
 
     @Column(name = "PRICE", nullable = false, unique = true)
-    private String price;
+    private double price;
 
     @OneToMany(mappedBy = "part", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ServicePart> servicePart;
@@ -50,11 +50,11 @@ public class Part{
         this.quantity = quantity;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

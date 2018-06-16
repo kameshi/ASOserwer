@@ -1,5 +1,6 @@
 package ASOserver.springapp.web.rest;
 
+import ASOserver.model.ChoiceList;
 import ASOserver.springapp.dto.CustomerDTO;
 import ASOserver.springapp.mapper.EmployeeMapper;
 import ASOserver.springapp.service.AccountService;
@@ -35,7 +36,7 @@ public class AccountRestController {
         try {
            this.accountService.insertAccount(customerDTO.getAccountDTO());
             customerDTO.getAccountDTO().setAccountId(accountService.getAccountId(customerDTO.getAccountDTO().getLogin()));
-           if(customerDTO.getAccountDTO().getAccessRights().equals("klient")){
+           if(customerDTO.getAccountDTO().getAccessRights().equals(ChoiceList.AccessRights.CUSTOMER.getAccessRights())){
                this.customerService.insertCustomer(customerDTO);
            }else{
                this.employerService.insertEmployee(EmployeeMapper.toEmployeeDTO(customerDTO));

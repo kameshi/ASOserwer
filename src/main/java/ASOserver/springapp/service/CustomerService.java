@@ -7,6 +7,9 @@ import ASOserver.springapp.mapper.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CustomerService {
     private final CustomerDAO customerDAO;
@@ -35,4 +38,14 @@ public class CustomerService {
     public void deleteCustomer(Long customerId) {
         this.customerDAO.deleteById(customerId);
     }
+
+    public List<CustomerDTO> getCustomer() {
+        Iterable<Customer> customerIterable = this.customerDAO.findAll();
+        List<CustomerDTO> customerDTOList = new ArrayList<>();
+        for(Customer customer : customerIterable){
+            customerDTOList.add(CustomerMapper.toCustomerDTOWitchOutAccount(customer));
+        }
+        return customerDTOList;
+    }
+
 }

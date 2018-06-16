@@ -20,6 +20,7 @@ public class EmployeeMapper {
         employee.setAccount(new AccountMapper().toAccount(employeeDTO.getAccountDTO()));
         return employee;
     }
+
     public static EmployeeDTO toEmployeeDTO(Employee employee){
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.setEmployeeId(employee.getEmployeeId());
@@ -31,6 +32,7 @@ public class EmployeeMapper {
         employeeDTO.setAccountDTO(new AccountMapper().toAccountDTO(employee.getAccount()));
         return employeeDTO;
     }
+
     public static EmployeeDTO toEmployeeDTO(CustomerDTO customerDTO){
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.setEmployeeId(customerDTO.getCustomerId());
@@ -40,6 +42,18 @@ public class EmployeeMapper {
         employeeDTO.setPesel(customerDTO.getPesel());
         employeeDTO.setPhoneNumber(customerDTO.getPhoneNumber());
         employeeDTO.setAccountDTO(customerDTO.getAccountDTO());
+        return employeeDTO;
+    }
+
+    public static EmployeeDTO toEmployeeDTOWitchOutAccount(Employee employee){
+        EmployeeDTO employeeDTO = new EmployeeDTO();
+        employeeDTO.setEmployeeId(employee.getEmployeeId());
+        employeeDTO.setName(employee.getName());
+        employeeDTO.setSurname(employee.getSurname());
+        employeeDTO.seteMail(employee.geteMail());
+        employeeDTO.setPesel(employee.getPesel());
+        employeeDTO.setPhoneNumber(employee.getPhoneNumber());
+        employeeDTO.setAccountDTO(null);
         return employeeDTO;
     }
 }

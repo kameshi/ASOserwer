@@ -9,7 +9,7 @@ public class ServiceDTO implements Serializable{
     private Long serviceId;
     private String name;
     private String type;
-    private int price;
+    private double price;
 
     @Override
     public String toString() {
@@ -45,11 +45,11 @@ public class ServiceDTO implements Serializable{
         this.type = type;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

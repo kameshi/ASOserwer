@@ -3,15 +3,16 @@ INSERT into Account VALUES (2,'klient','karolm','karolm');
 INSERT into Account VALUES (3,'klient','marekm','marekm');
 INSERT into Account VALUES (4,'klient','mateuszm','mateuszm');
 INSERT into Account VALUES (5,'klient','damianl','damianl');
-INSERT into Account VALUES (6,'pracownik','pracownik1','aso');
-INSERT into Account VALUES (7,'pracownik','pracownik2','aso');
+INSERT into Account VALUES (6,'pracownik','pracownik1','aso1');
+INSERT into Account VALUES (7,'pracownik','pracownik2','aso2');
 
 INSERT INTO CUSTOMER VALUES (1,'mateuszm@aso.pl','Mateusz','93121245739','534565452','Maciąg',4);
 INSERT INTO CUSTOMER VALUES (2,'damianl@aso.pl','Damian','95121275636','345345756','Łyżwa',5);
-INSERT INTO CUSTOMER VALUES (3,'marekm@aso.pl','Marek','93121244674','666710482','Madeła',4);
-INSERT INTO CUSTOMER VALUES (4,'karolm@aso.pl','Karol','93121278979','654656325','Marchewka',4)
-INSERT INTO EMPLOYEE VALUES (1,'pracownik1@aso.pl','Andrzej','83121244364','363764235','Kowalski',4);
-INSERT INTO EMPLOYEE VALUES (2,'pracownik2@aso.pl','Janusz','73121277539','865346856','Kowalski',4);
+INSERT INTO CUSTOMER VALUES (3,'marekm@aso.pl','Marek','93121244674','666710482','Madeła',3);
+INSERT INTO CUSTOMER VALUES (4,'karolm@aso.pl','Karol','93121278979','654656325','Marchewka',2);
+
+INSERT INTO EMPLOYEE VALUES (1,'pracownik1@aso.pl','Andrzej','83121244364','363764235','Kowalski',6);
+INSERT INTO EMPLOYEE VALUES (2,'pracownik2@aso.pl','Janusz','73121277539','865346856','Stefańczyk',7);
 
 INSERT INTO VEHICLE VALUES (1,1.6,'Seat','Leon',102,'TSA AU74','2018-10-20','JTJHW31U560039130');
 INSERT INTO VEHICLE VALUES (2,1.9,'Renault','Megan',110,'TST HF43G','2018-09-07','WF0AXXWPMAGR69936');

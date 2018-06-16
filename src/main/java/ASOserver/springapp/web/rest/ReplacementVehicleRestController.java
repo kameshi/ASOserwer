@@ -35,7 +35,7 @@ public class ReplacementVehicleRestController {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    private ResponseEntity insertCategory(@RequestBody ReplacementVehicleDTO replacementVehicleDTO){
+    private ResponseEntity insertReplacementVehicle(@RequestBody ReplacementVehicleDTO replacementVehicleDTO){
         try {
             this.replacementVehicleService.insertReplacementVehicle(replacementVehicleDTO);
             return new ResponseEntity(HttpStatus.OK);
@@ -43,6 +43,18 @@ public class ReplacementVehicleRestController {
         catch(Exception e){
             e.printStackTrace();
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{getReplacementVehicle}")
+    private ResponseEntity<Object> getReplacementVehicle(){
+        try {
+            List<ReplacementVehicleDTO> replacementVehicleDTOList = this.replacementVehicleService.getReplacementVehicle();
+            return new ResponseEntity<Object>(replacementVehicleDTOList, HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

@@ -19,7 +19,7 @@ public class Service{
     private String type;
 
     @Column(name = "PRICE", nullable = false, unique = true)
-    private int price;
+    private double price;
 
     @OneToMany(mappedBy = "service", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Promotion> promotion;
@@ -54,11 +54,11 @@ public class Service{
         this.type = type;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

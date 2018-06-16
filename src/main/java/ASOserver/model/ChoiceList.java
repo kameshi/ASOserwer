@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ChoiceList {
 
-    private enum AccessRights {
+    public enum AccessRights {
 
         CUSTOMER("klient"),
         ADMINISTRATOR("administrator"),
@@ -30,7 +30,7 @@ public class ChoiceList {
         return accessRightsList;
     }
 
-    private enum NotyficationTypes {
+    public enum NotyficationTypes {
 
         NOTIFICATION("powiadomienie"),
         REMINDER("przypomnienie"),
@@ -55,7 +55,7 @@ public class ChoiceList {
         return notyficationTypesList;
     }
 
-    private enum SpecificServicesExecutionStatus {
+    public enum SpecificServicesExecutionStatus {
 
         NEW("nowa"),
         DOWNLOADED("pobrana"),
@@ -83,7 +83,7 @@ public class ChoiceList {
         return specificServicesExecutionStatusList;
     }
 
-    private enum PaymentMethod {
+    public enum PaymentMethod {
 
         CARD("karta"),
         CASH("gotówka"),
@@ -109,7 +109,7 @@ public class ChoiceList {
         return paymentMethodList;
     }
 
-    private enum ServiceTypes {
+    public enum ServiceTypes {
 
         EXCHANGE("wymiana"),
         OVERVIEW("przegląd"),
