@@ -11,19 +11,19 @@ public class Promotion{
     @Column(name = "PROMOTION_ID")
     private Long PromotionId;
 
-    @Column(name = "NAME", nullable = false, unique = true)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "DESCRIPTION", nullable = false, unique = true)
+    @Column(name = "DESCRIPTION", nullable = false)
     private String description;
-    @Column(name = "DATE_FROM", nullable = false, unique = true)
+    @Column(name = "DATE_FROM", nullable = false)
     private String dateFrom;
-    @Column(name = "DATE_TO", nullable = false, unique = true)
+    @Column(name = "DATE_TO", nullable = false)
     private String dateTo;
-    @Column(name = "PERCENT", nullable = false, unique = true)
+    @Column(name = "PERCENT", nullable = false)
     private double percent;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SERVICE_ID")
     private Service service;
 

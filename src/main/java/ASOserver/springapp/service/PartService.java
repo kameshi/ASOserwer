@@ -28,5 +28,8 @@ public class PartService {
 
         return partDTOList;
     }
+    public void insertPart(PartDTO partDTO) {
+        this.partDAO.save(PartMapper.toPart(partDTO));
+    }
 
 }

@@ -39,6 +39,8 @@ public class CustomerService {
         this.customerDAO.deleteById(customerId);
     }
 
+
+
     public List<CustomerDTO> getCustomer() {
         Iterable<Customer> customerIterable = this.customerDAO.findAll();
         List<CustomerDTO> customerDTOList = new ArrayList<>();

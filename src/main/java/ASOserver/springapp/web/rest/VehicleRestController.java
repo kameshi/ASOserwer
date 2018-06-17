@@ -29,25 +29,28 @@ public class VehicleRestController {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    private ResponseEntity insertCategory(@RequestBody VehicleDTO vehicleDTO){
+    private ResponseEntity insertVehicleDTO(@RequestBody VehicleDTO vehicleDTO){
         try {
-            System.out.println();
-            System.out.println(vehicleDTO.toString());
-            System.out.println();
             vehicleService.insertVehicle(vehicleDTO);
-            System.out.println();
-            System.out.println(vehicleDTO.toString());
-            System.out.println();
             vehicleDTO.setVehicleId(vehicleService.getVehicleId(vehicleDTO.getVin()));
-            System.out.println();
-            System.out.println(vehicleDTO.toString());
-            System.out.println();
             customerVehicleService.insertCustomerVehicle(vehicleDTO);
             return new ResponseEntity(HttpStatus.OK);
         }
         catch(Exception e){
             e.printStackTrace();
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    private ResponseEntity<Object> getVehicleDTO(){
+        try {
+            List<VehicleDTO> vehicleDTOList = this.vehicleService.getVehicle();
+            return new ResponseEntity<Object>(vehicleDTOList, HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

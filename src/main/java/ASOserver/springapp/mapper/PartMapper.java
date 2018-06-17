@@ -9,7 +9,13 @@ public class PartMapper {
         partDTO.setPratId(part.getPratId());
         partDTO.setName(part.getName());
         partDTO.setPrice(part.getPrice());
-        partDTO.setQuantity(part.getQuantity());
         return partDTO;
+    }
+    public static Part toPart(PartDTO partDTO){
+        Part part = new Part();
+        part.setPratId(partDTO.getPratId());
+        part.setName(partDTO.getName());
+        part.setPrice(partDTO.getPrice());
+        return part;
     }
 }

@@ -11,6 +11,9 @@ public class ServicePart{
     @Column(name = "SERVICE_PART_ID")
     private Long servicePart;
 
+    @Column(name = "QUANTITY", nullable = false)
+    private int quantity;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "SPECYFIC_SERVICE_ID", referencedColumnName="SPECYFIC_SERVICE_ID")
     private SpecificService specificService;
@@ -28,6 +31,16 @@ public class ServicePart{
 
     public void setSpecificService(SpecificService specificService) {
         this.specificService = specificService;
+    }
+
+
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public Part getPart() {

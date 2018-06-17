@@ -11,22 +11,22 @@ public class SpecificService{
     @Column(name = "SPECYFIC_SERVICE_ID")
     private Long SpecificServiceId;
 
-    @Column(name = "START_DATE", nullable = false, unique = true)
+    @Column(name = "START_DATE", nullable = false)
     private String startDate;
 
-    @Column(name = "END_DATE", nullable = false, unique = true)
+    @Column(name = "END_DATE", nullable = false)
     private String endDate;
 
-    @Column(name = "INSERT_DATE", nullable = false, unique = true)
+    @Column(name = "INSERT_DATE", nullable = false)
     private String insertDate;
 
-    @Column(name = "EXECUTION_STATUS", nullable = false, unique = true)
+    @Column(name = "EXECUTION_STATUS", nullable = false)
     private String executionStatus;
 
-    @Column(name = "REPLACEMENT_VEHICLE", nullable = false, unique = true)
+    @Column(name = "REPLACEMENT_VEHICLE", nullable = false)
     private String replacementVehicle;
 
-    @Column(name = "DESCRIPTION", nullable = false, unique = true)
+    @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

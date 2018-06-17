@@ -11,10 +11,10 @@ public class Notifications{
     @Column(name = "NOTIFICATIONS_ID")
     private Long NotificationsId;
 
-    @Column(name = "TYPE", nullable = false, unique = true)
+    @Column(name = "TYPE", nullable = false)
     private String type;
 
-    @Column(name = "DESCRIPTION", nullable = false, unique = true)
+    @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
     public Notifications() {

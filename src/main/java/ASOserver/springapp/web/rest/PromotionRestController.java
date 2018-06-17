@@ -38,7 +38,6 @@ public class PromotionRestController {
     @RequestMapping(method = RequestMethod.POST)
     private ResponseEntity insertCategory(@RequestBody PromotionDTO promotionDTO){
         try {
-
             System.out.println();
             System.out.println(promotionDTO.toString());
             System.out.println();

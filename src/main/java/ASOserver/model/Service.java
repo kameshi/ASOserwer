@@ -12,17 +12,17 @@ public class Service{
     @Column(name = "SERVICE_ID")
     private Long ServiceId;
 
-    @Column(name = "NAME", nullable = false, unique = true)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "TYPE", nullable = false, unique = true)
+    @Column(name = "TYPE", nullable = false)
     private String type;
 
-    @Column(name = "PRICE", nullable = false, unique = true)
+    @Column(name = "PRICE", nullable = false)
     private double price;
 
-    @OneToMany(mappedBy = "service", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Promotion> promotion;
+    @OneToOne(mappedBy = "service", fetch = FetchType.LAZY)
+    private Promotion promotion;
 
     @OneToMany(mappedBy = "service", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<SpecificService> specificService;
@@ -62,11 +62,11 @@ public class Service{
         this.price = price;
     }
 
-    public List<Promotion> getPromotion() {
+    public Promotion getPromotion() {
         return promotion;
     }
 
-    public void setPromotion(List<Promotion> promotion) {
+    public void setPromotion(Promotion promotion) {
         this.promotion = promotion;
     }
 

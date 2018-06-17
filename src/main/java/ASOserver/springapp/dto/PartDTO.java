@@ -4,7 +4,6 @@ public class PartDTO{
 
     private Long PratId;
     private String name;
-    private int quantity;
     private double price;
 
     @Override
@@ -12,7 +11,6 @@ public class PartDTO{
         return "PartDTO{" +
                 "PratId=" + PratId +
                 ", name='" + name + '\'' +
-                ", quantity=" + quantity +
                 ", price=" + price +
                 '}';
     }
@@ -31,14 +29,6 @@ public class PartDTO{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public double getPrice() {

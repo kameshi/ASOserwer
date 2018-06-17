@@ -11,13 +11,10 @@ public class Part{
     @Column(name = "PART_ID")
     private Long PratId;
 
-    @Column(name = "NAME", nullable = false, unique = true)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "QUANTITY", nullable = false, unique = true)
-    private int quantity;
-
-    @Column(name = "PRICE", nullable = false, unique = true)
+    @Column(name = "PRICE", nullable = false)
     private double price;
 
     @OneToMany(mappedBy = "part", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -40,14 +37,6 @@ public class Part{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public double getPrice() {

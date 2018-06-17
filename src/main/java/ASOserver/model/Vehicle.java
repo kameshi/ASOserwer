@@ -13,10 +13,10 @@ public class Vehicle{
     @Column(name = "VEHICLE_ID")
     private Long vehicleId;
 
-    @Column(name = "MARK", nullable = false, unique = true)
+    @Column(name = "MARK", nullable = false)
     private String mark;
 
-    @Column(name = "MODEL", nullable = false, unique = true)
+    @Column(name = "MODEL", nullable = false)
     private String model;
 
     @Column(name = "REGISTRATION_NUMBER", nullable = false, unique = true)
@@ -25,13 +25,13 @@ public class Vehicle{
     @Column(name = "VIN", nullable = false, unique = true)
     private String vin;
 
-    @Column(name = "CAPACITY", nullable = false, unique = true)
+    @Column(name = "CAPACITY", nullable = false)
     private float  capacity;
 
-    @Column(name = "POWER", nullable = false, unique = true)
+    @Column(name = "POWER", nullable = false)
     private float  power;
 
-    @Column(name = "REVIEW_DATE", nullable = false, unique = true)
+    @Column(name = "REVIEW_DATE", nullable = false)
     private String reviewDate;
 
     @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

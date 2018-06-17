@@ -1,6 +1,7 @@
 package ASOserver.springapp.service;
 import ASOserver.model.ReplacementVehicle;
 import ASOserver.model.Vehicle;
+import ASOserver.springapp.dao.CustomerDAO;
 import ASOserver.springapp.dao.EmployeeDAO;
 import ASOserver.springapp.dao.VehicleDAO;
 import ASOserver.springapp.dto.ReplacementVehicleDTO;
@@ -19,11 +20,13 @@ import java.util.List;
 @Service
 public class VehicleService {
     private final VehicleDAO vehicleDAO;
+    private final CustomerDAO customerDAO;
     private List<ReplacementVehicleDTO> vehicle;
 
     @Autowired
-    public VehicleService(VehicleDAO vehicleDAO) {
+    public VehicleService(VehicleDAO vehicleDAO, CustomerDAO customerDAO) {
         this.vehicleDAO = vehicleDAO;
+        this.customerDAO = customerDAO;
     }
 
     public void insertVehicle(VehicleDTO vehicleDTO) {
@@ -42,4 +45,14 @@ public class VehicleService {
 
         return vehicleDTOList;
     }
+    public List<VehicleDTO> getVehicleDTO() {
+        Iterable<Vehicle> vehicleIterable = this.vehicleDAO.findAll();
+        List<VehicleDTO> vehicleDTOList = new ArrayList<>();
+        for(Vehicle vehicle : vehicleIterable){
+            vehicleDTOList.add(VehicleMapper.toVehicleDTO(vehicle));
+        }
+
+        return vehicleDTOList;
+    }
+
 }

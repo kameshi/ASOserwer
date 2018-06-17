@@ -11,10 +11,10 @@ public class Invoice{
     @Column(name = "INVOICE_ID")
     private Long InvoiceId;
 
-    @Column(name = "FINAL_PRICE", nullable = false, unique = true)
+    @Column(name = "FINAL_PRICE", nullable = false)
     private float finalPrice;
 
-    @Column(name = "PAYMENT_METHOD", nullable = false, unique = true)
+    @Column(name = "PAYMENT_METHOD", nullable = false)
     private String paymentMethod;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

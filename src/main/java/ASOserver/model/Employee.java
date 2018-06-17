@@ -11,19 +11,19 @@ public class Employee{
     @Column(name = "EMPLOYEE_ID")
     private Long employeeId;
 
-    @Column(name = "NAME", nullable = false, unique = true)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "SURNAME", nullable = false, unique = true)
+    @Column(name = "SURNAME", nullable = false)
     private String surname;
 
-    @Column(name = "E_MAIL", nullable = false, unique = true)
+    @Column(name = "E_MAIL", nullable = false)
     private String eMail;
 
-    @Column(name = "PESEL", nullable = false, unique = true)
+    @Column(name = "PESEL", nullable = false)
     private String pesel;
 
-    @Column(name = "PHONE_NUMBER", nullable = false, unique = true)
+    @Column(name = "PHONE_NUMBER", nullable = false)
     private String phoneNumber;
 
     @OneToOne(fetch = FetchType.LAZY)
