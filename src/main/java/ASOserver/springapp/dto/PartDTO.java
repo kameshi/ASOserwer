@@ -2,25 +2,25 @@ package ASOserver.springapp.dto;
 
 public class PartDTO{
 
-    private Long PratId;
+    private Long PartId;
     private String name;
     private double price;
 
     @Override
     public String toString() {
         return "PartDTO{" +
-                "PratId=" + PratId +
+                "PratId=" + PartId +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 '}';
     }
 
-    public Long getPratId() {
-        return PratId;
+    public Long getPartId() {
+        return PartId;
     }
 
-    public void setPratId(Long pratId) {
-        PratId = pratId;
+    public void setPartId(Long partId) {
+        PartId = partId;
     }
 
     public String getName() {

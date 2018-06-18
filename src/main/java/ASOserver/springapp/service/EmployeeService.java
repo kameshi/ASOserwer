@@ -19,8 +19,8 @@ public class EmployeeService{
         this.employeeDAO = employeeDAO;
     }
 
-    public Employee getEmployee(Long employeeId) throws Exception {
-        return employeeDAO.findById(employeeId).get();
+    public EmployeeDTO findEmployee(Long employeeId) throws Exception {
+        return EmployeeMapper.toEmployeeDTO(employeeDAO.findById(employeeId).get());
     }
 
     public void insertEmployee(EmployeeDTO employeeDTO) {
@@ -35,7 +35,7 @@ public class EmployeeService{
         this.employeeDAO.deleteById(customerId);
     }
 
-    public List<EmployeeDTO> getEmployee() {
+    public List<EmployeeDTO> getEmployees() {
         Iterable<Employee> employeeIterable = this.employeeDAO.findAll();
         List<EmployeeDTO> employeeDTOList = new ArrayList<>();
         for(Employee employee : employeeIterable){

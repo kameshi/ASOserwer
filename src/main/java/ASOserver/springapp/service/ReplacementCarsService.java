@@ -40,4 +40,8 @@ public class ReplacementCarsService {
 
         return replacementCarsDTOList;
     }
+
+    public ReplacementCarsDTO findReplacementCarById(Long replacementCarId) throws Exception {
+        return ReplacementCarsMapper.toReplacementCarsDTO(replacementCarsDAO.findById(replacementCarId).get());
+    }
 }

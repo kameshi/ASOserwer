@@ -19,7 +19,7 @@ public class PartService {
         this.partDAO = partDAO;
     }
 
-    public List<PartDTO> getPart() throws Exception {
+    public List<PartDTO> getParts() throws Exception {
         Iterable<Part> partIterable = this.partDAO.findAll();
         List<PartDTO> partDTOList = new ArrayList<>();
         for(Part part : partIterable){
@@ -28,8 +28,21 @@ public class PartService {
 
         return partDTOList;
     }
-    public void insertPart(PartDTO partDTO) {
+    
+    public void insertPart(PartDTO partDTO) throws Exception {
         this.partDAO.save(PartMapper.toPart(partDTO));
     }
 
+    public PartDTO findPartById(Long partId) throws Exception {
+        return PartMapper.toPartDTO(partDAO.findById(partId).get());
+    }
+
+    public void updatePart(Long partId, PartDTO partDTO) throws Exception {
+        partDTO.setPartId(partId);
+        partDAO.save(PartMapper.toPart(partDTO));
+    }
+
+    public void deletePart(Long partId) throws Exception {
+        partDAO.deleteById(partId);
+    }
 }

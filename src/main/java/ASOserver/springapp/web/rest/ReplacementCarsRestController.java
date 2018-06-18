@@ -12,10 +12,9 @@ import java.util.List;
 
 @RestController
 @Scope("request")
-@CrossOrigin(origins = "*")
-@RequestMapping(value = "/ASOserver/rest/replacement-cars")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(value = "/aso/rest/replacement-cars")
 public class ReplacementCarsRestController {
-
     private final ReplacementCarsService replacementCarsService;
 
     @Autowired
@@ -23,8 +22,7 @@ public class ReplacementCarsRestController {
         this.replacementCarsService = replacementCarsService;
     }
 
-
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping()
     private ResponseEntity<String> insertReplacementCars(@RequestBody ReplacementCarsDTO replacementCarsDTO){
         try {
             this.replacementCarsService.insertReplacementCars(replacementCarsDTO);
@@ -36,7 +34,7 @@ public class ReplacementCarsRestController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping()
     private ResponseEntity<Object> getReplacementCars(){
         try {
             List<ReplacementCarsDTO> replacementCarsDTOList = this.replacementCarsService.getReplacementCars();
@@ -45,6 +43,43 @@ public class ReplacementCarsRestController {
         catch(Exception e){
             e.printStackTrace();
             return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(value = "/{replacementCarId}")
+    private ResponseEntity findReplacementCar(@PathVariable Long replacementCarId) {
+        try {
+            ReplacementCarsDTO replacementCarsDTO = replacementCarsService.findReplacementCarById(replacementCarId);
+            return new ResponseEntity(replacementCarsDTO, HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PatchMapping(value = "/{replacementCarId}")
+    private ResponseEntity updateReplacementCar(@PathVariable Long replacementCarId,
+                                                @RequestBody ReplacementCarsDTO replacementCarsDTO) {
+        try {
+            replacementCarsService.updateReplacementCars(replacementCarId, replacementCarsDTO);
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping(value = "/{replacementCarId}")
+    private ResponseEntity deleteReplacementCar(@PathVariable Long replacementCarId) {
+        try {
+            replacementCarsService.deleteReplacementCars(replacementCarId);
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

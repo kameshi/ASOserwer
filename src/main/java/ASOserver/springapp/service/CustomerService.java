@@ -22,6 +22,7 @@ public class CustomerService {
     public Customer getCustomer(Long customerId) throws Exception {
         return customerDAO.findById(customerId).get();
     }
+
     public CustomerDTO getCustomerDTO(Long customerId) throws Exception {
         return CustomerMapper.toCustomerDTO(customerDAO.findById(customerId).get());
     }
@@ -39,9 +40,7 @@ public class CustomerService {
         this.customerDAO.deleteById(customerId);
     }
 
-
-
-    public List<CustomerDTO> getCustomer() {
+    public List<CustomerDTO> getCustomers() {
         Iterable<Customer> customerIterable = this.customerDAO.findAll();
         List<CustomerDTO> customerDTOList = new ArrayList<>();
         for(Customer customer : customerIterable){
