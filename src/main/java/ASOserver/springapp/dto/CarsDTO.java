@@ -5,10 +5,10 @@ import java.io.Serializable;
 /**
  * Created by user on 2018-06-14.
  */
-public class VehicleDTO implements Serializable{
+public class CarsDTO implements Serializable{
 
-    private Long vehicleId;
-    private String mark;
+    private Long carsId;
+    private String make;
     private String model;
     private String registrationNumber;
     private String vin;
@@ -19,9 +19,9 @@ public class VehicleDTO implements Serializable{
 
     @Override
     public String toString() {
-        return "VehicleDTO{" +
-                "vehicleId=" + vehicleId +
-                ", mark='" + mark + '\'' +
+        return "CarsDTO{" +
+                "carsId=" + carsId +
+                ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
                 ", registrationNumber='" + registrationNumber + '\'' +
                 ", vin='" + vin + '\'' +
@@ -32,20 +32,20 @@ public class VehicleDTO implements Serializable{
                 '}';
     }
 
-    public Long getVehicleId() {
-        return vehicleId;
+    public Long getCarsId() {
+        return carsId;
     }
 
-    public void setVehicleId(Long vehicleId) {
-        this.vehicleId = vehicleId;
+    public void setCarsId(Long carsId) {
+        this.carsId = carsId;
     }
 
-    public String getMark() {
-        return mark;
+    public String getMake() {
+        return make;
     }
 
-    public void setMark(String mark) {
-        this.mark = mark;
+    public void setMake(String make) {
+        this.make = make;
     }
 
     public String getModel() {

@@ -58,9 +58,7 @@ public class ChoiceList {
     public enum SpecificServicesExecutionStatus {
 
         NEW("nowa"),
-        DOWNLOADED("pobrana"),
         DURING("w toku"),
-        TERMINATED("rozwiązana"),
         FINISHED("zakończona");
 
         private String specificServicesExecutionStatus;

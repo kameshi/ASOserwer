@@ -6,7 +6,7 @@ package ASOserver.springapp.web.rest;
 
 import ASOserver.common.HashUtils;
 import ASOserver.model.Employee;
-import ASOserver.model.ReplacementVehicle;
+import ASOserver.model.ReplacementCars;
 import ASOserver.springapp.dto.*;
 import ASOserver.springapp.mapper.EmployeeMapper;
 import ASOserver.springapp.service.*;

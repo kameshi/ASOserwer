@@ -1,7 +1,7 @@
 package ASOserver.springapp.web.rest;
 
 import ASOserver.springapp.dto.EmployeeDTO;
-import ASOserver.springapp.dto.VehicleDTO;
+import ASOserver.springapp.dto.CarsDTO;
 import ASOserver.springapp.service.CustomerService;
 import ASOserver.springapp.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/ASOserver/rest/employee")
+@RequestMapping(value = "/ASOserver/rest/employees")
 public class EmpolyeeRestController {
     private final EmployeeService employeeService;
 
@@ -27,7 +27,7 @@ public class EmpolyeeRestController {
         this.employeeService = employeeService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{getEmployee}")
+    @RequestMapping(method = RequestMethod.GET)
     private ResponseEntity<Object> getEmployee(){
         try {
             List<EmployeeDTO> employeeDTOList = this.employeeService.getEmployee();

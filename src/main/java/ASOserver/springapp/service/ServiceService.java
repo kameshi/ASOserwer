@@ -4,7 +4,7 @@ package ASOserver.springapp.service;
  * Created by user on 2018-06-14.
  */
 
-import ASOserver.springapp.dao.ReplacementVehicleDAO;
+import ASOserver.springapp.dao.ReplacementCarsDAO;
 import ASOserver.springapp.dao.ServiceDAO;
 import ASOserver.springapp.dto.ServiceDTO;
 import ASOserver.springapp.mapper.ServiceMapper;

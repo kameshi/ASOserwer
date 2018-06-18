@@ -23,9 +23,6 @@ public class SpecificService{
     @Column(name = "EXECUTION_STATUS", nullable = false)
     private String executionStatus;
 
-    @Column(name = "REPLACEMENT_VEHICLE", nullable = false)
-    private String replacementVehicle;
-
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
@@ -38,8 +35,12 @@ public class SpecificService{
     private Promotion promotion;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "CUSTOMER_VEHICLE_ID")
-    private CustomerVehicle customerVehicle;
+    @JoinColumn(name = "CUSTOMER_CARS_ID")
+    private CustomerCars customerCars;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "REPLACMENT_CARS_ID", referencedColumnName="REPLACMENT_CARS_ID")
+    private ReplacementCars replacementCars;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "SERVICE_ID")
@@ -91,12 +92,12 @@ public class SpecificService{
         this.executionStatus = executionStatus;
     }
 
-    public String getReplacementVehicle() {
-        return replacementVehicle;
+    public ReplacementCars getReplacementCars() {
+        return replacementCars;
     }
 
-    public void setReplacementVehicle(String replacementVehicle) {
-        this.replacementVehicle = replacementVehicle;
+    public void setReplacementCars(ReplacementCars replacementCars) {
+        this.replacementCars = replacementCars;
     }
 
     public String getDescription() {
@@ -124,12 +125,12 @@ public class SpecificService{
         this.promotion = promotion;
     }
 
-    public CustomerVehicle getCustomerVehicle() {
-        return customerVehicle;
+    public CustomerCars getCustomerCars() {
+        return customerCars;
     }
 
-    public void setCustomerVehicle(CustomerVehicle customerVehicle) {
-        this.customerVehicle = customerVehicle;
+    public void setCustomerCars(CustomerCars customerCars) {
+        this.customerCars = customerCars;
     }
 
     public Service getService() {

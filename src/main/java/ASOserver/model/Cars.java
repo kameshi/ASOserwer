@@ -5,16 +5,16 @@ import javax.persistence.*;
 import javax.xml.crypto.Data;
 import java.util.List;
 @Entity
-@Table(name = "VEHICLE")
-public class Vehicle{
+@Table(name = "CARS")
+public class Cars{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "VEHICLE_ID")
-    private Long vehicleId;
+    @Column(name = "CARS_ID")
+    private Long carsId;
 
     @Column(name = "MARK", nullable = false)
-    private String mark;
+    private String make;
 
     @Column(name = "MODEL", nullable = false)
     private String model;
@@ -34,26 +34,26 @@ public class Vehicle{
     @Column(name = "REVIEW_DATE", nullable = false)
     private String reviewDate;
 
-    @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<CustomerVehicle> customerVehicle;
+    @OneToMany(mappedBy = "cars", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CustomerCars> customerCars;
 
-    public Vehicle() {
+    public Cars() {
     }
 
-    public Long getVehicleId() {
-        return vehicleId;
+    public Long getCarsId() {
+        return carsId;
     }
 
-    public void setVehicleId(Long vehicleId) {
-        this.vehicleId = vehicleId;
+    public void setCarsId(Long carsId) {
+        this.carsId = carsId;
     }
 
-    public String getMark() {
-        return mark;
+    public String getMake() {
+        return make;
     }
 
-    public void setMark(String mark) {
-        this.mark = mark;
+    public void setMake(String make) {
+        this.make = make;
     }
 
     public String getModel() {
@@ -104,12 +104,12 @@ public class Vehicle{
         this.reviewDate = reviewDate;
     }
 
-    public List<CustomerVehicle> getCustomerVehicle() {
-        return customerVehicle;
+    public List<CustomerCars> getCustomerCars() {
+        return customerCars;
     }
 
-    public void setCustomerVehicle(List<CustomerVehicle> customerVehicle) {
-        this.customerVehicle = customerVehicle;
+    public void setCustomerCars(List<CustomerCars> customerCars) {
+        this.customerCars = customerCars;
     }
 
 }

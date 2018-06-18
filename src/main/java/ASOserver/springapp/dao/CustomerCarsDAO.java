@@ -1,9 +1,9 @@
 package ASOserver.springapp.dao;
 
-import ASOserver.model.CustomerVehicle;
+import ASOserver.model.CustomerCars;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CustomerVehicleDAO extends CrudRepository<CustomerVehicle, Long> {
+public interface CustomerCarsDAO extends CrudRepository<CustomerCars, Long> {
 }

@@ -3,31 +3,31 @@ package ASOserver.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CUSTOMER_VEHICLE")
-public class CustomerVehicle {
+@Table(name = "CUSTOMER_CARS")
+public class CustomerCars {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "CUSTOMER_VEHICLE_ID")
-    private Long customerVehicle;
+    @Column(name = "CUSTOMER_CARS_ID")
+    private Long customerCars;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "CUSTOMER_ID", referencedColumnName="CUSTOMER_ID")
     private Customer customer;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "VEHICLE_ID", referencedColumnName="VEHICLE_ID")
-    private Vehicle vehicle;
+    @JoinColumn(name = "CARS_ID", referencedColumnName="CARS_ID")
+    private Cars cars;
 
-    public CustomerVehicle() {
+    public CustomerCars() {
     }
 
-    public Long getCustomerVehicle() {
-        return customerVehicle;
+    public Long getCustomerCars() {
+        return customerCars;
     }
 
-    public void setCustomerVehicle(Long customerVehicle) {
-        this.customerVehicle = customerVehicle;
+    public void setCustomerCars(Long customerCars) {
+        this.customerCars = customerCars;
     }
 
     public Customer getCustomer() {
@@ -38,11 +38,11 @@ public class CustomerVehicle {
         this.customer = customer;
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
+    public Cars getCars() {
+        return cars;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+    public void setCars(Cars cars) {
+        this.cars = cars;
     }
 }

@@ -26,7 +26,7 @@ public class CustomerRestController {
         this.customerService = customerService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{getCustomer}")
+    @RequestMapping(method = RequestMethod.GET)
     private ResponseEntity<Object> getCustomer(){
         try {
             List<CustomerDTO> customerDTOList = this.customerService.getCustomer();

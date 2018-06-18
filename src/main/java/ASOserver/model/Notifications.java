@@ -17,6 +17,10 @@ public class Notifications{
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName="CUSTOMER_ID")
+    private Customer customer;
+
     public Notifications() {
     }
 

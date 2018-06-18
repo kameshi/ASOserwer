@@ -5,19 +5,19 @@ import java.io.Serializable;
 /**
  * Created by user on 2018-06-14.
  */
-public class ReplacementVehicleDTO implements Serializable {
-    private Long replacementVehicleId;
+public class ReplacementCarsDTO implements Serializable {
+    private Long replacementCarsId;
     private String model;
-    private String mark;
+    private String make;
     private String registrationNumber;
     private String vin;
 
-    public Long getReplacementVehicleId() {
-        return replacementVehicleId;
+    public Long getReplacementCarsId() {
+        return replacementCarsId;
     }
 
-    public void setReplacementVehicleId(Long replacementVehicleId) {
-        this.replacementVehicleId = replacementVehicleId;
+    public void setReplacementCarsId(Long replacementCarsId) {
+        this.replacementCarsId = replacementCarsId;
     }
 
     public String getModel() {
@@ -28,12 +28,12 @@ public class ReplacementVehicleDTO implements Serializable {
         this.model = model;
     }
 
-    public String getMark() {
-        return mark;
+    public String getMake() {
+        return make;
     }
 
-    public void setMark(String mark) {
-        this.mark = mark;
+    public void setMake(String make) {
+        this.make = make;
     }
 
     public String getRegistrationNumber() {

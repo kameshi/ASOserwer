@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/ASOserver/rest/part")
+@RequestMapping(value = "/ASOserver/rest/parts")
 public class PartRestController {
 
     private final PartService partService;
@@ -23,7 +23,7 @@ public class PartRestController {
         this.partService = partService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{getPart}")
+    @RequestMapping(method = RequestMethod.GET)
     private ResponseEntity<Object> getPart(){
         try {
             List<PartDTO> partDTOList = this.partService.getPart();

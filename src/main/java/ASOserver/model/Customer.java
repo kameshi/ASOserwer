@@ -32,10 +32,10 @@ public class Customer{
     private Account account;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<CustomerReplacementVehicle> CustomerReplacementVehicle;
+    private List<Notifications> notifications;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<CustomerVehicle> CustomerVehicle;
+    private List<CustomerCars> CustomerCars;
 
     public Customer() {
     }
@@ -46,14 +46,6 @@ public class Customer{
 
     public void setAccount(Account account) {
         this.account = account;
-    }
-
-    public List<ASOserver.model.CustomerReplacementVehicle> getCustomerReplacementVehicle() {
-        return CustomerReplacementVehicle;
-    }
-
-    public void setCustomerReplacementVehicle(List<ASOserver.model.CustomerReplacementVehicle> customerReplacementVehicle) {
-        CustomerReplacementVehicle = customerReplacementVehicle;
     }
 
     public Long getCustomerId() {
