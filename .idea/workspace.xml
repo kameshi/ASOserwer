@@ -5,53 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79b6a979-6d68-4e15-bebd-e190d22a1248" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/ReplacementCars.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/CustomerCarsDTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/CarsMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/CustomerCarsMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/ReplacementCarsMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/CarsService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/CustomerCarsService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/ReplacementCarsService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/CarsRestController.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/model/CustomerReplacementVehicle.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/model/ReplacementVehicle.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dao/CustomerReplacementVehicleDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/CustomerVehicleDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/CustomerVehicleMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/ReplacementVehicleMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/VehicleMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/CustomerVehicleService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/ReplacementVehicleService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/VehicleService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/VehicleRestController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ASOserver/model/CustomerReplacementVehicle.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ASOserver/model/CustomerVehicle.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ASOserver/model/ReplacementVehicle.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ASOserver/model/Vehicle.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/model/CustomerVehicle.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/CustomerCars.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/model/Vehicle.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/Cars.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dao/CustomerVehicleDAO.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dao/CustomerCarsDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dao/ReplacementVehicleDAO.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dao/ReplacementCarsDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dao/VehicleDAO.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dao/CarsDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/ReplacementVehicleDTO.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/ReplacementCarsDTO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/VehicleDTO.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/CarsDTO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/ReplacementVehicleRestController.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/ReplacementCarsRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ASOserver/model/Customer.class" afterPath="$PROJECT_DIR$/target/classes/ASOserver/model/Customer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ASOserver/model/Notifications.class" afterPath="$PROJECT_DIR$/target/classes/ASOserver/model/Notifications.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ASOserver/model/SpecificService.class" afterPath="$PROJECT_DIR$/target/classes/ASOserver/model/SpecificService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/458dc2ce-0c87-4868-a074-8fefbd7e3777.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/458dc2ce-0c87-4868-a074-8fefbd7e3777.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/NotyficationTypes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/PaymentMethod.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/ServiceTypes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/SpecificServicesExecutionStatus.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/model/ChoiceList.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/AccessRights.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/model/ChoiceList.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/ChoiceList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/model/Customer.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/Customer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/model/Notifications.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/Notifications.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/model/SpecificService.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/model/SpecificService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/ServiceService.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/ServiceService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/CustomerRestController.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/CustomerRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/EmpolyeeRestController.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/EmpolyeeRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/PartRestController.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/PartRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/ServiceRestController.java" afterPath="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/ServiceRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/import.sql" afterPath="$PROJECT_DIR$/src/main/resources/import.sql" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -87,18 +46,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="JPAConfiguration.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/configuration/JPAConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -138,22 +86,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/Part.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/ServicePart.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/PartDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/PartMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/SpecyficServiceDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/SpecyficServiceMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/CustomerVehicleDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/CustomerVehicleMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/SpecificServiceService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/SpecificServiceRestController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/SpecificServiceMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/SpecificServiceDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/IvoiceDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/IvoiceMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/InvoiceMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/InvoiceService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/dto/ServicePartDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/mapper/ServicePartMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/SpecyficPartService.java" />
@@ -186,9 +118,25 @@
         <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/ReplacementCars.java" />
         <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/Notifications.java" />
         <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/Customer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/ChoiceList.java" />
         <option value="$PROJECT_DIR$/src/main/java/ASOserver/configuration/JPAConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/resources/import.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/ChoiceList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/NotyficationTypes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/SpecificServicesExecutionStatus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/PaymentMethod.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/AccessRights.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/model/ServiceTypes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/ChoiceListService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/AccessRightsRest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/SpecificServicesExecutionStatusRest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/AccessRightsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/NotyficationTypesService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/NotyficationTypesRest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/ServiceTypesService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/ServiceTypesRest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/SpecificServicesExecutionStatusService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/PaymentMethodService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/PaymentMethodRest.java" />
       </list>
     </option>
   </component>
@@ -370,6 +318,16 @@
               <item name="ASOserver" type="462c0819:PsiDirectoryNode" />
               <item name="springapp" type="462c0819:PsiDirectoryNode" />
               <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ASOserwer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ASOserwer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ASOserver" type="462c0819:PsiDirectoryNode" />
+              <item name="springapp" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ASOserwer" type="b2602c69:ProjectViewProjectNode" />
@@ -750,10 +708,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25448000" />
+    <option name="totallyTimeSpent" value="31275000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -772,10 +730,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29130435" sideWeight="0.4975" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.4975" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21748401" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21748401" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -866,117 +824,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/EmpolyeeRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/PartRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-          <folding>
-            <element signature="e#670#671#0" expanded="false" />
-            <element signature="e#716#717#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/model/Part.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.ACCOUNT">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.CUSTOMER">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.CUSTOMER_REPLACEMENT_VEHICLE">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.CUSTOMER_VEHICLE">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.EMPLOYEE">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.INVOICE">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.NOTIFICATIONS">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.PART">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.PROMOTION">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.REPLACMENT_VEHICLE">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.SERVICE">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.SERVICE_PART">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/c3479190/458dc2ce-0c87-4868-a074-8fefbd7e3777/HR.SPECYFIC_SERVICE">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1197,14 +1044,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/model/ChoiceList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="60" column="25" lean-forward="false" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/model/Service.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1226,8 +1065,8 @@
         <state relative-caret-position="385">
           <caret line="29" column="51" lean-forward="false" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
           <folding>
-            <element signature="e#847#848#0" expanded="true" />
-            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#847#848#0" expanded="false" />
+            <element signature="e#901#902#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1267,8 +1106,164 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/configuration/JPAConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
-          <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+          <caret line="42" column="68" lean-forward="false" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/ServiceRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/model/PaymentMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/model/AccessRights.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/model/ServiceTypes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4">
+          <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/model/NotyficationTypes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/model/SpecificServicesExecutionStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="44" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/NotyficationTypesService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/NotyficationTypesRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/ServiceTypesRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="20" column="58" lean-forward="true" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/SpecificServicesExecutionStatusRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/SpecificServicesExecutionStatusService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="108" lean-forward="false" selection-start-line="8" selection-start-column="108" selection-end-line="8" selection-end-column="108" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/AccessRightsRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/PaymentMethodService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/ServiceTypesService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/service/AccessRightsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ASOserver/springapp/web/rest/PaymentMethodRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
