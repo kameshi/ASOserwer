@@ -1,9 +1,6 @@
 package ASOserver.springapp.web.rest;
 
-import ASOserver.common.HashUtils;
-import ASOserver.model.Employee;
 import ASOserver.springapp.dto.*;
-import ASOserver.springapp.mapper.EmployeeMapper;
 import ASOserver.springapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
