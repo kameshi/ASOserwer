@@ -1,7 +1,7 @@
 package ASOserver.springapp.service;
 
-import ASOserver.model.SpecificService;
-import ASOserver.springapp.dao.SpecificServiceDAO;
+import ASOserver.model.*;
+import ASOserver.springapp.dao.*;
 import ASOserver.springapp.dto.SpecificServiceDTO;
 import ASOserver.springapp.mapper.SpecificServiceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,20 +13,26 @@ import java.util.List;
 @Service
 public class SpecificServiceService {
     private final SpecificServiceDAO specificServiceDAO;
+    private final EmployeeDAO employeeDAO;
+    private final CustomerDAO customerDAO;
+    private final CarsDAO carsDAO;
 
     @Autowired
-    public SpecificServiceService(SpecificServiceDAO specificServiceDAO) {
+    public SpecificServiceService(SpecificServiceDAO specificServiceDAO, EmployeeDAO employeeDAO, CustomerDAO customerDAO, CarsDAO carsDAO) {
         this.specificServiceDAO = specificServiceDAO;
+        this.employeeDAO = employeeDAO;
+        this.customerDAO = customerDAO;
+        this.carsDAO = carsDAO;
     }
 
     public List<SpecificServiceDTO> findSpecificServices() throws Exception {
         Iterable<SpecificService> specificServiceIterable = this.specificServiceDAO.findAll();
-        List<SpecificServiceDTO> SpecificServiceDTOList = new ArrayList<>();
+        List<SpecificServiceDTO> specificServiceDTOList = new ArrayList<>();
         for(SpecificService tmpSpecificService : specificServiceIterable){
-            SpecificServiceDTOList.add(SpecificServiceMapper.toSpecificServiceDTO(tmpSpecificService));
+            specificServiceDTOList.add(SpecificServiceMapper.toSpecificServiceDTO(tmpSpecificService));
         }
 
-        return SpecificServiceDTOList;
+        return specificServiceDTOList;
     }
 
     public SpecificServiceDTO findSpecificServiceById(Long specificServiceId) throws Exception {
@@ -44,5 +50,41 @@ public class SpecificServiceService {
 
     public void deleteSpecificService(Long specificServiceId) throws Exception {
         specificServiceDAO.deleteById(specificServiceId);
+    }
+
+    public List<SpecificServiceDTO> findSpecificServicesByEmployeeId(Long employeeId) throws Exception {
+        Employee employee = employeeDAO.findById(employeeId).get();
+        List<SpecificServiceDTO> specificServiceDTOList = new ArrayList<>();
+        for(SpecificService tmpSpecificService : employee.getSpecificService()){
+            specificServiceDTOList.add(SpecificServiceMapper.toSpecificServiceDTO(tmpSpecificService));
+        }
+
+        return specificServiceDTOList;
+    }
+
+    public List<SpecificServiceDTO> findSpecificServicesByCustomerId(Long customerId) throws Exception {
+        Customer customer = customerDAO.findById(customerId).get();
+        List<SpecificServiceDTO> specificServiceDTOList = new ArrayList<>();
+
+        for(CustomerCars tmpCustomerCars : customer.getCustomerCars()) {
+            for (SpecificService tmpSpecificService : tmpCustomerCars.getSpecificServices()) {
+                specificServiceDTOList.add(SpecificServiceMapper.toSpecificServiceDTO(tmpSpecificService));
+            }
+        }
+
+        return specificServiceDTOList;
+    }
+
+    public List<SpecificServiceDTO> findSpecificServicesByCarId(Long carId) throws Exception {
+        Cars cars = carsDAO.findById(carId).get();
+        List<SpecificServiceDTO> specificServiceDTOList = new ArrayList<>();
+
+        for(CustomerCars tmpCustomerCars : cars.getCustomerCars()) {
+            for (SpecificService tmpSpecificService : tmpCustomerCars.getSpecificServices()) {
+                specificServiceDTOList.add(SpecificServiceMapper.toSpecificServiceDTO(tmpSpecificService));
+            }
+        }
+
+        return specificServiceDTOList;
     }
 }

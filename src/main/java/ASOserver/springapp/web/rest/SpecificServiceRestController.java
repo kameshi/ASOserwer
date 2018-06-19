@@ -21,11 +21,12 @@ public class SpecificServiceRestController {
     public SpecificServiceRestController(SpecificServiceService specificServiceService) {
         this.specificServiceService = specificServiceService;
     }
+
     @GetMapping()
-    private ResponseEntity getSpecificServices(){
+    private ResponseEntity findSpecificServices(){
         try {
-            List<SpecificServiceDTO> partDTOList = specificServiceService.findSpecificServices();
-            return new ResponseEntity(partDTOList, HttpStatus.OK);
+            List<SpecificServiceDTO> specificServiceDTOList = specificServiceService.findSpecificServices();
+            return new ResponseEntity(specificServiceDTOList, HttpStatus.OK);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -74,6 +75,42 @@ public class SpecificServiceRestController {
         try {
             specificServiceService.deleteSpecificService(specificServiceId);
             return new ResponseEntity(HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(value = "/employees/{employeeId}")
+    private ResponseEntity findSpecificServicesByEmployeeId(@PathVariable Long employeeId){
+        try {
+            List<SpecificServiceDTO> specificServiceDTOList = specificServiceService.findSpecificServicesByEmployeeId(employeeId);
+            return new ResponseEntity(specificServiceDTOList, HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(value = "/customers/{customerId}")
+    private ResponseEntity findSpecificServicesByCustomerId(@PathVariable Long customerId){
+        try {
+            List<SpecificServiceDTO> specificServiceDTOList = specificServiceService.findSpecificServicesByCustomerId(customerId);
+            return new ResponseEntity(specificServiceDTOList, HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(value = "/cars/{carId}")
+    private ResponseEntity findSpecificServicesByCarId(@PathVariable Long carId){
+        try {
+            List<SpecificServiceDTO> specificServiceDTOList = specificServiceService.findSpecificServicesByCarId(carId);
+            return new ResponseEntity(specificServiceDTOList, HttpStatus.OK);
         }
         catch(Exception e){
             e.printStackTrace();

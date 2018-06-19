@@ -2,7 +2,6 @@ package ASOserver.springapp.mapper;
 
 import ASOserver.model.CustomerCars;
 import ASOserver.model.SpecificService;
-import ASOserver.model.SpecificServicesExecutionStatus;
 import ASOserver.springapp.dto.SpecificServiceDTO;
 
 public class SpecificServiceMapper {
@@ -31,7 +30,7 @@ public class SpecificServiceMapper {
         /*specificServiceDTO.setStartDate(specificService.getStartDate());
         specificServiceDTO.setEndDate(specificService.getEndDate());
         specificServiceDTO.setInsertionDate(specificService.getInsertDate());*/
-        specificServiceDTO.setStatus(SpecificServicesExecutionStatus.SpecificServicesExecutionStatusEnum.valueOf(specificService.getExecutionStatus()));
+        specificServiceDTO.setStatus(specificService.getExecutionStatus());
         specificServiceDTO.setReplacementCar(ReplacementCarsMapper.toReplacementCarsDTO(specificService.getReplacementCars()));
         specificServiceDTO.setPromotion(PromotionMapper.toPromotionDTO(specificService.getPromotion()));
         specificServiceDTO.setDescription(specificService.getDescription());

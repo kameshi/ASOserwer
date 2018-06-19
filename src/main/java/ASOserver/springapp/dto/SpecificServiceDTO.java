@@ -11,7 +11,7 @@ public class SpecificServiceDTO implements Serializable {
     private Date startDate;
     private Date endDate;
     private Date insertionDate;
-    private SpecificServicesExecutionStatus.SpecificServicesExecutionStatusEnum status;
+    private String status;
     private ReplacementCarsDTO replacementCar;
     private PromotionDTO promotion;
     private String description;
@@ -59,11 +59,11 @@ public class SpecificServiceDTO implements Serializable {
         this.insertionDate = insertionDate;
     }
 
-    public SpecificServicesExecutionStatus.SpecificServicesExecutionStatusEnum getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(SpecificServicesExecutionStatus.SpecificServicesExecutionStatusEnum status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
