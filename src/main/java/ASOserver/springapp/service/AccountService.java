@@ -28,14 +28,15 @@ public class AccountService {
         return accountDAO.findAccountIdByLogin(login);
     }
 
-    public void insertAccount(AccountDTO accountDTO) throws Exception {
+    public Account insertAccount(AccountDTO accountDTO) throws Exception {
         accountDTO.setPassword(HashUtils.generateHash(accountDTO.getPassword(), 10));
-        this.accountDAO.save(AccountMapper.toAccount(accountDTO));
+        return this.accountDAO.save(AccountMapper.toAccount(accountDTO));
     }
 
-    public void updateAccount(Long accountId, AccountDTO accountDTO) {
+    public Account updateAccount(Long accountId, AccountDTO accountDTO) throws Exception {
         accountDTO.setId(accountId);
-        this.accountDAO.save(AccountMapper.toAccount(accountDTO));
+        accountDTO.setPassword(HashUtils.generateHash(accountDTO.getPassword(), 10));
+        return this.accountDAO.save(AccountMapper.toAccount(accountDTO));
     }
 
     public void deleteAccount(Long accountId) {

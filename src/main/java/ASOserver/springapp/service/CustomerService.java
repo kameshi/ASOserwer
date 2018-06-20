@@ -1,5 +1,7 @@
 package ASOserver.springapp.service;
 
+import ASOserver.model.AccessRights;
+import ASOserver.model.Account;
 import ASOserver.model.Customer;
 import ASOserver.springapp.dao.CustomerDAO;
 import ASOserver.springapp.dto.CustomerDTO;
@@ -13,10 +15,12 @@ import java.util.List;
 @Service
 public class CustomerService {
     private final CustomerDAO customerDAO;
+    private final AccountService accountService;
 
     @Autowired
-    public CustomerService(CustomerDAO customerDAO) {
+    public CustomerService(CustomerDAO customerDAO, AccountService accountService) {
         this.customerDAO = customerDAO;
+        this.accountService = accountService;
     }
 
     public Customer getCustomer(Long customerId) throws Exception {
@@ -28,12 +32,19 @@ public class CustomerService {
     }
 
     public void insertCustomer(CustomerDTO customerDTO) throws Exception {
-        this.customerDAO.save(CustomerMapper.toCustomer(customerDTO));
+        customerDTO.getAccount().setAccessRights(AccessRights.AccessRightsEnum.CUSTOMER.getAccessRights());
+        Account account = this.accountService.insertAccount(customerDTO.getAccount());
+        Customer customer = CustomerMapper.toCustomer(customerDTO);
+        customer.setAccount(account);
+        this.customerDAO.save(customer);
     }
 
-    public void updateCustomer(Long customerId, CustomerDTO customerDTO) {
+    public void updateCustomer(Long customerId, CustomerDTO customerDTO) throws Exception {
         customerDTO.setId(customerId);
-        this.customerDAO.save(CustomerMapper.toCustomer(customerDTO));
+        Account account = this.accountService.updateAccount(customerDTO.getAccount().getId(), customerDTO.getAccount());
+        Customer customer = CustomerMapper.toCustomer(customerDTO);
+        customer.setAccount(account);
+        this.customerDAO.save(customer);
     }
 
     public void deleteCustomer(Long customerId) {

@@ -6,7 +6,7 @@ public class EmployeeDTO implements Serializable {
     private Long id;
     private String name;
     private String surname;
-    private String eMail;
+    private String email;
     private String pesel;
     private String phoneNumber;
     private AccountDTO account;
@@ -35,12 +35,12 @@ public class EmployeeDTO implements Serializable {
         this.surname = surname;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPesel() {
