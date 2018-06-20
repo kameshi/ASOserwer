@@ -10,7 +10,7 @@ public class AccessRights {
         CUSTOMER("klient"),
         ADMINISTRATOR("administrator"),
         MECHANIC("mechanik"),
-        OFFICEWORKER("pracownik biurowy");
+        OFFICEWORKER("pracownik_biurowy");
         private String accessRights;
 
         private AccessRightsEnum(String accessRights) {

@@ -38,7 +38,7 @@ public class PartService {
     }
 
     public void updatePart(Long partId, PartDTO partDTO) throws Exception {
-        partDTO.setId(partId);
+        partDTO.setPartId(partId);
         partDAO.save(PartMapper.toPart(partDTO));
     }
 

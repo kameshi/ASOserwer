@@ -38,7 +38,7 @@ public class ServiceService {
     }
 
     public void updateService(Long serviceId, ServiceDTO serviceDTO) throws Exception {
-        serviceDTO.setId(serviceId);
+        serviceDTO.setServiceId(serviceId);
         serviceDAO.save(ServiceMapper.toService(serviceDTO));
     }
 

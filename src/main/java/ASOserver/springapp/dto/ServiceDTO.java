@@ -2,8 +2,11 @@ package ASOserver.springapp.dto;
 
 import java.io.Serializable;
 
+/**
+ * Created by user on 2018-06-14.
+ */
 public class ServiceDTO implements Serializable{
-    private Long id;
+    private Long serviceId;
     private String name;
     private String type;
     private double price;
@@ -11,19 +14,19 @@ public class ServiceDTO implements Serializable{
     @Override
     public String toString() {
         return "ServiceDTO{" +
-                "serviceId=" + id +
+                "serviceId=" + serviceId +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", price=" + price +
                 '}';
     }
 
-    public Long getId() {
-        return id;
+    public Long getServiceId() {
+        return serviceId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setServiceId(Long serviceId) {
+        this.serviceId = serviceId;
     }
 
     public String getName() {

@@ -39,7 +39,7 @@ public class PromotionService {
     }
 
     public void updatePromotion(Long promotionId, PromotionDTO promotionDTO) throws Exception {
-        promotionDTO.setId(promotionId);
+        promotionDTO.setPromotionId(promotionId);
         promotionDAO.save(PromotionMapper.toPromotion(promotionDTO));
     }
 

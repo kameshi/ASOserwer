@@ -96,11 +96,4 @@ public class Customer{
         this.phoneNumber = phoneNumber;
     }
 
-    public List<ASOserver.model.CustomerCars> getCustomerCars() {
-        return CustomerCars;
-    }
-
-    public void setCustomerCars(List<ASOserver.model.CustomerCars> customerCars) {
-        CustomerCars = customerCars;
-    }
 }

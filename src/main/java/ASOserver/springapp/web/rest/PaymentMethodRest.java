@@ -14,8 +14,8 @@ import java.util.List;
 
 @RestController
 @Scope("request")
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/aso/rest/payment-method")
+@CrossOrigin(origins = "*")
+@RequestMapping(value = "/ASOserver/rest/PaymentMethodRest")
 public class PaymentMethodRest {
 
     private final PaymentMethodService paymentMethodService;

@@ -1,6 +1,9 @@
 package ASOserver.springapp.web.rest;
 
+import ASOserver.common.HashUtils;
+import ASOserver.model.Employee;
 import ASOserver.springapp.dto.*;
+import ASOserver.springapp.mapper.EmployeeMapper;
 import ASOserver.springapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -13,7 +16,7 @@ import java.util.List;
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/aso/rest/cars")
+@RequestMapping(value = "/ASOserver/rest/cars")
 public class CarsRestController {
     private final CarsService carsService;
     private final CustomerCarsService customerCarsService;
@@ -29,7 +32,7 @@ public class CarsRestController {
     private ResponseEntity insertCarsDTO(@RequestBody CarsDTO carsDTO){
         try {
             carsService.insertCars(carsDTO);
-            carsDTO.setId(carsService.getCarsId(carsDTO.getVin()));
+            carsDTO.setCarsId(carsService.getCarsId(carsDTO.getVin()));
             customerCarsService.insertCustomerCars(carsDTO);
             return new ResponseEntity(HttpStatus.OK);
         }
@@ -48,54 +51,6 @@ public class CarsRestController {
         catch(Exception e){
             e.printStackTrace();
             return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @GetMapping(value = "/{carId}")
-    private ResponseEntity findCar(@PathVariable Long carId) {
-        try {
-            CarsDTO carDTO = carsService.findCarById(carId);
-            return new ResponseEntity(carDTO, HttpStatus.OK);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @PatchMapping(value = "/{carId}")
-    private ResponseEntity updateCar(@PathVariable Long carId, @RequestBody CarsDTO carDTO) {
-        try {
-            carsService.updateCar(carId, carDTO);
-            return new ResponseEntity(HttpStatus.OK);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @DeleteMapping(value = "/{carId}")
-    private ResponseEntity deleteCar(@PathVariable Long CarId) {
-        try {
-            carsService.deleteCar(CarId);
-            return new ResponseEntity(HttpStatus.OK);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @GetMapping(value = "/customers/{customerId}")
-    private ResponseEntity findCarByCustomerId(@PathVariable Long customerId) {
-        try {
-            List<CarsDTO> carsDTOS = carsService.findCarByCustomerId(customerId);
-            return new ResponseEntity(carsDTOS, HttpStatus.OK);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

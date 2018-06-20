@@ -1,10 +1,12 @@
 package ASOserver.springapp.dto;
 
+import org.springframework.http.HttpStatus;
+
 import java.io.Serializable;
 
 public class AccountDTO implements Serializable {
 
-    private Long id;
+    private Long accountId;
     private String login;
     private String password;
     private String accessRights;
@@ -12,19 +14,19 @@ public class AccountDTO implements Serializable {
     @Override
     public String toString() {
         return "AccountDTO{" +
-                "accountId=" + id +
+                "accountId=" + accountId +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", accessRights='" + accessRights + '\'' +
                 '}';
     }
 
-    public Long getId() {
-        return id;
+    public Long getAccountId() {
+        return accountId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 
     public String getLogin() {

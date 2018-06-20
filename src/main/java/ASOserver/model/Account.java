@@ -1,5 +1,7 @@
 package ASOserver.model;
 
+import org.springframework.http.HttpStatus;
+
 import javax.persistence.*;
 
 @Entity
@@ -26,7 +28,6 @@ public class Account{
     @OneToOne(mappedBy = "account", fetch = FetchType.LAZY)
     private Employee employee;
 
-    public Account() {}
 
     public Customer getCustomer() {
         return customer;

@@ -1,6 +1,7 @@
 package ASOserver.springapp.web.rest;
 
 import ASOserver.springapp.dto.CustomerDTO;
+import ASOserver.springapp.dto.EmployeeDTO;
 import ASOserver.springapp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

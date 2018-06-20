@@ -14,8 +14,8 @@ import java.util.List;
 
 @RestController
 @Scope("request")
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/aso/rest/service-types")
+@CrossOrigin(origins = "*")
+@RequestMapping(value = "/ASOserver/rest/ServiceTypesRest")
 public class ServiceTypesRest {
 
     private final ServiceTypesService serviceTypesService;

@@ -27,7 +27,7 @@ public class EmployeeService{
         this.employeeDAO.save(EmployeeMapper.toEmployee(employeeDTO));
     }
     public void updateEmployee(Long employeeId, EmployeeDTO employeeDTO) {
-        employeeDTO.setId(employeeId);
+        employeeDTO.setEmployeeId(employeeId);
         this.employeeDAO.save(EmployeeMapper.toEmployee(employeeDTO));
     }
 

@@ -1,7 +1,6 @@
 package ASOserver.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "CUSTOMER_CARS")
@@ -19,9 +18,6 @@ public class CustomerCars {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "CARS_ID", referencedColumnName="CARS_ID")
     private Cars cars;
-
-    @OneToMany(mappedBy = "customerCars", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<SpecificService> specificServices;
 
     public CustomerCars() {
     }
@@ -48,13 +44,5 @@ public class CustomerCars {
 
     public void setCars(Cars cars) {
         this.cars = cars;
-    }
-
-    public List<SpecificService> getSpecificServices() {
-        return specificServices;
-    }
-
-    public void setSpecificServices(List<SpecificService> specificServices) {
-        this.specificServices = specificServices;
     }
 }

@@ -1,33 +1,37 @@
 package ASOserver.springapp.dto;
 
-import java.io.Serializable;
+import ASOserver.model.Customer;
+import ASOserver.model.Cars;
 
-public class CustomerCarsDTO implements Serializable {
-    private Long id;
-    private CustomerDTO customer;
-    private CarsDTO cars;
+/**
+ * Created by user on 2018-06-17.
+ */
+public class CustomerCarsDTO {
+    private Long customerCars;
+    private CustomerDTO customerDTO;
+    private CarsDTO carsDTO;
 
-    public Long getId() {
-        return id;
+    public Long getCustomerCars() {
+        return customerCars;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCustomerCars(Long customerCars) {
+        this.customerCars = customerCars;
     }
 
-    public CustomerDTO getCustomer() {
-        return customer;
+    public CustomerDTO getCustomerDTO() {
+        return customerDTO;
     }
 
-    public void setCustomer(CustomerDTO customer) {
-        this.customer = customer;
+    public void setCustomerDTO(CustomerDTO customerDTO) {
+        this.customerDTO = customerDTO;
     }
 
-    public CarsDTO getCars() {
-        return cars;
+    public CarsDTO getCarsDTO() {
+        return carsDTO;
     }
 
-    public void setCars(CarsDTO cars) {
-        this.cars = cars;
+    public void setCarsDTO(CarsDTO carsDTO) {
+        this.carsDTO = carsDTO;
     }
 }

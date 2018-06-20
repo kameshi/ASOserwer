@@ -1,35 +1,48 @@
 package ASOserver.springapp.dto;
 
+import ASOserver.model.Service;
+
 import java.io.Serializable;
 
+/**
+ * Created by user on 2018-06-14.
+ */
 public class PromotionDTO implements Serializable {
-    private Long id;
+    private Long promotionId;
     private String name;
     private String description;
     private String dateFrom;
     private String dateTo;
     private double percent;
-    private ServiceDTO service;
+    private ServiceDTO serviceDTO;
 
     @Override
     public String toString() {
         return "PromotionDTO{" +
-                "promotionId=" + id +
+                "promotionId=" + promotionId +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", dateFrom='" + dateFrom + '\'' +
                 ", dateTo='" + dateTo + '\'' +
                 ", percent=" + percent +
-                ", service=" + service.toString() +
+                ", service=" + serviceDTO.toString() +
                 '}';
     }
 
-    public Long getId() {
-        return id;
+    public ServiceDTO getServiceDTO() {
+        return serviceDTO;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setServiceDTO(ServiceDTO serviceDTO) {
+        this.serviceDTO = serviceDTO;
+    }
+
+    public Long getPromotionId() {
+        return promotionId;
+    }
+
+    public void setPromotionId(Long promotionId) {
+        promotionId = promotionId;
     }
 
     public String getName() {
@@ -70,13 +83,5 @@ public class PromotionDTO implements Serializable {
 
     public void setPercent(double percent) {
         this.percent = percent;
-    }
-
-    public ServiceDTO getService() {
-        return service;
-    }
-
-    public void setService(ServiceDTO service) {
-        this.service = service;
     }
 }
