@@ -1,38 +1,37 @@
 package ASOserver.springapp.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
-/**
- * Created by user on 2018-06-12.
- */
 public class CustomerDTO implements Serializable {
-    private Long customerId;
+    private Long id;
     private String name;
     private String surname;
-    private String eMail;
+    private String email;
     private String pesel;
     private String phoneNumber;
-    private AccountDTO accountDTO;
+    private AccountDTO account;
+    private List<CarsDTO> cars;
 
     @Override
     public String toString() {
         return "CustomerDTO{" +
-                "customerId=" + customerId +
+                "customerId=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", eMail='" + eMail + '\'' +
+                ", email='" + email + '\'' +
                 ", pesel='" + pesel + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", accountDTO=" + accountDTO.toString() +
+                ", account=" + account.toString() +
                 '}';
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCustomerId(Long employeeId) {
-        this.customerId = employeeId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -51,12 +50,12 @@ public class CustomerDTO implements Serializable {
         this.surname = surname;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPesel() {
@@ -75,11 +74,19 @@ public class CustomerDTO implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public AccountDTO getAccountDTO() {
-        return accountDTO;
+    public AccountDTO getAccount() {
+        return account;
     }
 
-    public void setAccountDTO(AccountDTO accountDTO) {
-        this.accountDTO = accountDTO;
+    public void setAccount(AccountDTO account) {
+        this.account = account;
+    }
+
+    public List<CarsDTO> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<CarsDTO> cars) {
+        this.cars = cars;
     }
 }

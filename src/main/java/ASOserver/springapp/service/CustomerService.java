@@ -32,7 +32,7 @@ public class CustomerService {
     }
 
     public void updateCustomer(Long customerId, CustomerDTO customerDTO) {
-        customerDTO.setCustomerId(customerId);
+        customerDTO.setId(customerId);
         this.customerDAO.save(CustomerMapper.toCustomer(customerDTO));
     }
 
@@ -44,7 +44,7 @@ public class CustomerService {
         Iterable<Customer> customerIterable = this.customerDAO.findAll();
         List<CustomerDTO> customerDTOList = new ArrayList<>();
         for(Customer customer : customerIterable){
-            customerDTOList.add(CustomerMapper.toCustomerDTOWitchOutAccount(customer));
+            customerDTOList.add(CustomerMapper.toCustomerDTO(customer));
         }
         return customerDTOList;
     }

@@ -7,12 +7,8 @@ import ASOserver.springapp.dao.AccountDAO;
 import ASOserver.springapp.dto.AccountDTO;
 import ASOserver.springapp.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,43 +28,13 @@ public class AccountService {
         return accountDAO.findAccountIdByLogin(login);
     }
 
-    public Account getAccountIdiCos(String login) throws Exception {
-        Iterable<Account> accountIterable = this.accountDAO.findAll();
-        Account account =new Account();
-        for(Account tmpAccount : accountIterable) {
-            if (tmpAccount.getLogin().equals(login)) {
-                account.setAccessRights(tmpAccount.getAccessRights());
-                account.setLogin(tmpAccount.getLogin());
-                if (!tmpAccount.getAccessRights().equals("klient")) {
-                    account.setAccountId(tmpAccount.getEmployee().getEmployeeId());
-                    break;
-                } else {
-                    account.setAccountId(tmpAccount.getCustomer().getCustomerId());
-                    break;
-                }
-            }
-        }
-         return account;
-    }
-
-    public List<AccountDTO> getAccountDTO() throws Exception {
-        Iterable<Account> accountIterable = this.accountDAO.findAll();
-        List<AccountDTO> accountDTOList = new ArrayList<>();
-
-        for(Account tmpAccount : accountIterable){
-            accountDTOList.add(AccountMapper.toAccountDTO(tmpAccount));
-        }
-
-        return accountDTOList;
-    }
     public void insertAccount(AccountDTO accountDTO) throws Exception {
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        accountDTO.setPassword(encoder.encode(accountDTO.getPassword()));
+        accountDTO.setPassword(HashUtils.generateHash(accountDTO.getPassword(), 10));
         this.accountDAO.save(AccountMapper.toAccount(accountDTO));
     }
 
     public void updateAccount(Long accountId, AccountDTO accountDTO) {
-        accountDTO.setAccountId(accountId);
+        accountDTO.setId(accountId);
         this.accountDAO.save(AccountMapper.toAccount(accountDTO));
     }
 

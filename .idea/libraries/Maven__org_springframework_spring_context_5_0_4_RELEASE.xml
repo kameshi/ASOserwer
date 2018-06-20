@@ -1,5 +1,8 @@
 <component name="libraryTable">
   <library name="Maven: org.springframework:spring-context:5.0.4.RELEASE">
+    <ANNOTATIONS>
+      <root url="file://$PROJECT_DIR$/src/main/java" />
+    </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.4.RELEASE/spring-context-5.0.4.RELEASE.jar!/" />
     </CLASSES>

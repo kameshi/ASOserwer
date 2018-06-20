@@ -2,22 +2,19 @@ package ASOserver.springapp.dto;
 
 import java.io.Serializable;
 
-/**
- * Created by user on 2018-06-14.
- */
 public class ReplacementCarsDTO implements Serializable {
-    private Long replacementCarsId;
+    private Long id;
     private String model;
     private String make;
     private String registrationNumber;
     private String vin;
 
-    public Long getReplacementCarsId() {
-        return replacementCarsId;
+    public Long getId() {
+        return id;
     }
 
-    public void setReplacementCarsId(Long replacementCarsId) {
-        this.replacementCarsId = replacementCarsId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getModel() {

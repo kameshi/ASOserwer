@@ -2,42 +2,39 @@ package ASOserver.springapp.dto;
 
 import java.io.Serializable;
 
-/**
- * Created by user on 2018-06-14.
- */
 public class CarsDTO implements Serializable{
 
-    private Long carsId;
+    private Long id;
     private String make;
     private String model;
     private String registrationNumber;
     private String vin;
-    private float  capacity;
-    private float  power;
+    private float engineSize;
+    private float enginePower;
     private String reviewDate;
-    private CustomerDTO customerDTO;
+    private CustomerDTO customer;
 
     @Override
     public String toString() {
         return "CarsDTO{" +
-                "carsId=" + carsId +
+                "carsId=" + id +
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
                 ", registrationNumber='" + registrationNumber + '\'' +
                 ", vin='" + vin + '\'' +
-                ", capacity=" + capacity +
-                ", power=" + power +
+                ", capacity=" + engineSize +
+                ", power=" + enginePower +
                 ", reviewDate='" + reviewDate + '\'' +
-                ", customerDTO=" + customerDTO.toString() +
+                ", customerDTO=" + customer.toString() +
                 '}';
     }
 
-    public Long getCarsId() {
-        return carsId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCarsId(Long carsId) {
-        this.carsId = carsId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getMake() {
@@ -72,20 +69,20 @@ public class CarsDTO implements Serializable{
         this.vin = vin;
     }
 
-    public float getCapacity() {
-        return capacity;
+    public float getEngineSize() {
+        return engineSize;
     }
 
-    public void setCapacity(float capacity) {
-        this.capacity = capacity;
+    public void setEngineSize(float engineSize) {
+        this.engineSize = engineSize;
     }
 
-    public float getPower() {
-        return power;
+    public float getEnginePower() {
+        return enginePower;
     }
 
-    public void setPower(float power) {
-        this.power = power;
+    public void setEnginePower(float enginePower) {
+        this.enginePower = enginePower;
     }
 
     public String getReviewDate() {
@@ -96,11 +93,11 @@ public class CarsDTO implements Serializable{
         this.reviewDate = reviewDate;
     }
 
-    public CustomerDTO getCustomerDTO() {
-        return customerDTO;
+    public CustomerDTO getCustomer() {
+        return customer;
     }
 
-    public void setCustomerDTO(CustomerDTO customerDTO) {
-        this.customerDTO = customerDTO;
+    public void setCustomer(CustomerDTO customer) {
+        this.customer = customer;
     }
 }

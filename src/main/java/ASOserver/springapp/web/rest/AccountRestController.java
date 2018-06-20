@@ -1,6 +1,6 @@
 package ASOserver.springapp.web.rest;
 
-
+import ASOserver.model.AccessRights;
 import ASOserver.springapp.dto.CustomerDTO;
 import ASOserver.springapp.mapper.EmployeeMapper;
 import ASOserver.springapp.service.AccountService;
@@ -34,9 +34,9 @@ public class AccountRestController {
     @RequestMapping(method = RequestMethod.POST)
     private ResponseEntity insertCategory(@RequestBody CustomerDTO customerDTO){
         try {
-           this.accountService.insertAccount(customerDTO.getAccountDTO());
-            customerDTO.getAccountDTO().setAccountId(accountService.getAccountId(customerDTO.getAccountDTO().getLogin()));
-           if(customerDTO.getAccountDTO().getAccessRights().equals("klient")){
+           this.accountService.insertAccount(customerDTO.getAccount());
+            customerDTO.getAccount().setId(accountService.getAccountId(customerDTO.getAccount().getLogin()));
+           if(customerDTO.getAccount().getAccessRights().equals(AccessRights.AccessRightsEnum.CUSTOMER)){
                this.customerService.insertCustomer(customerDTO);
            }else{
                this.employerService.insertEmployee(EmployeeMapper.toEmployeeDTO(customerDTO));
