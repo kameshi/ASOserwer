@@ -16,8 +16,11 @@ public class CustomerMapper {
         customer.seteMail(customerDTO.geteMail());
         customer.setPesel(customerDTO.getPesel());
         customer.setPhoneNumber(customerDTO.getPhoneNumber());
+<<<<<<< HEAD
         customer.setAccount(new AccountMapper().toAccount(customerDTO.getAccountDTO()));
-        customer.setAccount(new AccountMapper().toAccount(customerDTO.getAccountDTO()));
+=======
+        customer.setAccount(new AccountMapper().toAccount(customerDTO.getAccount()));
+>>>>>>> parent of 5bf9591... Integracja z frontem
         return customer;
     }
 
@@ -29,8 +32,14 @@ public class CustomerMapper {
         customerDTO.seteMail(customer.geteMail());
         customerDTO.setPesel(customer.getPesel());
         customerDTO.setPhoneNumber(customer.getPhoneNumber());
+<<<<<<< HEAD
         customerDTO.setAccountDTO(new AccountMapper().toAccountDTO(customer.getAccount()));
-        customerDTO.setAccountDTO(new AccountMapper().toAccountDTO(customer.getAccount()));
+=======
+        customerDTO.setAccount(new AccountMapper().toAccountDTO(customer.getAccount()));
+        customerDTO.setCars(customer.getCustomerCars().stream()
+                .map(tmpCustomerCar -> CarsMapper.toCarsDTO(tmpCustomerCar.getCars()))
+                .collect(Collectors.toList()));
+>>>>>>> parent of 5bf9591... Integracja z frontem
         return customerDTO;
     }
 
