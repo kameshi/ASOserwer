@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "*")
@@ -32,9 +34,9 @@ public class AccountRestController {
     @RequestMapping(method = RequestMethod.POST)
     private ResponseEntity insertCategory(@RequestBody CustomerDTO customerDTO){
         try {
-           this.accountService.insertAccount(customerDTO.getAccountDTO());
-            customerDTO.getAccountDTO().setAccountId(accountService.getAccountId(customerDTO.getAccountDTO().getLogin()));
-           if(customerDTO.getAccountDTO().getAccessRights().equals(AccessRights.AccessRightsEnum.CUSTOMER.getAccessRights())){
+           this.accountService.insertAccount(customerDTO.getAccount());
+            customerDTO.getAccount().setId(accountService.getAccountId(customerDTO.getAccount().getLogin()));
+           if(customerDTO.getAccount().getAccessRights().equals(AccessRights.AccessRightsEnum.CUSTOMER)){
                this.customerService.insertCustomer(customerDTO);
            }else{
                this.employerService.insertEmployee(EmployeeMapper.toEmployeeDTO(customerDTO));

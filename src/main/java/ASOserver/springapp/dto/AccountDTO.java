@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class AccountDTO implements Serializable {
 
-    private Long accountId;
+    private Long id;
     private String login;
     private String password;
     private String accessRights;
@@ -12,19 +12,19 @@ public class AccountDTO implements Serializable {
     @Override
     public String toString() {
         return "AccountDTO{" +
-                "accountId=" + accountId +
+                "accountId=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", accessRights='" + accessRights + '\'' +
                 '}';
     }
 
-    public Long getAccountId() {
-        return accountId;
+    public Long getId() {
+        return id;
     }
 
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLogin() {

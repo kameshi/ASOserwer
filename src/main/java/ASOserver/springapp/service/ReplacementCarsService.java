@@ -23,7 +23,7 @@ public class ReplacementCarsService {
         this.replacementCarsDAO.save(ReplacementCarsMapper.toReplacementCars(replacementCarsDTO));
     }
     public void updateReplacementCars(Long replacementCarsId, ReplacementCarsDTO replacementCarsDTO) {
-        replacementCarsDTO.setReplacementCarsId(replacementCarsId);
+        replacementCarsDTO.setId(replacementCarsId);
         this.replacementCarsDAO.save(ReplacementCarsMapper.toReplacementCars(replacementCarsDTO));
     }
 

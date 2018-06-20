@@ -2,37 +2,34 @@ package ASOserver.springapp.dto;
 
 import java.io.Serializable;
 
-/**
- * Created by user on 2018-06-12.
- */
 public class CustomerDTO implements Serializable {
-    private Long customerId;
+    private Long id;
     private String name;
     private String surname;
     private String eMail;
     private String pesel;
     private String phoneNumber;
-    private AccountDTO accountDTO;
+    private AccountDTO account;
 
     @Override
     public String toString() {
         return "CustomerDTO{" +
-                "customerId=" + customerId +
+                "customerId=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", eMail='" + eMail + '\'' +
                 ", pesel='" + pesel + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", accountDTO=" + accountDTO.toString() +
+                ", account=" + account.toString() +
                 '}';
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCustomerId(Long employeeId) {
-        this.customerId = employeeId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -75,11 +72,11 @@ public class CustomerDTO implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public AccountDTO getAccountDTO() {
-        return accountDTO;
+    public AccountDTO getAccount() {
+        return account;
     }
 
-    public void setAccountDTO(AccountDTO accountDTO) {
-        this.accountDTO = accountDTO;
+    public void setAccount(AccountDTO account) {
+        this.account = account;
     }
 }

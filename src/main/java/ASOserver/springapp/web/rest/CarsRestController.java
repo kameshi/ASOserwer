@@ -29,7 +29,7 @@ public class CarsRestController {
     private ResponseEntity insertCarsDTO(@RequestBody CarsDTO carsDTO){
         try {
             carsService.insertCars(carsDTO);
-            carsDTO.setCarsId(carsService.getCarsId(carsDTO.getVin()));
+            carsDTO.setId(carsService.getCarsId(carsDTO.getVin()));
             customerCarsService.insertCustomerCars(carsDTO);
             return new ResponseEntity(HttpStatus.OK);
         }

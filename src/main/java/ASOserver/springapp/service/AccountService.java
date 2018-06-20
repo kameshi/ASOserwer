@@ -34,7 +34,7 @@ public class AccountService {
     }
 
     public void updateAccount(Long accountId, AccountDTO accountDTO) {
-        accountDTO.setAccountId(accountId);
+        accountDTO.setId(accountId);
         this.accountDAO.save(AccountMapper.toAccount(accountDTO));
     }
 
