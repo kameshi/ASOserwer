@@ -7,7 +7,7 @@ public class CustomerDTO implements Serializable {
     private Long id;
     private String name;
     private String surname;
-    private String eMail;
+    private String email;
     private String pesel;
     private String phoneNumber;
     private AccountDTO account;
@@ -19,7 +19,7 @@ public class CustomerDTO implements Serializable {
                 "customerId=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", eMail='" + eMail + '\'' +
+                ", email='" + email + '\'' +
                 ", pesel='" + pesel + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", account=" + account.toString() +
@@ -50,12 +50,12 @@ public class CustomerDTO implements Serializable {
         this.surname = surname;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPesel() {

@@ -44,7 +44,7 @@ public class CustomerService {
         Iterable<Customer> customerIterable = this.customerDAO.findAll();
         List<CustomerDTO> customerDTOList = new ArrayList<>();
         for(Customer customer : customerIterable){
-            customerDTOList.add(CustomerMapper.toCustomerDTOWitchOutAccount(customer));
+            customerDTOList.add(CustomerMapper.toCustomerDTO(customer));
         }
         return customerDTOList;
     }

@@ -12,8 +12,8 @@ public class CarsMapper {
         cars.setModel(carsDTO.getModel());
         cars.setRegistrationNumber(carsDTO.getRegistrationNumber());
         cars.setVin(carsDTO.getVin());
-        cars.setCapacity(carsDTO.getCapacity());
-        cars.setPower(carsDTO.getPower());
+        cars.setCapacity(carsDTO.getEngineSize());
+        cars.setPower(carsDTO.getEnginePower());
         cars.setReviewDate(carsDTO.getReviewDate());
         return cars;
     }
@@ -25,8 +25,8 @@ public class CarsMapper {
         carsDTO.setModel(cars.getModel());
         carsDTO.setRegistrationNumber(cars.getRegistrationNumber());
         carsDTO.setVin(cars.getVin());
-        carsDTO.setCapacity(cars.getCapacity());
-        carsDTO.setPower(cars.getPower());
+        carsDTO.setEngineSize(cars.getCapacity());
+        carsDTO.setEnginePower(cars.getPower());
         carsDTO.setReviewDate(cars.getReviewDate());
         return carsDTO;
     }

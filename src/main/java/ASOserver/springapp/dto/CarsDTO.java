@@ -9,8 +9,8 @@ public class CarsDTO implements Serializable{
     private String model;
     private String registrationNumber;
     private String vin;
-    private float  capacity;
-    private float  power;
+    private float engineSize;
+    private float enginePower;
     private String reviewDate;
     private CustomerDTO customer;
 
@@ -22,8 +22,8 @@ public class CarsDTO implements Serializable{
                 ", model='" + model + '\'' +
                 ", registrationNumber='" + registrationNumber + '\'' +
                 ", vin='" + vin + '\'' +
-                ", capacity=" + capacity +
-                ", power=" + power +
+                ", capacity=" + engineSize +
+                ", power=" + enginePower +
                 ", reviewDate='" + reviewDate + '\'' +
                 ", customerDTO=" + customer.toString() +
                 '}';
@@ -69,20 +69,20 @@ public class CarsDTO implements Serializable{
         this.vin = vin;
     }
 
-    public float getCapacity() {
-        return capacity;
+    public float getEngineSize() {
+        return engineSize;
     }
 
-    public void setCapacity(float capacity) {
-        this.capacity = capacity;
+    public void setEngineSize(float engineSize) {
+        this.engineSize = engineSize;
     }
 
-    public float getPower() {
-        return power;
+    public float getEnginePower() {
+        return enginePower;
     }
 
-    public void setPower(float power) {
-        this.power = power;
+    public void setEnginePower(float enginePower) {
+        this.enginePower = enginePower;
     }
 
     public String getReviewDate() {

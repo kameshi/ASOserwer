@@ -34,7 +34,7 @@ public class EmployeeMapper {
         employeeDTO.setId(customerDTO.getId());
         employeeDTO.setName(customerDTO.getName());
         employeeDTO.setSurname(customerDTO.getSurname());
-        employeeDTO.seteMail(customerDTO.geteMail());
+        employeeDTO.seteMail(customerDTO.getEmail());
         employeeDTO.setPesel(customerDTO.getPesel());
         employeeDTO.setPhoneNumber(customerDTO.getPhoneNumber());
         employeeDTO.setAccount(customerDTO.getAccount());

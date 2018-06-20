@@ -11,10 +11,10 @@ public class CustomerMapper {
         customer.setCustomerId(customerDTO.getId());
         customer.setName(customerDTO.getName());
         customer.setSurname(customerDTO.getSurname());
-        customer.seteMail(customerDTO.geteMail());
+        customer.seteMail(customerDTO.getEmail());
         customer.setPesel(customerDTO.getPesel());
         customer.setPhoneNumber(customerDTO.getPhoneNumber());
-        customer.setAccount(new AccountMapper().toAccount(customerDTO.getAccount()));
+        customer.setAccount(AccountMapper.toAccount(customerDTO.getAccount()));
         return customer;
     }
 
@@ -23,10 +23,10 @@ public class CustomerMapper {
         customerDTO.setId(customer.getCustomerId());
         customerDTO.setName(customer.getName());
         customerDTO.setSurname(customer.getSurname());
-        customerDTO.seteMail(customer.geteMail());
+        customerDTO.setEmail(customer.geteMail());
         customerDTO.setPesel(customer.getPesel());
         customerDTO.setPhoneNumber(customer.getPhoneNumber());
-        customerDTO.setAccount(new AccountMapper().toAccountDTO(customer.getAccount()));
+        customerDTO.setAccount(AccountMapper.toAccountDTO(customer.getAccount()));
         customerDTO.setCars(customer.getCustomerCars().stream()
                 .map(tmpCustomerCar -> CarsMapper.toCarsDTO(tmpCustomerCar.getCars()))
                 .collect(Collectors.toList()));
@@ -38,7 +38,7 @@ public class CustomerMapper {
         customerDTO.setId(customer.getCustomerId());
         customerDTO.setName(customer.getName());
         customerDTO.setSurname(customer.getSurname());
-        customerDTO.seteMail(customer.geteMail());
+        customerDTO.setEmail(customer.geteMail());
         customerDTO.setPesel(customer.getPesel());
         customerDTO.setPhoneNumber(customer.getPhoneNumber());
         customerDTO.setAccount(null);
