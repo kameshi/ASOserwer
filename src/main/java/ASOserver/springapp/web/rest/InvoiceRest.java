@@ -1,7 +1,8 @@
 package ASOserver.springapp.web.rest;
 
 import ASOserver.springapp.dto.EmployeeDTO;
-import ASOserver.springapp.service.EmployeeService;
+import ASOserver.springapp.dto.InvoiceDTO;
+import ASOserver.springapp.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
@@ -13,20 +14,20 @@ import java.util.List;
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/aso/rest/employees")
-public class EmpolyeeRestController {
-    private final EmployeeService employeeService;
+@RequestMapping(value = "/aso/rest/invoiceRest")
+public class InvoiceRest {
+    private final InvoiceService invoiceService;
 
     @Autowired
-    public EmpolyeeRestController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public InvoiceRest(InvoiceService invoiceService) {
+        this.invoiceService = invoiceService;
     }
 
 
     @PostMapping()
-    private ResponseEntity insertEmployee(@RequestBody EmployeeDTO employeeDTO){
+    private ResponseEntity insertInvoice(@RequestBody InvoiceDTO invoiceDTO){
         try {
-            employeeService.insertEmployee(employeeDTO);
+            invoiceService.insertInvoice(invoiceDTO);
             return new ResponseEntity(HttpStatus.OK);
         }
         catch(Exception e){
@@ -38,8 +39,8 @@ public class EmpolyeeRestController {
     @GetMapping()
     private ResponseEntity<Object> getEmployees(){
         try {
-            List<EmployeeDTO> employeeDTOList = this.employeeService.getEmployees();
-            return new ResponseEntity<Object>(employeeDTOList, HttpStatus.OK);
+            List<InvoiceDTO> invoiceDTOList = this.invoiceService.getInvoice();
+            return new ResponseEntity<Object>(invoiceDTOList, HttpStatus.OK);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -47,11 +48,11 @@ public class EmpolyeeRestController {
         }
     }
 
-    @GetMapping(value = "/{employeeId}")
-    private ResponseEntity findEmployee(@PathVariable Long employeeId) {
+    @GetMapping(value = "/{invoiceID}")
+    private ResponseEntity findInvoice(@PathVariable Long invoiceID) {
         try {
-            EmployeeDTO employeeDTO = employeeService.findEmployee(employeeId);
-            return new ResponseEntity(employeeDTO, HttpStatus.OK);
+            InvoiceDTO invoiceDTO = invoiceService.findInvoice(invoiceID);
+            return new ResponseEntity(invoiceDTO, HttpStatus.OK);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -59,10 +60,10 @@ public class EmpolyeeRestController {
         }
     }
 
-    @PatchMapping(value = "/{employeeId}")
-    private ResponseEntity updateEmployee(@PathVariable Long employeeId, @RequestBody EmployeeDTO employeeDTO) {
+    @PatchMapping(value = "/{invoiceID}")
+    private ResponseEntity updateInvoice(@PathVariable Long invoiceID, @RequestBody InvoiceDTO invoiceDTO) {
         try {
-            employeeService.updateEmployee(employeeId, employeeDTO);
+            invoiceService.updateInvoice(invoiceID, invoiceDTO);
             return new ResponseEntity(HttpStatus.OK);
         }
         catch(Exception e){
@@ -71,10 +72,10 @@ public class EmpolyeeRestController {
         }
     }
 
-    @DeleteMapping(value = "/{employeeId}")
-    private ResponseEntity deleteEmployee(@PathVariable Long employeeId) {
+    @DeleteMapping(value = "/{invoiceID}")
+    private ResponseEntity deleteInvoice(@PathVariable Long invoiceID) {
         try {
-            employeeService.deleteEmployee(employeeId);
+            invoiceService.deleteInvoice(invoiceID);
             return new ResponseEntity(HttpStatus.OK);
         }
         catch(Exception e){

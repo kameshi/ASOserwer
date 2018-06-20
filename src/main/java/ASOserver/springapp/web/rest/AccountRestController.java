@@ -12,10 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Scope("request")
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/aso/rest/account")
+@CrossOrigin(origins = "*")
+@RequestMapping(value = "/ASOserver/rest/account")
 public class AccountRestController {
     private final AccountService accountService;
     private final CustomerService customerService;
@@ -30,7 +32,7 @@ public class AccountRestController {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    private ResponseEntity insertAccount(@RequestBody CustomerDTO customerDTO){
+    private ResponseEntity insertCategory(@RequestBody CustomerDTO customerDTO){
         try {
            this.accountService.insertAccount(customerDTO.getAccount());
             customerDTO.getAccount().setId(accountService.getAccountId(customerDTO.getAccount().getLogin()));
