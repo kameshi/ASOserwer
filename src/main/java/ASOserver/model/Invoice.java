@@ -9,7 +9,7 @@ public class Invoice{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "INVOICE_ID")
-    private Long InvoiceId;
+    private Long invoiceId;
 
     @Column(name = "FINAL_PRICE", nullable = false)
     private float finalPrice;
@@ -25,11 +25,11 @@ public class Invoice{
     }
 
     public Long getInvoiceId() {
-        return InvoiceId;
+        return invoiceId;
     }
 
     public void setInvoiceId(Long invoiceId) {
-        InvoiceId = invoiceId;
+        invoiceId = invoiceId;
     }
 
     public float getFinalPrice() {

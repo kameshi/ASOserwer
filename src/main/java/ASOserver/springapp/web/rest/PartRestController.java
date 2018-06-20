@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @Scope("request")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/aso/rest/parts")
 public class PartRestController {
     private final PartService partService;
