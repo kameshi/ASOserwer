@@ -25,7 +25,7 @@ public class AccessRightsRest {
         this.accessRightsService = accessRightsService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{accessRights}")
+    @RequestMapping(method = RequestMethod.GET)
     private ResponseEntity<Object> getAccessRights(){
         try {
             List<String> accessRightsList = this.accessRightsService.getAccessRightsList();
