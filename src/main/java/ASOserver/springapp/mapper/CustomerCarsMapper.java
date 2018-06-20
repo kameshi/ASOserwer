@@ -14,22 +14,22 @@ public class CustomerCarsMapper {
     public static CustomerCars toCustomerCars(CarsDTO carsDTO){
         CustomerCars customerCars = new CustomerCars();
         customerCars.setCustomerCars((long) 1);
-        customerCars.setCustomer(CustomerMapper.toCustomer(carsDTO.getCustomerDTO()));
+        customerCars.setCustomer(CustomerMapper.toCustomer(carsDTO.getCustomer()));
         customerCars.setCars(CarsMapper.toCars(carsDTO));
         return customerCars;
     }
     public static CustomerCarsDTO toCustomerCarsDTO(CustomerCars customerCars){
         CustomerCarsDTO customerCarsDTO = new CustomerCarsDTO();
-        customerCarsDTO.setCustomerCars((long) 1);
-        customerCarsDTO.setCustomerDTO(CustomerMapper.toCustomerDTO(customerCars.getCustomer()));
-        customerCarsDTO.setCarsDTO(CarsMapper.toCarsDTO(customerCars.getCars()));
+        customerCarsDTO.setId((long) 1);
+        customerCarsDTO.setCustomer(CustomerMapper.toCustomerDTO(customerCars.getCustomer()));
+        customerCarsDTO.setCars(CarsMapper.toCarsDTO(customerCars.getCars()));
         return customerCarsDTO;
     }
     public static CustomerCars toCustomerCars(CustomerCarsDTO customerCarsDTO){
         CustomerCars customerCars = new CustomerCars();
         customerCars.setCustomerCars((long) 1);
-        customerCars.setCustomer(CustomerMapper.toCustomer(customerCarsDTO.getCustomerDTO()));
-        customerCars.setCars(CarsMapper.toCars(customerCarsDTO.getCarsDTO()));
+        customerCars.setCustomer(CustomerMapper.toCustomer(customerCarsDTO.getCustomer()));
+        customerCars.setCars(CarsMapper.toCars(customerCarsDTO.getCars()));
         return customerCars;
     }
 }

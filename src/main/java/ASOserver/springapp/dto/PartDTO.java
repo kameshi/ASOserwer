@@ -1,26 +1,28 @@
 package ASOserver.springapp.dto;
 
-public class PartDTO{
+import java.io.Serializable;
 
-    private Long PartId;
+public class PartDTO implements Serializable {
+
+    private Long id;
     private String name;
     private double price;
 
     @Override
     public String toString() {
         return "PartDTO{" +
-                "PratId=" + PartId +
+                "PratId=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 '}';
     }
 
-    public Long getPartId() {
-        return PartId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPartId(Long partId) {
-        PartId = partId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

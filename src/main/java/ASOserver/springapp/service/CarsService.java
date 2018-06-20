@@ -3,10 +3,7 @@ package ASOserver.springapp.service;
 import ASOserver.model.Cars;
 import ASOserver.model.Customer;
 import ASOserver.model.CustomerCars;
-import ASOserver.springapp.dao.CustomerDAO;
 import ASOserver.springapp.dao.CarsDAO;
-import ASOserver.springapp.dto.CustomerDTO;
-import ASOserver.springapp.dto.ReplacementCarsDTO;
 import ASOserver.springapp.dto.CarsDTO;
 import ASOserver.springapp.mapper.CarsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by user on 2018-06-14.
- */
 @Service
 public class CarsService {
     private final CarsDAO carsDAO;
@@ -52,7 +46,7 @@ public class CarsService {
     }
 
     public void updateCar(Long carId, CarsDTO carDTO) throws Exception {
-        carDTO.setCarsId(carId);
+        carDTO.setId(carId);
         carsDAO.save(CarsMapper.toCars(carDTO));
     }
 

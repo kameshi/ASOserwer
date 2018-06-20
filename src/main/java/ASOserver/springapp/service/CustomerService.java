@@ -32,7 +32,7 @@ public class CustomerService {
     }
 
     public void updateCustomer(Long customerId, CustomerDTO customerDTO) {
-        customerDTO.setCustomerId(customerId);
+        customerDTO.setId(customerId);
         this.customerDAO.save(CustomerMapper.toCustomer(customerDTO));
     }
 

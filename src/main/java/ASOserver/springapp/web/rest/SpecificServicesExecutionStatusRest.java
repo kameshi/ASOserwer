@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/aso/rest/SpecificServicesExecutionStatusRest")
+@RequestMapping(value = "/aso/rest/specific-services-status")
 public class SpecificServicesExecutionStatusRest {
 
     private final SpecificServicesExecutionStatusService specificServicesExecutionStatusService;

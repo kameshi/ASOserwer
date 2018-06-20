@@ -2,12 +2,9 @@ package ASOserver.springapp.dto;
 
 import java.io.Serializable;
 
-/**
- * Created by user on 2018-06-14.
- */
 public class CarsDTO implements Serializable{
 
-    private Long carsId;
+    private Long id;
     private String make;
     private String model;
     private String registrationNumber;
@@ -15,12 +12,12 @@ public class CarsDTO implements Serializable{
     private float  capacity;
     private float  power;
     private String reviewDate;
-    private CustomerDTO customerDTO;
+    private CustomerDTO customer;
 
     @Override
     public String toString() {
         return "CarsDTO{" +
-                "carsId=" + carsId +
+                "carsId=" + id +
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
                 ", registrationNumber='" + registrationNumber + '\'' +
@@ -28,16 +25,16 @@ public class CarsDTO implements Serializable{
                 ", capacity=" + capacity +
                 ", power=" + power +
                 ", reviewDate='" + reviewDate + '\'' +
-                ", customerDTO=" + customerDTO.toString() +
+                ", customerDTO=" + customer.toString() +
                 '}';
     }
 
-    public Long getCarsId() {
-        return carsId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCarsId(Long carsId) {
-        this.carsId = carsId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getMake() {
@@ -96,11 +93,11 @@ public class CarsDTO implements Serializable{
         this.reviewDate = reviewDate;
     }
 
-    public CustomerDTO getCustomerDTO() {
-        return customerDTO;
+    public CustomerDTO getCustomer() {
+        return customer;
     }
 
-    public void setCustomerDTO(CustomerDTO customerDTO) {
-        this.customerDTO = customerDTO;
+    public void setCustomer(CustomerDTO customer) {
+        this.customer = customer;
     }
 }

@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/aso/rest/NotyficationTypesRest")
+@RequestMapping(value = "/aso/rest/notification-type")
 public class NotyficationTypesRest {
 
     private final NotyficationTypesService notyficationTypesService;

@@ -1,7 +1,5 @@
 package ASOserver.springapp.dto;
 
-import ASOserver.model.SpecificServicesExecutionStatus;
-
 import java.io.Serializable;
 import java.sql.Date;
 

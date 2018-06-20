@@ -3,14 +3,11 @@ package ASOserver.springapp.mapper;
 import ASOserver.model.Cars;
 import ASOserver.springapp.dto.CarsDTO;
 
-/**
- * Created by user on 2018-06-14.
- */
 public class CarsMapper {
 
     public static Cars toCars(CarsDTO carsDTO){
         Cars cars = new Cars();
-        cars.setCarsId(carsDTO.getCarsId());
+        cars.setCarsId(carsDTO.getId());
         cars.setMake(carsDTO.getMake());
         cars.setModel(carsDTO.getModel());
         cars.setRegistrationNumber(carsDTO.getRegistrationNumber());
@@ -23,7 +20,7 @@ public class CarsMapper {
 
     public static CarsDTO toCarsDTO(Cars cars) {
         CarsDTO carsDTO = new CarsDTO();
-        carsDTO.setCarsId(cars.getCarsId());
+        carsDTO.setId(cars.getCarsId());
         carsDTO.setMake(cars.getMake());
         carsDTO.setModel(cars.getModel());
         carsDTO.setRegistrationNumber(cars.getRegistrationNumber());

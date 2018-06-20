@@ -1,6 +1,6 @@
 package ASOserver.springapp.web.rest;
 
-import ASOserver.model.ChoiceList;
+import ASOserver.model.AccessRights;
 import ASOserver.springapp.dto.CustomerDTO;
 import ASOserver.springapp.mapper.EmployeeMapper;
 import ASOserver.springapp.service.AccountService;
@@ -12,12 +12,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @Scope("request")
-@CrossOrigin(origins = "*")
-@RequestMapping(value = "/ASOserver/rest/account")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(value = "/aso/rest/account")
 public class AccountRestController {
     private final AccountService accountService;
     private final CustomerService customerService;
@@ -32,11 +30,11 @@ public class AccountRestController {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    private ResponseEntity insertCategory(@RequestBody CustomerDTO customerDTO){
+    private ResponseEntity insertAccount(@RequestBody CustomerDTO customerDTO){
         try {
-           this.accountService.insertAccount(customerDTO.getAccountDTO());
-            customerDTO.getAccountDTO().setAccountId(accountService.getAccountId(customerDTO.getAccountDTO().getLogin()));
-           if(customerDTO.getAccountDTO().getAccessRights().equals(ChoiceList.AccessRights.CUSTOMER.getAccessRights())){
+           this.accountService.insertAccount(customerDTO.getAccount());
+            customerDTO.getAccount().setId(accountService.getAccountId(customerDTO.getAccount().getLogin()));
+           if(customerDTO.getAccount().getAccessRights().equals(AccessRights.AccessRightsEnum.CUSTOMER)){
                this.customerService.insertCustomer(customerDTO);
            }else{
                this.employerService.insertEmployee(EmployeeMapper.toEmployeeDTO(customerDTO));
