@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/aso/rest/specific-services")
+@RequestMapping(value = "/aso/rest/service-positions")
 public class SpecificServiceRestController {
     private final SpecificServiceService specificServiceService;
 
@@ -94,7 +94,7 @@ public class SpecificServiceRestController {
         }
     }
 
-    @GetMapping(value = "/customers/{customerId}")
+    @GetMapping(value = "/clients/{customerId}")
     private ResponseEntity findSpecificServicesByCustomerId(@PathVariable Long customerId){
         try {
             List<SpecificServiceDTO> specificServiceDTOList = specificServiceService.findSpecificServicesByCustomerId(customerId);
