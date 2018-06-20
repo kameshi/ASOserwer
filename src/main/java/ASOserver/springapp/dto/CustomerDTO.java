@@ -1,6 +1,7 @@
 package ASOserver.springapp.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class CustomerDTO implements Serializable {
     private Long id;
@@ -10,6 +11,7 @@ public class CustomerDTO implements Serializable {
     private String pesel;
     private String phoneNumber;
     private AccountDTO account;
+    private List<CarsDTO> cars;
 
     @Override
     public String toString() {
@@ -78,5 +80,13 @@ public class CustomerDTO implements Serializable {
 
     public void setAccount(AccountDTO account) {
         this.account = account;
+    }
+
+    public List<CarsDTO> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<CarsDTO> cars) {
+        this.cars = cars;
     }
 }

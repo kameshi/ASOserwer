@@ -3,6 +3,8 @@ package ASOserver.springapp.mapper;
 import ASOserver.model.Customer;
 import ASOserver.springapp.dto.CustomerDTO;
 
+import java.util.stream.Collectors;
+
 public class CustomerMapper {
     public static Customer toCustomer(CustomerDTO customerDTO){
         Customer customer = new Customer();
@@ -25,6 +27,9 @@ public class CustomerMapper {
         customerDTO.setPesel(customer.getPesel());
         customerDTO.setPhoneNumber(customer.getPhoneNumber());
         customerDTO.setAccount(new AccountMapper().toAccountDTO(customer.getAccount()));
+        customerDTO.setCars(customer.getCustomerCars().stream()
+                .map(tmpCustomerCar -> CarsMapper.toCarsDTO(tmpCustomerCar.getCars()))
+                .collect(Collectors.toList()));
         return customerDTO;
     }
 
