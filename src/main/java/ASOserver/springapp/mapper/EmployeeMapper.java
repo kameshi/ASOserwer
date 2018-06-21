@@ -10,10 +10,10 @@ public class EmployeeMapper {
         employee.setEmployeeId(employeeDTO.getId());
         employee.setName(employeeDTO.getName());
         employee.setSurname(employeeDTO.getSurname());
-        employee.seteMail(employeeDTO.geteMail());
+        employee.seteMail(employeeDTO.getEmail());
         employee.setPesel(employeeDTO.getPesel());
         employee.setPhoneNumber(employeeDTO.getPhoneNumber());
-        employee.setAccount(new AccountMapper().toAccount(employeeDTO.getAccount()));
+        employee.setAccount(AccountMapper.toAccount(employeeDTO.getAccount()));
         return employee;
     }
 
@@ -22,10 +22,10 @@ public class EmployeeMapper {
         employeeDTO.setId(employee.getEmployeeId());
         employeeDTO.setName(employee.getName());
         employeeDTO.setSurname(employee.getSurname());
-        employeeDTO.seteMail(employee.geteMail());
+        employeeDTO.setEmail(employee.geteMail());
         employeeDTO.setPesel(employee.getPesel());
         employeeDTO.setPhoneNumber(employee.getPhoneNumber());
-        employeeDTO.setAccount(new AccountMapper().toAccountDTO(employee.getAccount()));
+        employeeDTO.setAccount(AccountMapper.toAccountDTO(employee.getAccount()));
         return employeeDTO;
     }
 
@@ -34,7 +34,7 @@ public class EmployeeMapper {
         employeeDTO.setId(customerDTO.getId());
         employeeDTO.setName(customerDTO.getName());
         employeeDTO.setSurname(customerDTO.getSurname());
-        employeeDTO.seteMail(customerDTO.getEmail());
+        employeeDTO.setEmail(customerDTO.getEmail());
         employeeDTO.setPesel(customerDTO.getPesel());
         employeeDTO.setPhoneNumber(customerDTO.getPhoneNumber());
         employeeDTO.setAccount(customerDTO.getAccount());
@@ -46,7 +46,7 @@ public class EmployeeMapper {
         employeeDTO.setId(employee.getEmployeeId());
         employeeDTO.setName(employee.getName());
         employeeDTO.setSurname(employee.getSurname());
-        employeeDTO.seteMail(employee.geteMail());
+        employeeDTO.setEmail(employee.geteMail());
         employeeDTO.setPesel(employee.getPesel());
         employeeDTO.setPhoneNumber(employee.getPhoneNumber());
         employeeDTO.setAccount(null);
