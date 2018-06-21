@@ -9,6 +9,8 @@ import ASOserver.springapp.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -50,6 +52,15 @@ public class AccountService {
             }
         }
         return account;
+    }
+    public List<AccountDTO> getAccountDTO() throws Exception {
+        Iterable<Account> accountIterable = this.accountDAO.findAll();
+        List<AccountDTO> accountDTOList = new ArrayList<>();
+        for(Account tmpAccount : accountIterable){
+            accountDTOList.add(AccountMapper.toAccountDTO(tmpAccount));
+        }
+
+        return accountDTOList;
     }
 
     public Account updateAccount(Long accountId, AccountDTO accountDTO) throws Exception {
