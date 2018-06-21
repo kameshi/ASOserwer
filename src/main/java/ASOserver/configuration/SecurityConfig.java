@@ -42,29 +42,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/ASOserver/rest/AccessRightsRest/accessRights").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())//AccessRights.AccessRightsEnum.ADMINISTRATOR//nie wiem dokładnie bedzei w bzie
-                .antMatchers(HttpMethod.GET, "/ASOserver/rest/cars").permitAll()
-                .antMatchers("/ASOserver/rest/cars").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
+                .antMatchers("/aso/rest/AccessRightsRest/accessRights").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())//AccessRights.AccessRightsEnum.ADMINISTRATOR//nie wiem dokładnie bedzei w bzie
+                .antMatchers(HttpMethod.GET, "/aso/rest/cars").permitAll()
+                .antMatchers("/aso/rest/cars").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
                 .antMatchers("/aso/rest/customers").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
                 .antMatchers("/aso/rest/employer").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
-                .antMatchers("/ASOserver/rest/NotyficationTypesRest").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
+                .antMatchers("/aso/rest/NotyficationTypesRest").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
                 .antMatchers("/aso/rest/parts").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
                 .antMatchers("/aso/rest/promotion").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
                 .antMatchers("/aso/rest/replacement-cars").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
                 .antMatchers(HttpMethod.GET, "/aso/rest/services").permitAll()
                 .antMatchers("/aso/rest/services").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
-                .antMatchers("/ASOserver/rest/SpecificServicesExecutionStatusRest").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
+                .antMatchers("/aso/rest/SpecificServicesExecutionStatusRest").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("http://localhost:4200/login")
-                .usernameParameter("username").passwordParameter("password")
+                //.loginPage("/login")
+                //.usernameParameter("username").passwordParameter("password")
                 .defaultSuccessUrl("http://localhost:4200/pages")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")
-                .and()
-                .csrf();
+                .and();
+                //.csrf();
     }
 
     @Autowired

@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/ASOserver/rest/account")
+@RequestMapping(value = "/aso/rest/account")
 public class AccountRestController {
     private final AccountService accountService;
     private final CustomerService customerService;
