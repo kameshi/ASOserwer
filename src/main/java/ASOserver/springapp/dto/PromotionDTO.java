@@ -1,13 +1,14 @@
 package ASOserver.springapp.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class PromotionDTO implements Serializable {
     private Long id;
     private String name;
     private String description;
-    private String dateFrom;
-    private String dateTo;
+    private Date dateFrom;
+    private Date dateTo;
     private double percent;
     private ServiceDTO service;
 
@@ -48,19 +49,19 @@ public class PromotionDTO implements Serializable {
         this.description = description;
     }
 
-    public String getDateFrom() {
+    public Date getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(String dateFrom) {
+    public void setDateFrom(Date dateFrom) {
         this.dateFrom = dateFrom;
     }
 
-    public String getDateTo() {
+    public Date getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(String dateTo) {
+    public void setDateTo(Date dateTo) {
         this.dateTo = dateTo;
     }
 

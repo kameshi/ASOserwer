@@ -1,6 +1,7 @@
 package ASOserver.model;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.List;
 @Entity
 @Table(name = "PROMOTION")
@@ -17,9 +18,9 @@ public class Promotion{
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
     @Column(name = "DATE_FROM", nullable = false)
-    private String dateFrom;
+    private Date dateFrom;
     @Column(name = "DATE_TO", nullable = false)
-    private String dateTo;
+    private Date dateTo;
     @Column(name = "PERCENT", nullable = false)
     private double percent;
 
@@ -54,19 +55,19 @@ public class Promotion{
         this.description = description;
     }
 
-    public String getDateFrom() {
+    public Date getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(String dateFrom) {
+    public void setDateFrom(Date dateFrom) {
         this.dateFrom = dateFrom;
     }
 
-    public String getDateTo() {
+    public Date getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(String dateTo) {
+    public void setDateTo(Date dateTo) {
         this.dateTo = dateTo;
     }
 

@@ -1,6 +1,7 @@
 package ASOserver.model;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.List;
 @Entity
 @Table(name = "SPECYFIC_SERVICE")
@@ -12,13 +13,13 @@ public class SpecificService{
     private Long SpecificServiceId;
 
     @Column(name = "START_DATE", nullable = false)
-    private String startDate;
+    private Date startDate;
 
     @Column(name = "END_DATE", nullable = false)
-    private String endDate;
+    private Date endDate;
 
     @Column(name = "INSERT_DATE", nullable = false)
-    private String insertDate;
+    private Date insertDate;
 
     @Column(name = "EXECUTION_STATUS", nullable = false)
     private String executionStatus;
@@ -60,27 +61,27 @@ public class SpecificService{
         SpecificServiceId = specificServiceId;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
-    public String getInsertDate() {
+    public Date getInsertDate() {
         return insertDate;
     }
 
-    public void setInsertDate(String insertDate) {
+    public void setInsertDate(Date insertDate) {
         this.insertDate = insertDate;
     }
 

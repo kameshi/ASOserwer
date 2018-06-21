@@ -9,9 +9,9 @@ public class SpecificServiceMapper {
         SpecificService specificService = new SpecificService();
         specificService.setSpecificServiceId(specificServiceDTO.getId());
         specificService.setService(ServiceMapper.toService(specificServiceDTO.getService()));
-        /*specificService.setStartDate(specificServiceDTO.getStartDate());
+        specificService.setStartDate(specificServiceDTO.getStartDate());
         specificService.setEndDate(specificServiceDTO.getEndDate());
-        specificService.setInsertDate(specificServiceDTO.getInsertionDate());*/
+        specificService.setInsertDate(specificServiceDTO.getInsertionDate());
         specificService.setExecutionStatus(specificServiceDTO.getStatus().toString());
         specificService.setReplacementCars(ReplacementCarsMapper.toReplacementCars(specificServiceDTO.getReplacementCar()));
         specificService.setPromotion(PromotionMapper.toPromotion(specificServiceDTO.getPromotion()));
@@ -27,9 +27,9 @@ public class SpecificServiceMapper {
         SpecificServiceDTO specificServiceDTO = new SpecificServiceDTO();
         specificServiceDTO.setId(specificService.getSpecificServiceId());
         specificServiceDTO.setService(ServiceMapper.toServiceDTO(specificService.getService()));
-        /*specificServiceDTO.setStartDate(specificService.getStartDate());
+        specificServiceDTO.setStartDate(specificService.getStartDate());
         specificServiceDTO.setEndDate(specificService.getEndDate());
-        specificServiceDTO.setInsertionDate(specificService.getInsertDate());*/
+        specificServiceDTO.setInsertionDate(specificService.getInsertDate());
         specificServiceDTO.setStatus(specificService.getExecutionStatus());
         specificServiceDTO.setReplacementCar(ReplacementCarsMapper.toReplacementCarsDTO(specificService.getReplacementCars()));
         specificServiceDTO.setPromotion(PromotionMapper.toPromotionDTO(specificService.getPromotion()));
