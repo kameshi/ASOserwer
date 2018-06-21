@@ -1,6 +1,7 @@
 package ASOserver.springapp.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class CarsDTO implements Serializable{
 
@@ -11,7 +12,7 @@ public class CarsDTO implements Serializable{
     private String vin;
     private float engineSize;
     private float enginePower;
-    private String reviewDate;
+    private Date reviewDate;
     private CustomerDTO customer;
 
     @Override
@@ -85,11 +86,11 @@ public class CarsDTO implements Serializable{
         this.enginePower = enginePower;
     }
 
-    public String getReviewDate() {
+    public Date getReviewDate() {
         return reviewDate;
     }
 
-    public void setReviewDate(String reviewDate) {
+    public void setReviewDate(Date reviewDate) {
         this.reviewDate = reviewDate;
     }
 

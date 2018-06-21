@@ -3,6 +3,7 @@ package ASOserver.model;
 
 import javax.persistence.*;
 import javax.xml.crypto.Data;
+import java.sql.Date;
 import java.util.List;
 @Entity
 @Table(name = "CARS")
@@ -32,7 +33,7 @@ public class Cars{
     private float  power;
 
     @Column(name = "REVIEW_DATE", nullable = false)
-    private String reviewDate;
+    private Date reviewDate;
 
     @OneToMany(mappedBy = "cars", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CustomerCars> customerCars;
@@ -96,11 +97,11 @@ public class Cars{
         this.power = power;
     }
 
-    public String getReviewDate() {
+    public Date getReviewDate() {
         return reviewDate;
     }
 
-    public void setReviewDate(String reviewDate) {
+    public void setReviewDate(Date reviewDate) {
         this.reviewDate = reviewDate;
     }
 
