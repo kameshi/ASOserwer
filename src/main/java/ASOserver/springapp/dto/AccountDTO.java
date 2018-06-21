@@ -50,4 +50,8 @@ public class AccountDTO implements Serializable {
     public void setAccessRights(String accessRights) {
         this.accessRights = accessRights;
     }
+
+    public void setAccountId(Long accountId) {
+        this.id = accountId;
+    }
 }
