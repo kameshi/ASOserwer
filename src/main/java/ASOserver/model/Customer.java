@@ -32,12 +32,18 @@ public class Customer{
     private Account account;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Notifications> notifications;
-
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<CustomerCars> CustomerCars;
+    private List<CustomerCar> customerCars;
 
     public Customer() {
+    }
+
+    public Customer(String name, String surname, String pesel, String eMail, String phoneNumber, Account account) {
+        this.name = name;
+        this.surname = surname;
+        this.pesel = pesel;
+        this.eMail = eMail;
+        this.phoneNumber = phoneNumber;
+        this.account = account;
     }
 
     public Account getAccount() {
@@ -96,11 +102,11 @@ public class Customer{
         this.phoneNumber = phoneNumber;
     }
 
-    public List<ASOserver.model.CustomerCars> getCustomerCars() {
-        return CustomerCars;
+    public List<CustomerCar> getCustomerCars() {
+        return customerCars;
     }
 
-    public void setCustomerCars(List<ASOserver.model.CustomerCars> customerCars) {
-        CustomerCars = customerCars;
+    public void setCustomerCars(List<CustomerCar> customerCars) {
+        this.customerCars = customerCars;
     }
 }

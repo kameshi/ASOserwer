@@ -5,6 +5,7 @@ import ASOserver.springapp.dto.CustomerDTO;
 import ASOserver.springapp.dto.EmployeeDTO;
 
 public class EmployeeMapper {
+
     public static Employee toEmployee(EmployeeDTO employeeDTO){
         Employee employee = new Employee();
         employee.setEmployeeId(employeeDTO.getId());

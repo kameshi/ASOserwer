@@ -1,11 +1,13 @@
 package ASOserver.springapp.dto;
 
+import ASOserver.model.enums.ServiceType;
+
 import java.io.Serializable;
 
 public class ServiceDTO implements Serializable{
     private Long id;
     private String name;
-    private String type;
+    private ServiceType.ServiceTypeEnum type;
     private double price;
 
     @Override
@@ -34,11 +36,11 @@ public class ServiceDTO implements Serializable{
         this.name = name;
     }
 
-    public String getType() {
+    public ServiceType.ServiceTypeEnum getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ServiceType.ServiceTypeEnum type) {
         this.type = type;
     }
 

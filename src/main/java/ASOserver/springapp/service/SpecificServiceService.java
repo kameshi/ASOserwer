@@ -15,14 +15,14 @@ public class SpecificServiceService {
     private final SpecificServiceDAO specificServiceDAO;
     private final EmployeeDAO employeeDAO;
     private final CustomerDAO customerDAO;
-    private final CarsDAO carsDAO;
+    private final CarDAO carDAO;
 
     @Autowired
-    public SpecificServiceService(SpecificServiceDAO specificServiceDAO, EmployeeDAO employeeDAO, CustomerDAO customerDAO, CarsDAO carsDAO) {
+    public SpecificServiceService(SpecificServiceDAO specificServiceDAO, EmployeeDAO employeeDAO, CustomerDAO customerDAO, CarDAO carDAO) {
         this.specificServiceDAO = specificServiceDAO;
         this.employeeDAO = employeeDAO;
         this.customerDAO = customerDAO;
-        this.carsDAO = carsDAO;
+        this.carDAO = carDAO;
     }
 
     public List<SpecificServiceDTO> findSpecificServices() throws Exception {
@@ -66,8 +66,8 @@ public class SpecificServiceService {
         Customer customer = customerDAO.findById(customerId).get();
         List<SpecificServiceDTO> specificServiceDTOList = new ArrayList<>();
 
-        for(CustomerCars tmpCustomerCars : customer.getCustomerCars()) {
-            for (SpecificService tmpSpecificService : tmpCustomerCars.getSpecificServices()) {
+        for(CustomerCar tmpCustomerCar : customer.getCustomerCars()) {
+            for (SpecificService tmpSpecificService : tmpCustomerCar.getSpecificServices()) {
                 specificServiceDTOList.add(SpecificServiceMapper.toSpecificServiceDTO(tmpSpecificService));
             }
         }
@@ -76,11 +76,11 @@ public class SpecificServiceService {
     }
 
     public List<SpecificServiceDTO> findSpecificServicesByCarId(Long carId) throws Exception {
-        Cars cars = carsDAO.findById(carId).get();
+        Car car = carDAO.findById(carId).get();
         List<SpecificServiceDTO> specificServiceDTOList = new ArrayList<>();
 
-        for(CustomerCars tmpCustomerCars : cars.getCustomerCars()) {
-            for (SpecificService tmpSpecificService : tmpCustomerCars.getSpecificServices()) {
+        for(CustomerCar tmpCustomerCar : car.getCustomerCars()) {
+            for (SpecificService tmpSpecificService : tmpCustomerCar.getSpecificServices()) {
                 specificServiceDTOList.add(SpecificServiceMapper.toSpecificServiceDTO(tmpSpecificService));
             }
         }

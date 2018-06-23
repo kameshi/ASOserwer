@@ -1,5 +1,7 @@
 package ASOserver.springapp.dto;
 
+import ASOserver.model.enums.AccessRight;
+
 import java.io.Serializable;
 
 public class AccountDTO implements Serializable {
@@ -7,7 +9,7 @@ public class AccountDTO implements Serializable {
     private Long id;
     private String login;
     private String password;
-    private String accessRights;
+    private AccessRight.AccessRightEnum accessRight;
 
     @Override
     public String toString() {
@@ -15,7 +17,7 @@ public class AccountDTO implements Serializable {
                 "accountId=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", accessRights='" + accessRights + '\'' +
+                ", accessRight='" + accessRight + '\'' +
                 '}';
     }
 
@@ -43,12 +45,12 @@ public class AccountDTO implements Serializable {
         this.password = password;
     }
 
-    public String getAccessRights() {
-        return accessRights;
+    public AccessRight.AccessRightEnum getAccessRight() {
+        return accessRight;
     }
 
-    public void setAccessRights(String accessRights) {
-        this.accessRights = accessRights;
+    public void setAccessRight(AccessRight.AccessRightEnum accessRight) {
+        this.accessRight = accessRight;
     }
 
     public void setAccountId(Long accountId) {

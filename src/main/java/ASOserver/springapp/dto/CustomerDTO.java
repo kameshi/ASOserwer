@@ -11,7 +11,7 @@ public class CustomerDTO implements Serializable {
     private String pesel;
     private String phoneNumber;
     private AccountDTO account;
-    private List<CarsDTO> cars;
+    private List<CarDTO> cars;
 
     @Override
     public String toString() {
@@ -82,11 +82,11 @@ public class CustomerDTO implements Serializable {
         this.account = account;
     }
 
-    public List<CarsDTO> getCars() {
+    public List<CarDTO> getCars() {
         return cars;
     }
 
-    public void setCars(List<CarsDTO> cars) {
+    public void setCars(List<CarDTO> cars) {
         this.cars = cars;
     }
 }

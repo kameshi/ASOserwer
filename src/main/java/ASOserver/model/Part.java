@@ -2,6 +2,7 @@ package ASOserver.model;
 
 import javax.persistence.*;
 import java.util.List;
+
 @Entity
 @Table(name = "PART")
 public class Part{
@@ -9,7 +10,7 @@ public class Part{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PART_ID")
-    private Long PratId;
+    private Long partId;
 
     @Column(name = "NAME", nullable = false)
     private String name;
@@ -18,17 +19,22 @@ public class Part{
     private double price;
 
     @OneToMany(mappedBy = "part", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ServicePart> servicePart;
+    private List<ServicePart> serviceParts;
 
     public Part() {
     }
 
-    public Long getPratId() {
-        return PratId;
+    public Part(String name, double price) {
+        this.name = name;
+        this.price = price;
     }
 
-    public void setPratId(Long pratId) {
-        PratId = pratId;
+    public Long getPartId() {
+        return partId;
+    }
+
+    public void setPartId(Long partId) {
+        this.partId = partId;
     }
 
     public String getName() {
@@ -47,11 +53,11 @@ public class Part{
         this.price = price;
     }
 
-    public List<ServicePart> getServicePart() {
-        return servicePart;
+    public List<ServicePart> getServiceParts() {
+        return serviceParts;
     }
 
-    public void setServicePart(List<ServicePart> servicePart) {
-        this.servicePart = servicePart;
+    public void setServiceParts(List<ServicePart> serviceParts) {
+        this.serviceParts = serviceParts;
     }
 }

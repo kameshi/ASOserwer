@@ -1,10 +1,12 @@
 package ASOserver.springapp.dto;
 
+import ASOserver.model.enums.PaymentMethod;
+
 public class InvoiceDTO {
 
     private Long invoiceId;
     private float finalPrice;
-    private String paymentMethod;
+    private PaymentMethod.PaymentMethodEnum paymentMethod;
     private SpecificServiceDTO specificServiceDTO;
 
     @Override
@@ -33,11 +35,11 @@ public class InvoiceDTO {
         this.finalPrice = finalPrice;
     }
 
-    public String getPaymentMethod() {
+    public PaymentMethod.PaymentMethodEnum getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(PaymentMethod.PaymentMethodEnum paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 

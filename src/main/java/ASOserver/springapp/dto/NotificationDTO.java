@@ -1,10 +1,12 @@
 package ASOserver.springapp.dto;
 
+import ASOserver.model.enums.NotificationType;
+
 import java.io.Serializable;
 
 public class NotificationDTO implements Serializable {
     private Long id;
-    private String tape;
+    private NotificationType.NotificationTypeEnum type;
     private String description;
 
     public Long getId() {
@@ -15,12 +17,12 @@ public class NotificationDTO implements Serializable {
         this.id = id;
     }
 
-    public String getTape() {
-        return tape;
+    public NotificationType.NotificationTypeEnum getType() {
+        return type;
     }
 
-    public void setTape(String tape) {
-        this.tape = tape;
+    public void setType(NotificationType.NotificationTypeEnum type) {
+        this.type = type;
     }
 
     public String getDescription() {

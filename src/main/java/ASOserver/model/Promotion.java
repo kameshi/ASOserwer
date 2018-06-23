@@ -3,6 +3,7 @@ package ASOserver.model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
+
 @Entity
 @Table(name = "PROMOTION")
 public class Promotion{
@@ -10,17 +11,20 @@ public class Promotion{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PROMOTION_ID")
-    private Long PromotionId;
+    private Long promotionId;
 
     @Column(name = "NAME", nullable = false)
     private String name;
 
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
+
     @Column(name = "DATE_FROM", nullable = false)
     private Date dateFrom;
+
     @Column(name = "DATE_TO", nullable = false)
     private Date dateTo;
+
     @Column(name = "PERCENT", nullable = false)
     private double percent;
 
@@ -29,14 +33,26 @@ public class Promotion{
     private Service service;
 
     @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<SpecificService> specificService;
+    private List<SpecificService> specificServices;
+
+    public Promotion() {
+    }
+
+    public Promotion(String name, String description, Date dateFrom, Date dateTo, double percent, Service service) {
+        this.name = name;
+        this.description = description;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.percent = percent;
+        this.service = service;
+    }
 
     public Long getPromotionId() {
-        return PromotionId;
+        return promotionId;
     }
 
     public void setPromotionId(Long promotionId) {
-        PromotionId = promotionId;
+        this.promotionId = promotionId;
     }
 
     public String getName() {
@@ -87,12 +103,11 @@ public class Promotion{
         this.service = service;
     }
 
-    public List<SpecificService> getSpecificService() {
-        return specificService;
+    public List<SpecificService> getSpecificServices() {
+        return specificServices;
     }
 
-    public void setSpecificService(List<SpecificService> specificService) {
-        this.specificService = specificService;
+    public void setSpecificServices(List<SpecificService> specificServices) {
+        this.specificServices = specificServices;
     }
-
 }

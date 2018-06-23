@@ -6,6 +6,7 @@ import ASOserver.springapp.dto.CustomerDTO;
 import java.util.stream.Collectors;
 
 public class CustomerMapper {
+
     public static Customer toCustomer(CustomerDTO customerDTO){
         Customer customer = new Customer();
         customer.setCustomerId(customerDTO.getId());
@@ -28,7 +29,7 @@ public class CustomerMapper {
         customerDTO.setPhoneNumber(customer.getPhoneNumber());
         customerDTO.setAccount(AccountMapper.toAccountDTO(customer.getAccount()));
         customerDTO.setCars(customer.getCustomerCars().stream()
-                .map(tmpCustomerCar -> CarsMapper.toCarsDTO(tmpCustomerCar.getCars()))
+                .map(tmpCustomerCar -> CarMapper.toCarsDTO(tmpCustomerCar.getCar()))
                 .collect(Collectors.toList()));
         return customerDTO;
     }

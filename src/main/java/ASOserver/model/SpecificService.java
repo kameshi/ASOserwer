@@ -1,16 +1,19 @@
 package ASOserver.model;
 
+import ASOserver.model.enums.SpecificServiceStatus;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
+
 @Entity
-@Table(name = "SPECYFIC_SERVICE")
+@Table(name = "SPECIFIC_SERVICE")
 public class SpecificService{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "SPECYFIC_SERVICE_ID")
-    private Long SpecificServiceId;
+    @Column(name = "SPECIFIC_SERVICE_ID")
+    private Long specificServiceId;
 
     @Column(name = "START_DATE", nullable = false)
     private Date startDate;
@@ -21,44 +24,62 @@ public class SpecificService{
     @Column(name = "INSERT_DATE", nullable = false)
     private Date insertDate;
 
-    @Column(name = "EXECUTION_STATUS", nullable = false)
-    private String executionStatus;
+    @Column(name = "STATUS", nullable = false)
+    private SpecificServiceStatus.SpecificServiceStatusEnum status;
 
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "EMPLOYEE_ID")
     private Employee employee;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "PROMOTION_ID")
     private Promotion promotion;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "CUSTOMER_CARS_ID")
-    private CustomerCars customerCars;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "CUSTOMER_CAR_ID")
+    private CustomerCar customerCar;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "REPLACMENT_CARS_ID", referencedColumnName="REPLACMENT_CARS_ID")
-    private ReplacementCars replacementCars;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = false)
+    @JoinColumn(name = "REPLACEMENT_CAR_ID", referencedColumnName="REPLACEMENT_CAR_ID")
+    private ReplacementCar replacementCar;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "SERVICE_ID")
     private Service service;
 
     @OneToMany(mappedBy = "specificService", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Invoice> invoice;
+    private List<Invoice> invoices;
 
     @OneToMany(mappedBy = "specificService", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ServicePart> servicePart;
+    private List<ServicePart> serviceParts;
+
+    public SpecificService() {
+    }
+
+    public SpecificService(Date startDate, Date endDate, Date insertDate, SpecificServiceStatus.SpecificServiceStatusEnum status,
+                           String description, Employee employee, Promotion promotion, CustomerCar customerCar,
+                           ReplacementCar replacementCar, Service service) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.insertDate = insertDate;
+        this.status = status;
+        this.description = description;
+        this.employee = employee;
+        this.promotion = promotion;
+        this.customerCar = customerCar;
+        this.replacementCar = replacementCar;
+        this.service = service;
+    }
 
     public Long getSpecificServiceId() {
-        return SpecificServiceId;
+        return specificServiceId;
     }
 
     public void setSpecificServiceId(Long specificServiceId) {
-        SpecificServiceId = specificServiceId;
+        this.specificServiceId = specificServiceId;
     }
 
     public Date getStartDate() {
@@ -85,20 +106,20 @@ public class SpecificService{
         this.insertDate = insertDate;
     }
 
-    public String getExecutionStatus() {
-        return executionStatus;
+    public SpecificServiceStatus.SpecificServiceStatusEnum getStatus() {
+        return status;
     }
 
-    public void setExecutionStatus(String executionStatus) {
-        this.executionStatus = executionStatus;
+    public void setStatus(SpecificServiceStatus.SpecificServiceStatusEnum status) {
+        this.status = status;
     }
 
-    public ReplacementCars getReplacementCars() {
-        return replacementCars;
+    public ReplacementCar getReplacementCar() {
+        return replacementCar;
     }
 
-    public void setReplacementCars(ReplacementCars replacementCars) {
-        this.replacementCars = replacementCars;
+    public void setReplacementCar(ReplacementCar replacementCar) {
+        this.replacementCar = replacementCar;
     }
 
     public String getDescription() {
@@ -126,12 +147,12 @@ public class SpecificService{
         this.promotion = promotion;
     }
 
-    public CustomerCars getCustomerCars() {
-        return customerCars;
+    public CustomerCar getCustomerCar() {
+        return customerCar;
     }
 
-    public void setCustomerCars(CustomerCars customerCars) {
-        this.customerCars = customerCars;
+    public void setCustomerCar(CustomerCar customerCar) {
+        this.customerCar = customerCar;
     }
 
     public Service getService() {
@@ -142,19 +163,19 @@ public class SpecificService{
         this.service = service;
     }
 
-    public List<Invoice> getInvoice() {
-        return invoice;
+    public List<Invoice> getInvoices() {
+        return invoices;
     }
 
-    public void setInvoice(List<Invoice> invoice) {
-        this.invoice = invoice;
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 
-    public List<ServicePart> getServicePart() {
-        return servicePart;
+    public List<ServicePart> getServiceParts() {
+        return serviceParts;
     }
 
-    public void setServicePart(List<ServicePart> servicePart) {
-        this.servicePart = servicePart;
+    public void setServiceParts(List<ServicePart> serviceParts) {
+        this.serviceParts = serviceParts;
     }
 }

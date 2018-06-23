@@ -4,6 +4,7 @@ import ASOserver.model.Service;
 import ASOserver.springapp.dto.ServiceDTO;
 
 public class ServiceMapper {
+
     public static Service toService(ServiceDTO serviceDTO) {
         Service service = new Service();
         service.setServiceId(serviceDTO.getId());
@@ -12,6 +13,7 @@ public class ServiceMapper {
         service.setType(serviceDTO.getType());
         return service;
     }
+
     public static ServiceDTO toServiceDTO(Service service) {
         ServiceDTO serviceDTO = new ServiceDTO();
         serviceDTO.setId(service.getServiceId());

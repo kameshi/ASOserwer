@@ -1,6 +1,6 @@
 package ASOserver.springapp.service;
 
-import ASOserver.model.AccessRights;
+import ASOserver.model.enums.AccessRight;
 import ASOserver.model.Account;
 import ASOserver.model.Customer;
 import ASOserver.springapp.dao.CustomerDAO;
@@ -32,7 +32,7 @@ public class CustomerService {
     }
 
     public void insertCustomer(CustomerDTO customerDTO) throws Exception {
-        customerDTO.getAccount().setAccessRights(AccessRights.AccessRightsEnum.CUSTOMER.getAccessRights());
+        customerDTO.getAccount().setAccessRight(AccessRight.AccessRightEnum.CUSTOMER);
         Account account = this.accountService.insertAccount(customerDTO.getAccount());
         Customer customer = CustomerMapper.toCustomer(customerDTO);
         customer.setAccount(account);

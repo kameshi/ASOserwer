@@ -4,6 +4,7 @@ import ASOserver.model.Promotion;
 import ASOserver.springapp.dto.PromotionDTO;
 
 public class PromotionMapper {
+
     public static Promotion toPromotion(PromotionDTO promotionDTO){
         Promotion promotion = new Promotion();
         promotion.setPromotionId(promotionDTO.getId());
@@ -15,6 +16,7 @@ public class PromotionMapper {
         promotion.setService(ServiceMapper.toService(promotionDTO.getService()));
         return promotion;
     }
+
     public static PromotionDTO toPromotionDTO(Promotion promotion){
         PromotionDTO promotionDTO = new PromotionDTO();
         promotionDTO.setId(promotion.getPromotionId());

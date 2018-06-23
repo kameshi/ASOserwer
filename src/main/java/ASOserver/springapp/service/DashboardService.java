@@ -1,8 +1,8 @@
 package ASOserver.springapp.service;
 
 import ASOserver.model.SpecificService;
-import ASOserver.model.SpecificServicesExecutionStatus;
-import ASOserver.springapp.dao.CarsDAO;
+import ASOserver.model.enums.SpecificServiceStatus;
+import ASOserver.springapp.dao.CarDAO;
 import ASOserver.springapp.dao.CustomerDAO;
 import ASOserver.springapp.dao.EmployeeDAO;
 import ASOserver.springapp.dao.SpecificServiceDAO;
@@ -13,14 +13,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class DashboardService {
     private final SpecificServiceDAO specificServiceDAO;
-    private final CarsDAO carsDAO;
+    private final CarDAO carDAO;
     private final EmployeeDAO employeeDAO;
     private final CustomerDAO customerDAO;
 
     @Autowired
-    public DashboardService(SpecificServiceDAO specificServiceDAO, CarsDAO carsDAO, EmployeeDAO employeeDAO, CustomerDAO customerDAO) {
+    public DashboardService(SpecificServiceDAO specificServiceDAO, CarDAO carDAO, EmployeeDAO employeeDAO, CustomerDAO customerDAO) {
         this.specificServiceDAO = specificServiceDAO;
-        this.carsDAO = carsDAO;
+        this.carDAO = carDAO;
         this.employeeDAO = employeeDAO;
         this.customerDAO = customerDAO;
     }
@@ -44,7 +44,7 @@ public class DashboardService {
     }
 
     private long countCars() throws Exception {
-        return carsDAO.count();
+        return carDAO.count();
     }
 
     private long countSpecificServices() throws Exception {
@@ -54,13 +54,13 @@ public class DashboardService {
     private void countSpecificServicesByStatus(DashboardDTO dashboardDTO) throws Exception {
         long newServices = 0, activeServices = 0, finishedServices = 0;
         for(SpecificService tmpSpecificService : specificServiceDAO.findAll()) {
-            if(tmpSpecificService.getExecutionStatus().equals(SpecificServicesExecutionStatus.SpecificServicesExecutionStatusEnum.NEW.getSpecificServicesExecutionStatus())) {
+            if(tmpSpecificService.getStatus() == SpecificServiceStatus.SpecificServiceStatusEnum.NEW) {
                 newServices++;
             }
-            else if(tmpSpecificService.getExecutionStatus().equals(SpecificServicesExecutionStatus.SpecificServicesExecutionStatusEnum.DURING.getSpecificServicesExecutionStatus())) {
+            else if(tmpSpecificService.getStatus() == SpecificServiceStatus.SpecificServiceStatusEnum.DURING) {
                 activeServices++;
             }
-            else if(tmpSpecificService.getExecutionStatus().equals(SpecificServicesExecutionStatus.SpecificServicesExecutionStatusEnum.FINISHED.getSpecificServicesExecutionStatus())) {
+            else if(tmpSpecificService.getStatus() == SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED) {
                 finishedServices++;
             }
         }

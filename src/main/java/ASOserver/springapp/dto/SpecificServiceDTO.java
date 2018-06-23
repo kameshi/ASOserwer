@@ -1,5 +1,7 @@
 package ASOserver.springapp.dto;
 
+import ASOserver.model.enums.SpecificServiceStatus;
+
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -9,12 +11,12 @@ public class SpecificServiceDTO implements Serializable {
     private Date startDate;
     private Date endDate;
     private Date insertionDate;
-    private String status;
-    private ReplacementCarsDTO replacementCar;
+    private SpecificServiceStatus.SpecificServiceStatusEnum status;
+    private ReplacementCarDTO replacementCar;
     private PromotionDTO promotion;
     private String description;
     private EmployeeDTO employee;
-    private CarsDTO car;
+    private CarDTO car;
     private CustomerDTO client;
 
     public Long getId() {
@@ -57,19 +59,19 @@ public class SpecificServiceDTO implements Serializable {
         this.insertionDate = insertionDate;
     }
 
-    public String getStatus() {
+    public SpecificServiceStatus.SpecificServiceStatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(SpecificServiceStatus.SpecificServiceStatusEnum status) {
         this.status = status;
     }
 
-    public ReplacementCarsDTO getReplacementCar() {
+    public ReplacementCarDTO getReplacementCar() {
         return replacementCar;
     }
 
-    public void setReplacementCar(ReplacementCarsDTO replacementCar) {
+    public void setReplacementCar(ReplacementCarDTO replacementCar) {
         this.replacementCar = replacementCar;
     }
 
@@ -97,11 +99,11 @@ public class SpecificServiceDTO implements Serializable {
         this.employee = employee;
     }
 
-    public CarsDTO getCar() {
+    public CarDTO getCar() {
         return car;
     }
 
-    public void setCar(CarsDTO car) {
+    public void setCar(CarDTO car) {
         this.car = car;
     }
 

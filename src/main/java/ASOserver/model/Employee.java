@@ -36,6 +36,15 @@ public class Employee{
     public Employee() {
     }
 
+    public Employee(String name, String surname, String eMail, String pesel, String phoneNumber, Account account) {
+        this.name = name;
+        this.surname = surname;
+        this.eMail = eMail;
+        this.pesel = pesel;
+        this.phoneNumber = phoneNumber;
+        this.account = account;
+    }
+
     public Long getEmployeeId() {
         return employeeId;
     }

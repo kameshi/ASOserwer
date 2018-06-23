@@ -1,10 +1,11 @@
 package ASOserver.springapp.mapper;
 
-import ASOserver.model.CustomerCars;
+import ASOserver.model.CustomerCar;
 import ASOserver.model.SpecificService;
 import ASOserver.springapp.dto.SpecificServiceDTO;
 
 public class SpecificServiceMapper {
+
     public static SpecificService toSpecificService(SpecificServiceDTO specificServiceDTO) {
         SpecificService specificService = new SpecificService();
         specificService.setSpecificServiceId(specificServiceDTO.getId());
@@ -12,14 +13,14 @@ public class SpecificServiceMapper {
         specificService.setStartDate(specificServiceDTO.getStartDate());
         specificService.setEndDate(specificServiceDTO.getEndDate());
         specificService.setInsertDate(specificServiceDTO.getInsertionDate());
-        specificService.setExecutionStatus(specificServiceDTO.getStatus().toString());
-        specificService.setReplacementCars(ReplacementCarsMapper.toReplacementCars(specificServiceDTO.getReplacementCar()));
+        specificService.setStatus(specificServiceDTO.getStatus());
+        specificService.setReplacementCar(ReplacementCarMapper.toReplacementCars(specificServiceDTO.getReplacementCar()));
         specificService.setPromotion(PromotionMapper.toPromotion(specificServiceDTO.getPromotion()));
         specificService.setDescription(specificServiceDTO.getDescription());
         specificService.setEmployee(EmployeeMapper.toEmployee(specificServiceDTO.getEmployee()));
-        specificService.setCustomerCars(new CustomerCars());
-        specificService.getCustomerCars().setCars(CarsMapper.toCars(specificServiceDTO.getCar()));
-        specificService.getCustomerCars().setCustomer(CustomerMapper.toCustomer(specificServiceDTO.getClient()));
+        specificService.setCustomerCar(new CustomerCar());
+        specificService.getCustomerCar().setCar(CarMapper.toCars(specificServiceDTO.getCar()));
+        specificService.getCustomerCar().setCustomer(CustomerMapper.toCustomer(specificServiceDTO.getClient()));
         return specificService;
     }
 
@@ -30,13 +31,13 @@ public class SpecificServiceMapper {
         specificServiceDTO.setStartDate(specificService.getStartDate());
         specificServiceDTO.setEndDate(specificService.getEndDate());
         specificServiceDTO.setInsertionDate(specificService.getInsertDate());
-        specificServiceDTO.setStatus(specificService.getExecutionStatus());
-        specificServiceDTO.setReplacementCar(ReplacementCarsMapper.toReplacementCarsDTO(specificService.getReplacementCars()));
+        specificServiceDTO.setStatus(specificService.getStatus());
+        specificServiceDTO.setReplacementCar(ReplacementCarMapper.toReplacementCarsDTO(specificService.getReplacementCar()));
         specificServiceDTO.setPromotion(PromotionMapper.toPromotionDTO(specificService.getPromotion()));
         specificServiceDTO.setDescription(specificService.getDescription());
         specificServiceDTO.setEmployee(EmployeeMapper.toEmployeeDTO(specificService.getEmployee()));
-        specificServiceDTO.setCar(CarsMapper.toCarsDTO(specificService.getCustomerCars().getCars()));
-        specificServiceDTO.setClient(CustomerMapper.toCustomerDTO(specificService.getCustomerCars().getCustomer()));
+        specificServiceDTO.setCar(CarMapper.toCarsDTO(specificService.getCustomerCar().getCar()));
+        specificServiceDTO.setClient(CustomerMapper.toCustomerDTO(specificService.getCustomerCar().getCustomer()));
         return specificServiceDTO;
     }
 }

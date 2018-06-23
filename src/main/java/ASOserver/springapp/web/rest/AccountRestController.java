@@ -1,6 +1,6 @@
 package ASOserver.springapp.web.rest;
 
-import ASOserver.model.AccessRights;
+import ASOserver.model.enums.AccessRight;
 import ASOserver.springapp.dto.CustomerDTO;
 import ASOserver.springapp.mapper.EmployeeMapper;
 import ASOserver.springapp.service.AccountService;
@@ -11,8 +11,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @Scope("request")
@@ -32,11 +30,11 @@ public class AccountRestController {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    private ResponseEntity insertCategory(@RequestBody CustomerDTO customerDTO){
+    private ResponseEntity insertAccount(@RequestBody CustomerDTO customerDTO){
         try {
            this.accountService.insertAccount(customerDTO.getAccount());
             customerDTO.getAccount().setId(accountService.getAccountId(customerDTO.getAccount().getLogin()));
-           if(customerDTO.getAccount().getAccessRights().equals(AccessRights.AccessRightsEnum.CUSTOMER)){
+           if(customerDTO.getAccount().getAccessRight() == AccessRight.AccessRightEnum.CUSTOMER){
                this.customerService.insertCustomer(customerDTO);
            }else{
                this.employerService.insertEmployee(EmployeeMapper.toEmployeeDTO(customerDTO));
@@ -48,8 +46,4 @@ public class AccountRestController {
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
-
-
 }

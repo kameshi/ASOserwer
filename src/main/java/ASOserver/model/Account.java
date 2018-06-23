@@ -1,5 +1,7 @@
 package ASOserver.model;
 
+import ASOserver.model.enums.AccessRight;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,8 +19,9 @@ public class Account{
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @Column(name = "ACCESS_RIGHTS", nullable = false)
-    private String accessRights;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ACCESS_RIGHT", nullable = false)
+    private AccessRight.AccessRightEnum accessRight;
 
     @OneToOne(mappedBy = "account", fetch = FetchType.LAZY)
     private Customer customer;
@@ -28,24 +31,14 @@ public class Account{
 
     public Account() {}
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     public Long getAccountId() {
         return accountId;
+    }
+
+    public Account(String login, String password, AccessRight.AccessRightEnum accessRight) {
+        this.login = login;
+        this.password = password;
+        this.accessRight = accessRight;
     }
 
     public void setAccountId(Long accountId) {
@@ -68,11 +61,27 @@ public class Account{
         this.password = password;
     }
 
-    public String getAccessRights() {
-        return accessRights;
+    public AccessRight.AccessRightEnum getAccessRight() {
+        return accessRight;
     }
 
-    public void setAccessRights(String accessRights) {
-        this.accessRights = accessRights;
+    public void setAccessRight(AccessRight.AccessRightEnum accessRight) {
+        this.accessRight = accessRight;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }
