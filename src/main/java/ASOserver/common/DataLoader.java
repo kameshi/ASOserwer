@@ -87,10 +87,6 @@ public class DataLoader implements ApplicationRunner {
         cars.add(carDAO.save(new Car("Renault", "Megan", "TST HF43G", "WF0AXXWPMAGR69936", (float) 1.9, 101, Date.valueOf("2018-9-07"))));
         cars.add(carDAO.save(new Car("Seat", "Polo", "TK GF53G", "WAUZZZ8E86A040764", (float) 1.2, 75, Date.valueOf("2019-03-1"))));
         cars.add(carDAO.save(new Car("Citroen", "Saxo", "TK G45SH", "WF0AXXWPMAFY46539", (float) 1.1, 55, Date.valueOf("2018-7-13"))));
-/*        cars.add(carDAO.save(new Car("Seat", "Leon", "TSA AU74", "JTJHW31U560039130", (float) 1.6, 102, LocalDate.of(2018, 10, 20))));
-        cars.add(carDAO.save(new Car("Renault", "Megan", "TST HF43G", "WF0AXXWPMAGR69936", (float) 1.9, 101, LocalDate.of(2018, 9, 07))));
-        cars.add(carDAO.save(new Car("Seat", "Polo", "TK GF53G", "WAUZZZ8E86A040764", (float) 1.2, 75, LocalDate.of(2019, 03, 1))));
-        cars.add(carDAO.save(new Car("Citroen", "Saxo", "TK G45SH", "WF0AXXWPMAFY46539", (float) 1.1, 55, LocalDate.of(2018, 7, 13))));*/
         return cars;
     }
 
