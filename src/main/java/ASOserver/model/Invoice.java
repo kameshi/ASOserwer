@@ -1,6 +1,5 @@
 package ASOserver.model;
 
-import ASOserver.model.enums.PaymentMethod;
 import javax.persistence.*;
 
 @Entity
@@ -15,9 +14,8 @@ public class Invoice{
     @Column(name = "FINAL_PRICE", nullable = false)
     private float finalPrice;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "PAYMENT_METHOD", nullable = false)
-    private PaymentMethod.PaymentMethodEnum paymentMethod;
+    private String paymentMethod;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "SPECIFIC_SERVICE_ID")
@@ -26,7 +24,7 @@ public class Invoice{
     public Invoice() {
     }
 
-    public Invoice(float finalPrice, PaymentMethod.PaymentMethodEnum paymentMethod, SpecificService specificService) {
+    public Invoice(float finalPrice, String paymentMethod, SpecificService specificService) {
         this.finalPrice = finalPrice;
         this.paymentMethod = paymentMethod;
         this.specificService = specificService;
@@ -48,11 +46,11 @@ public class Invoice{
         this.finalPrice = finalPrice;
     }
 
-    public PaymentMethod.PaymentMethodEnum getPaymentMethod() {
+    public String getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(PaymentMethod.PaymentMethodEnum paymentMethod) {
+    public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 

@@ -1,5 +1,6 @@
 package ASOserver.springapp.service;
 
+import ASOserver.model.Car;
 import ASOserver.model.enums.AccessRight;
 import ASOserver.model.Account;
 import ASOserver.model.Customer;
@@ -16,11 +17,15 @@ import java.util.List;
 public class CustomerService {
     private final CustomerDAO customerDAO;
     private final AccountService accountService;
+    private final CarService carService;
+    private final CustomerCarService customerCarService;
 
     @Autowired
-    public CustomerService(CustomerDAO customerDAO, AccountService accountService) {
+    public CustomerService(CustomerDAO customerDAO, AccountService accountService, CarService carService, CustomerCarService customerCarService) {
         this.customerDAO = customerDAO;
         this.accountService = accountService;
+        this.carService = carService;
+        this.customerCarService = customerCarService;
     }
 
     public Customer getCustomer(Long customerId) throws Exception {
@@ -36,7 +41,9 @@ public class CustomerService {
         Account account = this.accountService.insertAccount(customerDTO.getAccount());
         Customer customer = CustomerMapper.toCustomer(customerDTO);
         customer.setAccount(account);
-        this.customerDAO.save(customer);
+        Customer addedCustomer = customerDAO.save(customer);
+        List<Car> cars = carService.insertCars(customerDTO.getCars());
+        customerCarService.insertCustomerCar(addedCustomer, cars);
     }
 
     public void updateCustomer(Long customerId, CustomerDTO customerDTO) throws Exception {

@@ -1,6 +1,7 @@
 package ASOserver.springapp.mapper;
 
 import ASOserver.model.Invoice;
+import ASOserver.model.enums.PaymentMethod;
 import ASOserver.springapp.dto.InvoiceDTO;
 
 public class InvoiceMapper {
@@ -9,7 +10,7 @@ public class InvoiceMapper {
         InvoiceDTO invoiceDTO = new InvoiceDTO();
         invoiceDTO.setInvoiceId(invoice.getInvoiceId());
         invoiceDTO.setFinalPrice(invoice.getFinalPrice());
-        invoiceDTO.setPaymentMethod(invoice.getPaymentMethod());
+        invoiceDTO.setPaymentMethod(PaymentMethod.PaymentMethodEnum.valueOf(invoice.getPaymentMethod()));
         invoiceDTO.setSpecificServiceDTO(SpecificServiceMapper.toSpecificServiceDTO(invoice.getSpecificService()));
         return invoiceDTO;
     }
@@ -18,7 +19,7 @@ public class InvoiceMapper {
         Invoice invoice = new Invoice();
         invoice.setInvoiceId(invoiceDTO.getInvoiceId());
         invoice.setFinalPrice(invoiceDTO.getFinalPrice());
-        invoice.setPaymentMethod(invoiceDTO.getPaymentMethod());
+        invoice.setPaymentMethod(invoiceDTO.getPaymentMethod().getPaymentMethod());
         invoice.setSpecificService(SpecificServiceMapper.toSpecificService(invoiceDTO.getSpecificServiceDTO()));
         return invoice;
     }

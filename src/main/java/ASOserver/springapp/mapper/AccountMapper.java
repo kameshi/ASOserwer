@@ -1,6 +1,7 @@
 package ASOserver.springapp.mapper;
 
 import ASOserver.model.Account;
+import ASOserver.model.enums.AccessRight;
 import ASOserver.springapp.dto.AccountDTO;
 
 public class AccountMapper {
@@ -10,7 +11,7 @@ public class AccountMapper {
         account.setAccountId(accountDTO.getId());
         account.setLogin(accountDTO.getLogin());
         account.setPassword(accountDTO.getPassword());
-        account.setAccessRight(accountDTO.getAccessRight());
+        account.setAccessRight(accountDTO.getAccessRight().getAccessRight());
         return account;
     }
 
@@ -19,7 +20,7 @@ public class AccountMapper {
         accountDTO.setId(account.getAccountId());
         accountDTO.setLogin(account.getLogin());
         accountDTO.setPassword(account.getPassword());
-        accountDTO.setAccessRight(account.getAccessRight());
+        accountDTO.setAccessRight(AccessRight.AccessRightEnum.valueOf(account.getAccessRight()));
         return accountDTO;
     }
 }

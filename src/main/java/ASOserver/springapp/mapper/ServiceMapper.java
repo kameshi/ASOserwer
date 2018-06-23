@@ -1,6 +1,7 @@
 package ASOserver.springapp.mapper;
 
 import ASOserver.model.Service;
+import ASOserver.model.enums.ServiceType;
 import ASOserver.springapp.dto.ServiceDTO;
 
 public class ServiceMapper {
@@ -10,7 +11,7 @@ public class ServiceMapper {
         service.setServiceId(serviceDTO.getId());
         service.setName(serviceDTO.getName());
         service.setPrice(serviceDTO.getPrice());
-        service.setType(serviceDTO.getType());
+        service.setType(serviceDTO.getType().getServiceType());
         return service;
     }
 
@@ -19,7 +20,7 @@ public class ServiceMapper {
         serviceDTO.setId(service.getServiceId());
         serviceDTO.setName(service.getName());
         serviceDTO.setPrice(service.getPrice());
-        serviceDTO.setType(service.getType());
+        serviceDTO.setType(ServiceType.ServiceTypeEnum.valueOf(service.getType()));
         return serviceDTO;
     }
 }

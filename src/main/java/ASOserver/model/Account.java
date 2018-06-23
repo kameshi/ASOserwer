@@ -1,7 +1,5 @@
 package ASOserver.model;
 
-import ASOserver.model.enums.AccessRight;
-
 import javax.persistence.*;
 
 @Entity
@@ -19,9 +17,8 @@ public class Account{
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "ACCESS_RIGHT", nullable = false)
-    private AccessRight.AccessRightEnum accessRight;
+    private String accessRight;
 
     @OneToOne(mappedBy = "account", fetch = FetchType.LAZY)
     private Customer customer;
@@ -35,7 +32,7 @@ public class Account{
         return accountId;
     }
 
-    public Account(String login, String password, AccessRight.AccessRightEnum accessRight) {
+    public Account(String login, String password, String accessRight) {
         this.login = login;
         this.password = password;
         this.accessRight = accessRight;
@@ -61,11 +58,11 @@ public class Account{
         this.password = password;
     }
 
-    public AccessRight.AccessRightEnum getAccessRight() {
+    public String getAccessRight() {
         return accessRight;
     }
 
-    public void setAccessRight(AccessRight.AccessRightEnum accessRight) {
+    public void setAccessRight(String accessRight) {
         this.accessRight = accessRight;
     }
 

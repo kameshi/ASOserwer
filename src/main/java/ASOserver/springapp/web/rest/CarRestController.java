@@ -16,21 +16,16 @@ import java.util.List;
 @RequestMapping(value = "/aso/rest/cars")
 public class CarRestController {
     private final CarService carService;
-    private final CustomerCarService customerCarService;
 
     @Autowired
-    public CarRestController(CarService carService, CustomerCarService customerCarService) {
+    public CarRestController(CarService carService) {
         this.carService = carService;
-        this.customerCarService = customerCarService;
     }
 
-
     @RequestMapping(method = RequestMethod.POST)
-    private ResponseEntity insertCarsDTO(@RequestBody CarDTO carDTO){
+    private ResponseEntity insertCar(@RequestBody CarDTO carDTO) {
         try {
-            carService.insertCars(carDTO);
-            carDTO.setId(carService.getCarsId(carDTO.getVin()));
-            customerCarService.insertCustomerCars(carDTO);
+            carService.insertCar(carDTO);
             return new ResponseEntity(HttpStatus.OK);
         }
         catch(Exception e){
@@ -40,7 +35,7 @@ public class CarRestController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    private ResponseEntity<Object> getCarsDTO(){
+    private ResponseEntity<Object> getCars(){
         try {
             List<CarDTO> carDTOList = this.carService.getCars();
             return new ResponseEntity<Object>(carDTOList, HttpStatus.OK);
@@ -76,9 +71,9 @@ public class CarRestController {
     }
 
     @DeleteMapping(value = "/{carId}")
-    private ResponseEntity deleteCar(@PathVariable Long CarId) {
+    private ResponseEntity deleteCar(@PathVariable Long carId) {
         try {
-            carService.deleteCar(CarId);
+            carService.deleteCar(carId);
             return new ResponseEntity(HttpStatus.OK);
         }
         catch(Exception e){
@@ -99,4 +94,15 @@ public class CarRestController {
         }
     }
 
+    @GetMapping(value = "/{vin}")
+    private ResponseEntity findCarsByVin(@PathVariable String vin) {
+        try {
+            List<CarDTO> carDTOS = carService.checkAndFindCarsByVin(vin);
+            return new ResponseEntity(carDTOS, HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

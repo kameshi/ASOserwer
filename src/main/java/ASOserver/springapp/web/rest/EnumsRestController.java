@@ -32,7 +32,7 @@ public class EnumsRestController {
         this.notificationTypeService = notificationTypeService;
     }
 
-    @GetMapping(value="access-right")
+    @GetMapping(value="access-rights")
     private ResponseEntity getAccessRights(){
         try {
             List<String> accessRightsList = this.accessRightService.getAccessRights();
@@ -44,7 +44,7 @@ public class EnumsRestController {
         }
     }
 
-    @GetMapping(value="notification-type")
+    @GetMapping(value="notification-types")
     private ResponseEntity getNotyficationTypes(){
         try{
             List<String> notyficationTypesList = this.notificationTypeService.getNotificationTypes();
@@ -56,7 +56,7 @@ public class EnumsRestController {
         }
     }
 
-    @GetMapping(value="payment-method")
+    @GetMapping(value="payment-methods")
     private ResponseEntity getPaymentMethods(){
         try{
             List<String> paymentMethod = this.paymentMethodService.getPaymentMethods();
@@ -80,7 +80,7 @@ public class EnumsRestController {
         }
     }
 
-    @GetMapping(value="specific-services-status")
+    @GetMapping(value="specific-services-statuses")
     private ResponseEntity getSpecificServiceStatuses(){
         try{
             List<String> specificServicesExecutionStatus = this.specificServiceStatusService.getSpecificServiceStatuses();

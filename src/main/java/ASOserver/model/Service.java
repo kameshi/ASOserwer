@@ -1,7 +1,5 @@
 package ASOserver.model;
 
-import ASOserver.model.enums.ServiceType;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,9 +15,8 @@ public class Service{
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "TYPE", nullable = false)
-    private ServiceType.ServiceTypeEnum type;
+    private String type;
 
     @Column(name = "PRICE", nullable = false)
     private double price;
@@ -33,7 +30,7 @@ public class Service{
     public Service() {
     }
 
-    public Service(String name, ServiceType.ServiceTypeEnum type, double price) {
+    public Service(String name, String type, double price) {
         this.name = name;
         this.type = type;
         this.price = price;
@@ -55,11 +52,11 @@ public class Service{
         this.name = name;
     }
 
-    public ServiceType.ServiceTypeEnum getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(ServiceType.ServiceTypeEnum type) {
+    public void setType(String type) {
         this.type = type;
     }
 

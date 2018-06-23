@@ -5,7 +5,7 @@ import ASOserver.springapp.dto.ReplacementCarDTO;
 
 public class ReplacementCarMapper {
 
-    public static ReplacementCar toReplacementCars(ReplacementCarDTO replacementCarDTO){
+    public static ReplacementCar toReplacementCar(ReplacementCarDTO replacementCarDTO){
         ReplacementCar replacementCar = new ReplacementCar();
         replacementCar.setReplacementCarId(replacementCarDTO.getId());
         replacementCar.setMake(replacementCarDTO.getMake());
@@ -15,7 +15,7 @@ public class ReplacementCarMapper {
         return replacementCar;
     }
 
-    public static ReplacementCarDTO toReplacementCarsDTO(ReplacementCar replacementCar){
+    public static ReplacementCarDTO toReplacementCarDTO(ReplacementCar replacementCar){
         ReplacementCarDTO replacementCarDTO = new ReplacementCarDTO();
         replacementCarDTO.setId(replacementCar.getReplacementCarId());
         replacementCarDTO.setMake(replacementCar.getMake());

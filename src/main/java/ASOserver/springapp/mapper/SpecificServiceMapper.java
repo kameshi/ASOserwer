@@ -14,12 +14,12 @@ public class SpecificServiceMapper {
         specificService.setEndDate(specificServiceDTO.getEndDate());
         specificService.setInsertDate(specificServiceDTO.getInsertionDate());
         specificService.setStatus(specificServiceDTO.getStatus());
-        specificService.setReplacementCar(ReplacementCarMapper.toReplacementCars(specificServiceDTO.getReplacementCar()));
+        specificService.setReplacementCar(ReplacementCarMapper.toReplacementCar(specificServiceDTO.getReplacementCar()));
         specificService.setPromotion(PromotionMapper.toPromotion(specificServiceDTO.getPromotion()));
         specificService.setDescription(specificServiceDTO.getDescription());
         specificService.setEmployee(EmployeeMapper.toEmployee(specificServiceDTO.getEmployee()));
         specificService.setCustomerCar(new CustomerCar());
-        specificService.getCustomerCar().setCar(CarMapper.toCars(specificServiceDTO.getCar()));
+        specificService.getCustomerCar().setCar(CarMapper.toCar(specificServiceDTO.getCar()));
         specificService.getCustomerCar().setCustomer(CustomerMapper.toCustomer(specificServiceDTO.getClient()));
         return specificService;
     }
@@ -32,11 +32,11 @@ public class SpecificServiceMapper {
         specificServiceDTO.setEndDate(specificService.getEndDate());
         specificServiceDTO.setInsertionDate(specificService.getInsertDate());
         specificServiceDTO.setStatus(specificService.getStatus());
-        specificServiceDTO.setReplacementCar(ReplacementCarMapper.toReplacementCarsDTO(specificService.getReplacementCar()));
+        specificServiceDTO.setReplacementCar(ReplacementCarMapper.toReplacementCarDTO(specificService.getReplacementCar()));
         specificServiceDTO.setPromotion(PromotionMapper.toPromotionDTO(specificService.getPromotion()));
         specificServiceDTO.setDescription(specificService.getDescription());
         specificServiceDTO.setEmployee(EmployeeMapper.toEmployeeDTO(specificService.getEmployee()));
-        specificServiceDTO.setCar(CarMapper.toCarsDTO(specificService.getCustomerCar().getCar()));
+        specificServiceDTO.setCar(CarMapper.toCarDTO(specificService.getCustomerCar().getCar()));
         specificServiceDTO.setClient(CustomerMapper.toCustomerDTO(specificService.getCustomerCar().getCustomer()));
         return specificServiceDTO;
     }

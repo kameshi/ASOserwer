@@ -1,10 +1,13 @@
 package ASOserver.springapp.service;
 
+import ASOserver.model.Car;
+import ASOserver.model.Customer;
+import ASOserver.model.CustomerCar;
 import ASOserver.springapp.dao.CustomerCarDAO;
-import ASOserver.springapp.dto.CarDTO;
-import ASOserver.springapp.mapper.CustomerCarMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CustomerCarService {
@@ -15,7 +18,9 @@ public class CustomerCarService {
         this.customerCarDAO = customerCarDAO;
     }
 
-    public void insertCustomerCars(CarDTO carDTO) throws Exception {
-        this.customerCarDAO.save(CustomerCarMapper.toCustomerCar(carDTO));
+    public void insertCustomerCar(Customer customer, List<Car> cars) throws Exception {
+        for(Car tmpCar : cars) {
+            this.customerCarDAO.save(new CustomerCar(customer, tmpCar));
+        }
     }
 }

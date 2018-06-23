@@ -5,7 +5,7 @@ import ASOserver.springapp.dto.CarDTO;
 
 public class CarMapper {
 
-    public static Car toCars(CarDTO carDTO){
+    public static Car toCar(CarDTO carDTO){
         Car car = new Car();
         car.setCarId(carDTO.getId());
         car.setMake(carDTO.getMake());
@@ -18,7 +18,7 @@ public class CarMapper {
         return car;
     }
 
-    public static CarDTO toCarsDTO(Car car) {
+    public static CarDTO toCarDTO(Car car) {
         CarDTO carDTO = new CarDTO();
         carDTO.setId(car.getCarId());
         carDTO.setMake(car.getMake());

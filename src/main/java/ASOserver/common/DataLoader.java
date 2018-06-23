@@ -71,13 +71,13 @@ public class DataLoader implements ApplicationRunner {
 
     private List<Account> loadAccounts() throws Exception {
         List<Account> accounts = new ArrayList<>();
-        accounts.add(accountDAO.save(new Account("admin", HashUtils.generateHash("admin", 10), AccessRight.AccessRightEnum.ADMINISTRATOR)));
-        accounts.add(accountDAO.save(new Account("karolm", HashUtils.generateHash("karolm", 10), AccessRight.AccessRightEnum.CUSTOMER)));
-        accounts.add(accountDAO.save(new Account("marekm", HashUtils.generateHash("marekm", 10), AccessRight.AccessRightEnum.CUSTOMER)));
-        accounts.add(accountDAO.save(new Account("mateuszm", HashUtils.generateHash("mateuszm", 10), AccessRight.AccessRightEnum.CUSTOMER)));
-        accounts.add(accountDAO.save(new Account("damianl", HashUtils.generateHash("damianl", 10), AccessRight.AccessRightEnum.CUSTOMER)));
-        accounts.add(accountDAO.save(new Account("pracownik1", HashUtils.generateHash("pracownik1", 10), AccessRight.AccessRightEnum.MECHANIC)));
-        accounts.add(accountDAO.save(new Account("pracownik2", HashUtils.generateHash("pracownik2", 10), AccessRight.AccessRightEnum.OFFICEWORKER)));
+        accounts.add(accountDAO.save(new Account("admin", HashUtils.generateHash("admin", 10), AccessRight.AccessRightEnum.ADMINISTRATOR.getAccessRight())));
+        accounts.add(accountDAO.save(new Account("karolm", HashUtils.generateHash("karolm", 10), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight())));
+        accounts.add(accountDAO.save(new Account("marekm", HashUtils.generateHash("marekm", 10), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight())));
+        accounts.add(accountDAO.save(new Account("mateuszm", HashUtils.generateHash("mateuszm", 10), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight())));
+        accounts.add(accountDAO.save(new Account("damianl", HashUtils.generateHash("damianl", 10), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight())));
+        accounts.add(accountDAO.save(new Account("pracownik1", HashUtils.generateHash("pracownik1", 10), AccessRight.AccessRightEnum.MECHANIC.getAccessRight())));
+        accounts.add(accountDAO.save(new Account("pracownik2", HashUtils.generateHash("pracownik2", 10), AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())));
         return accounts;
     }
 
@@ -85,7 +85,7 @@ public class DataLoader implements ApplicationRunner {
         List<Car> cars = new ArrayList<>();
         cars.add(carDAO.save(new Car("Seat", "Leon", "TSA AU74", "JTJHW31U560039130", (float) 1.6, 102, Date.valueOf("2018-10-20"))));
         cars.add(carDAO.save(new Car("Renault", "Megan", "TST HF43G", "WF0AXXWPMAGR69936", (float) 1.9, 101, Date.valueOf("2018-9-07"))));
-        cars.add(carDAO.save(new Car("Seat", "Polo", "TK GF53G", "WAUZZZ8E86A040764", (float) 1.2, 75, Date.valueOf("2019-03-1"))));
+        cars.add(carDAO.save(new Car("Volkswagen", "Polo", "TK GF53G", "WAUZZZ8E86A040764", (float) 1.2, 75, Date.valueOf("2019-03-1"))));
         cars.add(carDAO.save(new Car("Citroen", "Saxo", "TK G45SH", "WF0AXXWPMAFY46539", (float) 1.1, 55, Date.valueOf("2018-7-13"))));
         return cars;
     }
@@ -118,9 +118,9 @@ public class DataLoader implements ApplicationRunner {
 
     private List<Notification> loadNotifications() {
         List<Notification> notifications = new ArrayList<>();
-        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.REMINDER, "przypominamy o przeglądzie samochodu dnia ")));
-        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.NOTIFICATION, "promocja na przeglad samochodu z instalacją gazową w -20% w dniach ")));
-        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.NOTIFICATION, "promocja na przeglad samochodu bez instalacji gazowej -20% w dniach ")));
+        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.REMINDER.getNotificationType(), "przypominamy o przeglądzie samochodu dnia ")));
+        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.NOTIFICATION.getNotificationType(), "promocja na przeglad samochodu z instalacją gazową w -20% w dniach ")));
+        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.NOTIFICATION.getNotificationType(), "promocja na przeglad samochodu bez instalacji gazowej -20% w dniach ")));
         return notifications;
     }
 
@@ -144,13 +144,13 @@ public class DataLoader implements ApplicationRunner {
 
     private List<Service> loadServices() {
         List<Service> services = new ArrayList<>();
-        services.add(serviceDAO.save(new Service("wymiana klocków", ServiceType.ServiceTypeEnum.EXCHANGE, (double) 100)));
-        services.add(serviceDAO.save(new Service("przegląd samochodu z gazem", ServiceType.ServiceTypeEnum.OVERVIEW, (double) 120)));
-        services.add(serviceDAO.save(new Service("przegląd samochodu", ServiceType.ServiceTypeEnum.OVERVIEW, (double) 80)));
-        services.add(serviceDAO.save(new Service("analia samochodu przed zakupem", ServiceType.ServiceTypeEnum.ANALYSIS, (double) 150)));
-        services.add(serviceDAO.save(new Service("naprawa układu zapłonowego", ServiceType.ServiceTypeEnum.REPAIR, (double) 50)));
-        services.add(serviceDAO.save(new Service("wymiana wkład lusterka", ServiceType.ServiceTypeEnum.EXCHANGE, (double) 300)));
-        services.add(serviceDAO.save(new Service("wymiana chłodnicy", ServiceType.ServiceTypeEnum.EXCHANGE, (double) 130)));
+        services.add(serviceDAO.save(new Service("wymiana klocków", ServiceType.ServiceTypeEnum.EXCHANGE.getServiceType(), (double) 100)));
+        services.add(serviceDAO.save(new Service("przegląd samochodu z gazem", ServiceType.ServiceTypeEnum.OVERVIEW.getServiceType(), (double) 120)));
+        services.add(serviceDAO.save(new Service("przegląd samochodu", ServiceType.ServiceTypeEnum.OVERVIEW.getServiceType(), (double) 80)));
+        services.add(serviceDAO.save(new Service("analia samochodu przed zakupem", ServiceType.ServiceTypeEnum.ANALYSIS.getServiceType(), (double) 150)));
+        services.add(serviceDAO.save(new Service("naprawa układu zapłonowego", ServiceType.ServiceTypeEnum.REPAIR.getServiceType(), (double) 50)));
+        services.add(serviceDAO.save(new Service("wymiana wkład lusterka", ServiceType.ServiceTypeEnum.EXCHANGE.getServiceType(), (double) 300)));
+        services.add(serviceDAO.save(new Service("wymiana chłodnicy", ServiceType.ServiceTypeEnum.EXCHANGE.getServiceType(), (double) 130)));
         return services;
     }
 
@@ -199,9 +199,9 @@ public class DataLoader implements ApplicationRunner {
 
     private List<Invoice> loadInvoices(List<SpecificService> specificServices) {
         List<Invoice> invoices = new ArrayList<>();
-        invoices.add(invoiceDAO.save(new Invoice(96, PaymentMethod.PaymentMethodEnum.CASH, specificServices.get(0))));
-        invoices.add(invoiceDAO.save(new Invoice(80, PaymentMethod.PaymentMethodEnum.CASH, specificServices.get(1))));
-        invoices.add(invoiceDAO.save(new Invoice((float) 254.99, PaymentMethod.PaymentMethodEnum.CARD, specificServices.get(2))));
+        invoices.add(invoiceDAO.save(new Invoice(96, PaymentMethod.PaymentMethodEnum.CASH.getPaymentMethod(), specificServices.get(0))));
+        invoices.add(invoiceDAO.save(new Invoice(80, PaymentMethod.PaymentMethodEnum.CASH.getPaymentMethod(), specificServices.get(1))));
+        invoices.add(invoiceDAO.save(new Invoice((float) 254.99, PaymentMethod.PaymentMethodEnum.CARD.getPaymentMethod(), specificServices.get(2))));
         return invoices;
     }
 }

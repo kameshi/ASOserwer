@@ -20,11 +20,11 @@ public class ReplacementCarService {
     }
 
     public void insertReplacementCars(ReplacementCarDTO replacementCarDTO) {
-        this.replacementCarDAO.save(ReplacementCarMapper.toReplacementCars(replacementCarDTO));
+        this.replacementCarDAO.save(ReplacementCarMapper.toReplacementCar(replacementCarDTO));
     }
     public void updateReplacementCars(Long replacementCarsId, ReplacementCarDTO replacementCarDTO) {
         replacementCarDTO.setId(replacementCarsId);
-        this.replacementCarDAO.save(ReplacementCarMapper.toReplacementCars(replacementCarDTO));
+        this.replacementCarDAO.save(ReplacementCarMapper.toReplacementCar(replacementCarDTO));
     }
 
     public void deleteReplacementCars(Long replacementCarsId) {
@@ -35,13 +35,13 @@ public class ReplacementCarService {
         Iterable<ReplacementCar> replacementCarsIterable = this.replacementCarDAO.findAll();
         List<ReplacementCarDTO> replacementCarDTOList = new ArrayList<>();
         for(ReplacementCar replacementCar : replacementCarsIterable){
-            replacementCarDTOList.add(ReplacementCarMapper.toReplacementCarsDTO(replacementCar));
+            replacementCarDTOList.add(ReplacementCarMapper.toReplacementCarDTO(replacementCar));
         }
 
         return replacementCarDTOList;
     }
 
     public ReplacementCarDTO findReplacementCarById(Long replacementCarId) throws Exception {
-        return ReplacementCarMapper.toReplacementCarsDTO(replacementCarDAO.findById(replacementCarId).get());
+        return ReplacementCarMapper.toReplacementCarDTO(replacementCarDAO.findById(replacementCarId).get());
     }
 }

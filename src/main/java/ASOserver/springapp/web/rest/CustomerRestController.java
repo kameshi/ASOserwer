@@ -35,7 +35,7 @@ public class CustomerRestController {
     }
 
     @PostMapping()
-    private ResponseEntity insertCustomer(@RequestBody CustomerDTO customerDTO){
+    private ResponseEntity insertCustomer(@RequestBody CustomerDTO customerDTO) {
         try {
             this.customerService.insertCustomer(customerDTO);
             return new ResponseEntity(HttpStatus.OK);

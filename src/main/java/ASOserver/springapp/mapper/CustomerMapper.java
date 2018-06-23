@@ -29,7 +29,7 @@ public class CustomerMapper {
         customerDTO.setPhoneNumber(customer.getPhoneNumber());
         customerDTO.setAccount(AccountMapper.toAccountDTO(customer.getAccount()));
         customerDTO.setCars(customer.getCustomerCars().stream()
-                .map(tmpCustomerCar -> CarMapper.toCarsDTO(tmpCustomerCar.getCar()))
+                .map(tmpCustomerCar -> CarMapper.toCarDTO(tmpCustomerCar.getCar()))
                 .collect(Collectors.toList()));
         return customerDTO;
     }

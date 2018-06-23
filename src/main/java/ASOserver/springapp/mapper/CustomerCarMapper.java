@@ -10,7 +10,7 @@ public class CustomerCarMapper {
         CustomerCar customerCar = new CustomerCar();
         customerCar.setCustomerCarId((long) 1);
         customerCar.setCustomer(CustomerMapper.toCustomer(carDTO.getCustomer()));
-        customerCar.setCar(CarMapper.toCars(carDTO));
+        customerCar.setCar(CarMapper.toCar(carDTO));
         return customerCar;
     }
 
@@ -18,7 +18,7 @@ public class CustomerCarMapper {
         CustomerCarDTO customerCarDTO = new CustomerCarDTO();
         customerCarDTO.setId((long) 1);
         customerCarDTO.setCustomer(CustomerMapper.toCustomerDTO(customerCar.getCustomer()));
-        customerCarDTO.setCars(CarMapper.toCarsDTO(customerCar.getCar()));
+        customerCarDTO.setCars(CarMapper.toCarDTO(customerCar.getCar()));
         return customerCarDTO;
     }
 
@@ -26,7 +26,7 @@ public class CustomerCarMapper {
         CustomerCar customerCar = new CustomerCar();
         customerCar.setCustomerCarId((long) 1);
         customerCar.setCustomer(CustomerMapper.toCustomer(customerCarDTO.getCustomer()));
-        customerCar.setCar(CarMapper.toCars(customerCarDTO.getCars()));
+        customerCar.setCar(CarMapper.toCar(customerCarDTO.getCars()));
         return customerCar;
     }
 }

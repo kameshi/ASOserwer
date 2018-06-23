@@ -42,7 +42,7 @@ public class AccountService {
             if (tmpAccount.getLogin().equals(login)) {
                 account.setAccessRight(tmpAccount.getAccessRight());
                 account.setLogin(tmpAccount.getLogin());
-                if (tmpAccount.getAccessRight() != AccessRight.AccessRightEnum.CUSTOMER) {
+                if (!tmpAccount.getAccessRight().equals(AccessRight.AccessRightEnum.CUSTOMER.getAccessRight())) {
                     account.setAccountId(tmpAccount.getEmployee().getEmployeeId());
                     break;
                 } else {

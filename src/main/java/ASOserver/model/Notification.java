@@ -1,6 +1,5 @@
 package ASOserver.model;
 
-import ASOserver.model.enums.NotificationType;
 import javax.persistence.*;
 
 @Entity
@@ -12,9 +11,8 @@ public class Notification {
     @Column(name = "NOTIFICATION_ID")
     private Long notificationId;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "TYPE", nullable = false)
-    private NotificationType.NotificationTypeEnum type;
+    private String type;
 
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
@@ -23,7 +21,7 @@ public class Notification {
     public Notification() {
     }
 
-    public Notification(NotificationType.NotificationTypeEnum type, String description) {
+    public Notification(String type, String description) {
         this.type = type;
         this.description = description;
     }
@@ -36,11 +34,11 @@ public class Notification {
         this.notificationId = notificationId;
     }
 
-    public NotificationType.NotificationTypeEnum getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(NotificationType.NotificationTypeEnum type) {
+    public void setType(String type) {
         this.type = type;
     }
 
