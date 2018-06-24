@@ -1,6 +1,6 @@
 package ASOserver.configuration;
 
-import ASOserver.model.AccessRights;
+import ASOserver.model.enums.AccessRight;
 import ASOserver.springapp.dto.AccountDTO;
 import ASOserver.springapp.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
-/**
- * Created by user on 2018-06-20.
- */
+
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
@@ -31,18 +29,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
         http
                 .authorizeRequests()
-                .antMatchers("/aso/rest/AccessRightsRest/accessRights").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())//AccessRights.AccessRightsEnum.ADMINISTRATOR//nie wiem dokładnie bedzei w bzie
+                .antMatchers("/aso/rest/access-rights").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())//AccessRight.AccessRightEnum.ADMINISTRATOR//nie wiem dokładnie bedzei w bzie
                 .antMatchers(HttpMethod.GET, "/aso/rest/cars").permitAll()
-                .antMatchers("/aso/rest/cars").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
-                .antMatchers("/aso/rest/customers").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
-                .antMatchers("/aso/rest/employer").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
-                .antMatchers("/aso/rest/NotyficationTypesRest").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
-                .antMatchers("/aso/rest/parts").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
-                .antMatchers("/aso/rest/promotion").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
-                .antMatchers("/aso/rest/replacement-cars").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
+                .antMatchers("/aso/rest/cars").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
+                .antMatchers("/aso/rest/customers").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
+                .antMatchers("/aso/rest/employees").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
+                .antMatchers("/aso/rest/notification-types").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
+                .antMatchers("/aso/rest/parts").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
+                .antMatchers("/aso/rest/promotions").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
+                .antMatchers("/aso/rest/replacement-cars").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
                 .antMatchers(HttpMethod.GET, "/aso/rest/services").permitAll()
-                .antMatchers("/aso/rest/services").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
-                .antMatchers("/aso/rest/SpecificServicesExecutionStatusRest").hasRole(AccessRights.AccessRightsEnum.OFFICEWORKER.getAccessRights())
+                .antMatchers("/aso/rest/services").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
+                .antMatchers("/aso/rest/specific-services-statuses").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
@@ -63,7 +61,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         for(int i = 0; i < accountList.size(); ++i) {
             auth
                     .inMemoryAuthentication()
-                    .withUser(accountList.get(i).getLogin()).password(accountList.get(i).getPassword()).roles(accountList.get(i).getAccessRights());
+                    .withUser(accountList.get(i).getLogin()).password(accountList.get(i).getPassword()).roles(accountList.get(i).getAccessRight().getAccessRight());
         }
     }
 
