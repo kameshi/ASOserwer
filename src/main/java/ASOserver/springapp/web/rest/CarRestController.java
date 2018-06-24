@@ -94,7 +94,7 @@ public class CarRestController {
         }
     }
 
-    @GetMapping(value = "/{vin}")
+    @GetMapping(value = "/search/{vin}")
     private ResponseEntity findCarsByVin(@PathVariable String vin) {
         try {
             List<CarDTO> carDTOS = carService.checkAndFindCarsByVin(vin);
