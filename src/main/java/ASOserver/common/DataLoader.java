@@ -168,7 +168,7 @@ public class DataLoader implements ApplicationRunner {
                 Date.valueOf("2018-4-20"),
                 Date.valueOf("2018-4-20"),
                 Date.valueOf("2018-4-20"),
-                SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED,
+                SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED.getSpecificServiceStatus(),
                 "przegląd samochodu seat leon 2 b+g",
                 employees.get(0), promotions.get(0), customerCars.get(0), replacementCars.get(0), services.get(1)
         )));
@@ -176,7 +176,7 @@ public class DataLoader implements ApplicationRunner {
                 Date.valueOf("2018-5-20"),
                 Date.valueOf("2018-5-20"),
                 Date.valueOf("2018-5-20"),
-                SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED,
+                SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED.getSpecificServiceStatus(),
                 "przegląd samochodu renault megan diesel",
                 employees.get(1), promotions.get(1), customerCars.get(1), replacementCars.get(1), services.get(2)
         )));
@@ -184,7 +184,7 @@ public class DataLoader implements ApplicationRunner {
                 Date.valueOf("2018-5-20"),
                 Date.valueOf("2018-5-20"),
                 Date.valueOf("2018-5-20"),
-                SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED,
+                SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED.getSpecificServiceStatus(),
                 "przegląd samochodu seat leon 2 b+g",
                 employees.get(1), promotions.get(1), customerCars.get(1), replacementCars.get(1), services.get(2)
         )));

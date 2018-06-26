@@ -20,6 +20,15 @@ public class AccessRight {
         public String getAccessRight() {
             return accessRight;
         }
+
+        public static AccessRightEnum getAccessRight(String name) {
+            for(AccessRightEnum current : AccessRightEnum.values()) {
+                if(current.accessRight.equals(name)) {
+                    return current;
+                }
+            }
+            return null;
+        }
     }
 
     public List<String> getAccessRights(){

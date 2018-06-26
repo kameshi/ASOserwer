@@ -10,7 +10,7 @@ public class InvoiceMapper {
         InvoiceDTO invoiceDTO = new InvoiceDTO();
         invoiceDTO.setInvoiceId(invoice.getInvoiceId());
         invoiceDTO.setFinalPrice(invoice.getFinalPrice());
-        invoiceDTO.setPaymentMethod(PaymentMethod.PaymentMethodEnum.valueOf(invoice.getPaymentMethod()));
+        invoiceDTO.setPaymentMethod(PaymentMethod.PaymentMethodEnum.getPaymentMethod(invoice.getPaymentMethod()));
         invoiceDTO.setSpecificServiceDTO(SpecificServiceMapper.toSpecificServiceDTO(invoice.getSpecificService()));
         return invoiceDTO;
     }

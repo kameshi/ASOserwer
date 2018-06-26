@@ -25,7 +25,7 @@ public class SpecificService{
     private Date insertDate;
 
     @Column(name = "STATUS", nullable = false)
-    private SpecificServiceStatus.SpecificServiceStatusEnum status;
+    private String status;
 
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
@@ -59,8 +59,8 @@ public class SpecificService{
     public SpecificService() {
     }
 
-    public SpecificService(Date startDate, Date endDate, Date insertDate, SpecificServiceStatus.SpecificServiceStatusEnum status,
-                           String description, Employee employee, Promotion promotion, CustomerCar customerCar,
+    public SpecificService(Date startDate, Date endDate, Date insertDate, String status, String description,
+                           Employee employee, Promotion promotion, CustomerCar customerCar,
                            ReplacementCar replacementCar, Service service) {
         this.startDate = startDate;
         this.endDate = endDate;
@@ -106,11 +106,11 @@ public class SpecificService{
         this.insertDate = insertDate;
     }
 
-    public SpecificServiceStatus.SpecificServiceStatusEnum getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(SpecificServiceStatus.SpecificServiceStatusEnum status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
