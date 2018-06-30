@@ -126,10 +126,10 @@ public class DataLoader implements ApplicationRunner {
 
     private List<Part> loadParts() {
         List<Part> parts = new ArrayList<>();
-        parts.add(partDAO.save(new Part("klocki hamulcowe seat leon przód", 250.34)));
-        parts.add(partDAO.save(new Part("wkład lusterka volkswagen polo prawe", 25)));
-        parts.add(partDAO.save(new Part("świece zapłonowe citroen saxo", 50.4)));
-        parts.add(partDAO.save(new Part("chłodnica renault megan", 124.99)));
+        parts.add(partDAO.save(new Part("klocki hamulcowe seat leon przód", 25, 250.34)));
+        parts.add(partDAO.save(new Part("wkład lusterka volkswagen polo prawe", 2, 25)));
+        parts.add(partDAO.save(new Part("świece zapłonowe citroen saxo", 30, 50.4)));
+        parts.add(partDAO.save(new Part("chłodnica renault megan", 1, 124.99)));
         return parts;
     }
 

@@ -15,6 +15,9 @@ public class Part{
     @Column(name = "NAME", nullable = false)
     private String name;
 
+    @Column(name = "QUANTITY", nullable = false)
+    private Integer quantity;
+
     @Column(name = "PRICE", nullable = false)
     private double price;
 
@@ -24,8 +27,9 @@ public class Part{
     public Part() {
     }
 
-    public Part(String name, double price) {
+    public Part(String name, Integer quantity, double price) {
         this.name = name;
+        this.quantity = quantity;
         this.price = price;
     }
 
@@ -43,6 +47,14 @@ public class Part{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public double getPrice() {

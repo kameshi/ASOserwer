@@ -13,7 +13,7 @@ public class PromotionMapper {
         promotion.setDateFrom(promotionDTO.getDateFrom());
         promotion.setDateTo(promotionDTO.getDateTo());
         promotion.setPercent(promotionDTO.getPercent());
-        promotion.setService(ServiceMapper.toService(promotionDTO.getService()));
+        //promotion.setService(ServiceMapper.toService(promotionDTO.getService()));
         return promotion;
     }
 

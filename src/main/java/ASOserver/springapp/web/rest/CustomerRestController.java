@@ -58,6 +58,18 @@ public class CustomerRestController {
         }
     }
 
+    @GetMapping(value = "/accounts/{accountId}")
+    private ResponseEntity findCustomerByAccountId(@PathVariable Long accountId) {
+        try {
+            CustomerDTO customerDTO = customerService.findCustomerByAccountId(accountId);
+            return new ResponseEntity(customerDTO, HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PatchMapping(value = "/{customerId}")
     private ResponseEntity updateCustomer(@PathVariable Long customerId, @RequestBody CustomerDTO customerDTO) {
         try {

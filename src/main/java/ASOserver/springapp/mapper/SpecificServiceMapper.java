@@ -10,13 +10,16 @@ public class SpecificServiceMapper {
     public static SpecificService toSpecificService(SpecificServiceDTO specificServiceDTO) {
         SpecificService specificService = new SpecificService();
         specificService.setSpecificServiceId(specificServiceDTO.getId());
-        specificService.setService(ServiceMapper.toService(specificServiceDTO.getService()));
+        if(specificServiceDTO.getService() != null)
+            specificService.setService(ServiceMapper.toService(specificServiceDTO.getService()));
         specificService.setStartDate(specificServiceDTO.getStartDate());
         specificService.setEndDate(specificServiceDTO.getEndDate());
         specificService.setInsertDate(specificServiceDTO.getInsertionDate());
         specificService.setStatus(specificServiceDTO.getStatus().getSpecificServiceStatus());
-        specificService.setReplacementCar(ReplacementCarMapper.toReplacementCar(specificServiceDTO.getReplacementCar()));
-        specificService.setPromotion(PromotionMapper.toPromotion(specificServiceDTO.getPromotion()));
+        if(specificServiceDTO.getReplacementCar() != null)
+            specificService.setReplacementCar(ReplacementCarMapper.toReplacementCar(specificServiceDTO.getReplacementCar()));
+        if(specificServiceDTO.getPromotion() != null)
+            specificService.setPromotion(PromotionMapper.toPromotion(specificServiceDTO.getPromotion()));
         specificService.setDescription(specificServiceDTO.getDescription());
         specificService.setEmployee(EmployeeMapper.toEmployee(specificServiceDTO.getEmployee()));
         specificService.setCustomerCar(new CustomerCar());

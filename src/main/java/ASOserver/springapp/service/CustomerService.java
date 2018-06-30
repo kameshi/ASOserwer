@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class CustomerService {
@@ -34,6 +35,14 @@ public class CustomerService {
 
     public CustomerDTO getCustomerDTO(Long customerId) throws Exception {
         return CustomerMapper.toCustomerDTO(customerDAO.findById(customerId).get());
+    }
+
+    public CustomerDTO findCustomerByAccountId(Long accountId) throws Exception {
+        Account account = accountService.getAccount(accountId);
+        if(account.getCustomer() == null)
+            throw new NoSuchElementException();
+
+        return CustomerMapper.toCustomerDTO(account.getCustomer());
     }
 
     public void insertCustomer(CustomerDTO customerDTO) throws Exception {
