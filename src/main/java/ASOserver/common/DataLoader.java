@@ -6,6 +6,8 @@ import ASOserver.springapp.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
@@ -70,14 +72,15 @@ public class DataLoader implements ApplicationRunner {
     }
 
     private List<Account> loadAccounts() throws Exception {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
         List<Account> accounts = new ArrayList<>();
-        accounts.add(accountDAO.save(new Account("admin", HashUtils.generateHash("admin", 10), AccessRight.AccessRightEnum.ADMINISTRATOR.getAccessRight())));
-        accounts.add(accountDAO.save(new Account("karolm", HashUtils.generateHash("karolm", 10), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight())));
-        accounts.add(accountDAO.save(new Account("marekm", HashUtils.generateHash("marekm", 10), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight())));
-        accounts.add(accountDAO.save(new Account("mateuszm", HashUtils.generateHash("mateuszm", 10), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight())));
-        accounts.add(accountDAO.save(new Account("damianl", HashUtils.generateHash("damianl", 10), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight())));
-        accounts.add(accountDAO.save(new Account("pracownik1", HashUtils.generateHash("pracownik1", 10), AccessRight.AccessRightEnum.MECHANIC.getAccessRight())));
-        accounts.add(accountDAO.save(new Account("pracownik2", HashUtils.generateHash("pracownik2", 10), AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())));
+        accounts.add(accountDAO.save(new Account("admin", encoder.encode("admin"), AccessRight.AccessRightEnum.ADMINISTRATOR.getAccessRight(), true)));
+        accounts.add(accountDAO.save(new Account("karolm", encoder.encode("karolm"), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight(), true)));
+        accounts.add(accountDAO.save(new Account("marekm", encoder.encode("marekm"), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight(), true)));
+        accounts.add(accountDAO.save(new Account("mateuszm", encoder.encode("mateuszm"), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight(), true)));
+        accounts.add(accountDAO.save(new Account("damianl", encoder.encode("damianl"), AccessRight.AccessRightEnum.CUSTOMER.getAccessRight(), true)));
+        accounts.add(accountDAO.save(new Account("pracownik1", encoder.encode("pracownik1"), AccessRight.AccessRightEnum.MECHANIC.getAccessRight(), true)));
+        accounts.add(accountDAO.save(new Account("pracownik2", encoder.encode("pracownik2"), AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight(), true)));
         return accounts;
     }
 

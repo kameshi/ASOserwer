@@ -17,6 +17,9 @@ public class Account{
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
+    @Column(name = "ENABLE", nullable = false)
+    private Boolean enable = true;
+
     @Column(name = "ACCESS_RIGHT", nullable = false)
     private String accessRight;
 
@@ -32,10 +35,11 @@ public class Account{
         return accountId;
     }
 
-    public Account(String login, String password, String accessRight) {
+    public Account(String login, String password, String accessRight, Boolean enable) {
         this.login = login;
         this.password = password;
         this.accessRight = accessRight;
+        this.enable = enable;
     }
 
     public void setAccountId(Long accountId) {
@@ -80,5 +84,13 @@ public class Account{
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 }

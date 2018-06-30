@@ -8,6 +8,8 @@ import ASOserver.springapp.dao.AccountDAO;
 import ASOserver.springapp.dto.AccountDTO;
 import ASOserver.springapp.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,7 +33,8 @@ public class AccountService {
     }
 
     public Account insertAccount(AccountDTO accountDTO) throws Exception {
-        accountDTO.setPassword(HashUtils.generateHash(accountDTO.getPassword(), 10));
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        accountDTO.setPassword(encoder.encode(accountDTO.getPassword()));
         return this.accountDAO.save(AccountMapper.toAccount(accountDTO));
     }
 
@@ -59,7 +62,6 @@ public class AccountService {
         for(Account tmpAccount : accountIterable){
             accountDTOList.add(AccountMapper.toAccountDTO(tmpAccount));
         }
-
         return accountDTOList;
     }
 
@@ -67,6 +69,9 @@ public class AccountService {
         accountDTO.setId(accountId);
         accountDTO.setPassword(HashUtils.generateHash(accountDTO.getPassword(), 10));
         return this.accountDAO.save(AccountMapper.toAccount(accountDTO));
+    }
+    public Account findByUsername(String login){
+        return accountDAO.findByUsername(login);
     }
 
     public void deleteAccount(Long accountId) {
