@@ -1,7 +1,5 @@
 package ASOserver.model;
 
-import ASOserver.model.enums.SpecificServiceStatus;
-
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -25,7 +23,7 @@ public class SpecificService{
     private Date insertDate;
 
     @Column(name = "STATUS", nullable = false)
-    private SpecificServiceStatus.SpecificServiceStatusEnum status;
+    private String status;
 
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
@@ -56,10 +54,10 @@ public class SpecificService{
     @OneToMany(mappedBy = "specificService", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ServicePart> serviceParts;
 
-    public SpecificService(Date startDate, Date endDate, Date insertDate, String specificServiceStatus, String description, Employee employee, Promotion promotion, CustomerCar customerCar, ReplacementCar replacementCar, Service service) {
+    public SpecificService() {
     }
 
-    public SpecificService(Date startDate, Date endDate, Date insertDate, SpecificServiceStatus.SpecificServiceStatusEnum status,
+    public SpecificService(Date startDate, Date endDate, Date insertDate, String status,
                            String description, Employee employee, Promotion promotion, CustomerCar customerCar,
                            ReplacementCar replacementCar, Service service) {
         this.startDate = startDate;
@@ -106,11 +104,11 @@ public class SpecificService{
         this.insertDate = insertDate;
     }
 
-    public SpecificServiceStatus.SpecificServiceStatusEnum getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(SpecificServiceStatus.SpecificServiceStatusEnum status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

@@ -18,6 +18,7 @@ public class SpecificServiceDTO implements Serializable {
     private EmployeeDTO employee;
     private CarDTO car;
     private CustomerDTO client;
+    private InvoiceDTO invoice;
 
     public Long getId() {
         return id;
@@ -113,5 +114,13 @@ public class SpecificServiceDTO implements Serializable {
 
     public void setClient(CustomerDTO client) {
         this.client = client;
+    }
+
+    public InvoiceDTO getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(InvoiceDTO invoice) {
+        this.invoice = invoice;
     }
 }

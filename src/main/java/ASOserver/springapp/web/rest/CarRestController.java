@@ -1,7 +1,7 @@
 package ASOserver.springapp.web.rest;
 
-import ASOserver.springapp.dto.*;
-import ASOserver.springapp.service.*;
+import ASOserver.springapp.dto.CarDTO;
+import ASOserver.springapp.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
@@ -35,14 +35,14 @@ public class CarRestController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    private ResponseEntity<Object> getCars(){
+    private ResponseEntity getCars(){
         try {
             List<CarDTO> carDTOList = this.carService.getCars();
-            return new ResponseEntity<Object>(carDTOList, HttpStatus.OK);
+            return new ResponseEntity(carDTOList, HttpStatus.OK);
         }
         catch(Exception e){
             e.printStackTrace();
-            return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -94,7 +94,7 @@ public class CarRestController {
         }
     }
 
-    @GetMapping(value = "/search/{vin}")
+    @GetMapping(value = "/vin/{vin}")
     private ResponseEntity findCarsByVin(@PathVariable String vin) {
         try {
             List<CarDTO> carDTOS = carService.checkAndFindCarsByVin(vin);
