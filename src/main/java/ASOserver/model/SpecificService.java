@@ -13,10 +13,10 @@ public class SpecificService{
     @Column(name = "SPECIFIC_SERVICE_ID")
     private Long specificServiceId;
 
-    @Column(name = "START_DATE", nullable = false)
+    @Column(name = "START_DATE")
     private Date startDate;
 
-    @Column(name = "END_DATE", nullable = false)
+    @Column(name = "END_DATE")
     private Date endDate;
 
     @Column(name = "INSERT_DATE", nullable = false)

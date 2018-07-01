@@ -52,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers("/aso/rest/services/serviceId").hasAnyRole("biurowy", "administrator", "mechanik")
                 .antMatchers("/aso/rest/services").hasAnyRole("biurowy", "administrator", "mechanik")
                 .antMatchers("/aso/rest/specific-services-statuses").hasAnyRole("biurowy", "administrator", "mechanik")
-                .antMatchers("/aso/rest/service-positions").hasAnyRole("biurowy", "administrator")
+                .antMatchers("/aso/rest/service-positions").hasAnyRole("biurowy", "administrator", "mechanik")
                 .antMatchers("/aso/rest/notifications").hasAnyRole("biurowy", "administrator")
                 .anyRequest().permitAll()
                 .and()

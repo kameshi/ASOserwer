@@ -15,7 +15,8 @@ public class CustomerMapper {
         customer.seteMail(customerDTO.getEmail());
         customer.setPesel(customerDTO.getPesel());
         customer.setPhoneNumber(customerDTO.getPhoneNumber());
-        customer.setAccount(AccountMapper.toAccount(customerDTO.getAccount()));
+        if(customerDTO.getAccount() != null)
+            customer.setAccount(AccountMapper.toAccount(customerDTO.getAccount()));
         return customer;
     }
 

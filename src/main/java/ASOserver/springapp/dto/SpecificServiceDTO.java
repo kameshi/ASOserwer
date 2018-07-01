@@ -1,5 +1,6 @@
 package ASOserver.springapp.dto;
 
+import ASOserver.model.enums.PaymentMethod;
 import ASOserver.model.enums.SpecificServiceStatus;
 
 import java.io.Serializable;
@@ -19,6 +20,7 @@ public class SpecificServiceDTO implements Serializable {
     private CarDTO car;
     private CustomerDTO client;
     private InvoiceDTO invoice;
+    private PaymentMethod.PaymentMethodEnum paymentMethod;
 
     public Long getId() {
         return id;
@@ -122,5 +124,13 @@ public class SpecificServiceDTO implements Serializable {
 
     public void setInvoice(InvoiceDTO invoice) {
         this.invoice = invoice;
+    }
+
+    public PaymentMethod.PaymentMethodEnum getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod.PaymentMethodEnum paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 }

@@ -69,17 +69,22 @@ public class InvoiceService {
         return invoiceDTOS;
     }
 
-    public void insertInvoice(SpecificService specificService, SpecificServiceDTO specificServiceDTO) {
+    public void insertOrUpdateInvoice(SpecificService specificService, SpecificServiceDTO specificServiceDTO) {
         this.invoiceDAO.save(buildInvoice(specificService, specificServiceDTO));
     }
 
     private Invoice buildInvoice(SpecificService specificService, SpecificServiceDTO specificServiceDTO) {
-        Invoice invoice = new Invoice();
+        Invoice invoice;
+        if(specificService.getInvoices() != null && specificService.getInvoices().stream().findFirst().get() != null)
+            invoice = specificService.getInvoices().stream().findFirst().get();
+        else
+            invoice = new Invoice();
+
         if(specificServiceDTO.getPromotion() == null)
             invoice.setFinalPrice((float)specificServiceDTO.getService().getPrice());
         else
             invoice.setFinalPrice((float)calculateFinalPrice(specificServiceDTO.getService().getPrice(), specificService.getPromotion().getPercent()));
-        invoice.setPaymentMethod(specificServiceDTO.getInvoice().getPaymentMethod().getPaymentMethod());
+        invoice.setPaymentMethod(specificServiceDTO.getPaymentMethod().getPaymentMethod());
         invoice.setSpecificService(specificService);
         return invoice;
     }

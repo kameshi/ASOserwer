@@ -4,10 +4,7 @@ import ASOserver.common.Sendgrid;
 import ASOserver.model.*;
 import ASOserver.model.enums.NotificationType;
 import ASOserver.model.enums.SpecificServiceStatus;
-import ASOserver.springapp.dao.AccountDAO;
-import ASOserver.springapp.dao.CarDAO;
-import ASOserver.springapp.dao.NotificationDAO;
-import ASOserver.springapp.dao.SpecificServiceDAO;
+import ASOserver.springapp.dao.*;
 import ASOserver.springapp.dto.SpecificServiceDTO;
 import ASOserver.springapp.mapper.SpecificServiceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +20,20 @@ public class SpecificServiceService {
     private final CarDAO carDAO;
     private final InvoiceService invoiceService;
     private final NotificationDAO notificationDAO;
+    private final CustomerCarService customerCarService;
+    private final EmployeeDAO employeeDAO;
 
     @Autowired
     public SpecificServiceService(SpecificServiceDAO specificServiceDAO, AccountDAO accountDAO, CarDAO carDAO,
-                                  InvoiceService invoiceService, NotificationDAO notificationDAO) {
+                                  InvoiceService invoiceService, NotificationDAO notificationDAO,
+                                  CustomerCarService customerCarService, EmployeeDAO employeeDAO) {
         this.specificServiceDAO = specificServiceDAO;
         this.accountDAO = accountDAO;
         this.carDAO = carDAO;
         this.invoiceService = invoiceService;
         this.notificationDAO = notificationDAO;
+        this.customerCarService = customerCarService;
+        this.employeeDAO = employeeDAO;
     }
 
     public List<SpecificServiceDTO> findSpecificServices() throws Exception {
@@ -49,17 +51,18 @@ public class SpecificServiceService {
     }
 
     public void insertSpecificService(SpecificServiceDTO specificServiceDTO) throws Exception {
-        SpecificService specificService = specificServiceDAO.save(SpecificServiceMapper.toSpecificService(specificServiceDTO));
-        invoiceService.insertInvoice(specificService, specificServiceDTO);
+        CustomerCar customerCar = customerCarService.findCustomerCar(specificServiceDTO.getCar().getId(), specificServiceDTO.getCar().getCustomer().getId());
+        SpecificService specificService = specificServiceDAO.save(SpecificServiceMapper.buildSpecificServiceToAdd(specificServiceDTO, customerCar));
+        invoiceService.insertOrUpdateInvoice(specificService, specificServiceDTO);
     }
 
     public void updateSpecificService(Long specificServiceId, SpecificServiceDTO specificServiceDTO) throws Exception {
-        specificServiceDTO.setId(specificServiceId);;
+        specificServiceDTO.setId(specificServiceId);
         SpecificService specificService = specificServiceDAO.findById(specificServiceId).get();
         if(specificService.getStatus().equals(SpecificServiceStatus.SpecificServiceStatusEnum.DURING)){
             if(specificServiceDTO.getStatus().equals(SpecificServiceStatus.SpecificServiceStatusEnum.DURING)){
                 Notification notification = notificationDAO.findByType(NotificationType.NotificationTypeEnum.END.getNotificationType());
-                Sendgrid mail = new Sendgrid("Kameshi9303","333221Marekm");
+                Sendgrid mail = new Sendgrid("","");
                 String text = String.format(notification.getDescription(), specificServiceDTO.getCar().getRegistrationNumber());
                 mail.setTo(specificServiceDTO.getClient().getEmail())
                         .setFrom("aso@aso.com")
@@ -68,7 +71,12 @@ public class SpecificServiceService {
                 mail.send();
             }
         }
-        specificServiceDAO.save(SpecificServiceMapper.toSpecificService(specificServiceDTO));
+        Employee employee = employeeDAO.findById(specificServiceDTO.getEmployee().getId()).get();
+        CustomerCar customerCar = customerCarService.findCustomerCar(specificServiceDTO.getCar().getId(), specificServiceDTO.getCar().getCustomer().getId());
+        SpecificService specificServiceToAdd = SpecificServiceMapper.buildSpecificServiceToAdd(specificServiceDTO, customerCar);
+        specificServiceToAdd.setEmployee(employee);
+        SpecificService updatedSpecificService = specificServiceDAO.save(specificServiceToAdd);
+        invoiceService.insertOrUpdateInvoice(updatedSpecificService, specificServiceDTO);
     }
 
     public void deleteSpecificService(Long specificServiceId) throws Exception {

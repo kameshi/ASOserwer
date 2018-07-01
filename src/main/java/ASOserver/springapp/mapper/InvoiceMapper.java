@@ -23,4 +23,12 @@ public class InvoiceMapper {
         invoice.setSpecificService(SpecificServiceMapper.toSpecificService(invoiceDTO.getSpecificServiceDTO()));
         return invoice;
     }
+
+    public static InvoiceDTO toInvoiceDTOWithoutSpecificService(Invoice invoice) {
+        InvoiceDTO invoiceDTO = new InvoiceDTO();
+        invoiceDTO.setInvoiceId(invoice.getInvoiceId());
+        invoiceDTO.setFinalPrice(invoice.getFinalPrice());
+        invoiceDTO.setPaymentMethod(PaymentMethod.PaymentMethodEnum.getPaymentMethod(invoice.getPaymentMethod()));
+        return invoiceDTO;
+    }
 }
