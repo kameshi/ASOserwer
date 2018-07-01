@@ -33,8 +33,8 @@ public class PromotionService {
     public void insertPromotion(PromotionDTO promotionDTO) {
         this.promotionDAO.save(PromotionMapper.toPromotion(promotionDTO));
         Notification notification = notificationDAO.findByType(NotificationType.NotificationTypeEnum.PROMOTION.getNotificationType());
-        Sendgrid mail = new Sendgrid("Kameshi9303","333221Marekm");
-        String text = String.format(notification.getDescription(), promotionDTO.getDescription(), String.valueOf(promotionDTO.getDateFrom()), String.valueOf(promotionDTO.getDateTo()));
+        Sendgrid mail = new Sendgrid("Kameshi9304","333221Marekm");
+        String text = String.format(notification.getDescription(), promotionDTO.getDescription(), String.valueOf(promotionDTO.getStartDate()), String.valueOf(promotionDTO.getEndDate()));
         Iterable<Customer> customersList = customerDAO.findAll();
         for(Customer customer : customersList){
             mail.setTo(customer.geteMail())

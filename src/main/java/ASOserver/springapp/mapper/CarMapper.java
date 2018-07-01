@@ -28,6 +28,7 @@ public class CarMapper {
         carDTO.setEngineSize(car.getCapacity());
         carDTO.setEnginePower(car.getPower());
         carDTO.setReviewDate(car.getReviewDate());
+        carDTO.setCustomer(CustomerMapper.toCustomerDTO(car.getCustomerCars().stream().findFirst().get().getCustomer()));
         return carDTO;
     }
 }

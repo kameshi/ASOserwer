@@ -7,23 +7,10 @@ public class PromotionDTO implements Serializable {
     private Long id;
     private String name;
     private String description;
-    private Date dateFrom;
-    private Date dateTo;
+    private Date startDate;
+    private Date endDate;
     private double percent;
     private ServiceDTO service;
-
-    @Override
-    public String toString() {
-        return "PromotionDTO{" +
-                "promotionId=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", dateFrom='" + dateFrom + '\'' +
-                ", dateTo='" + dateTo + '\'' +
-                ", percent=" + percent +
-                ", service=" + service.toString() +
-                '}';
-    }
 
     public Long getId() {
         return id;
@@ -49,20 +36,20 @@ public class PromotionDTO implements Serializable {
         this.description = description;
     }
 
-    public Date getDateFrom() {
-        return dateFrom;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setDateFrom(Date dateFrom) {
-        this.dateFrom = dateFrom;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getDateTo() {
-        return dateTo;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setDateTo(Date dateTo) {
-        this.dateTo = dateTo;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public double getPercent() {

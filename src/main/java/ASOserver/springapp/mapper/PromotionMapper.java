@@ -10,8 +10,8 @@ public class PromotionMapper {
         promotion.setPromotionId(promotionDTO.getId());
         promotion.setName(promotionDTO.getName());
         promotion.setDescription(promotionDTO.getDescription());
-        promotion.setDateFrom(promotionDTO.getDateFrom());
-        promotion.setDateTo(promotionDTO.getDateTo());
+        promotion.setDateFrom(promotionDTO.getStartDate());
+        promotion.setDateTo(promotionDTO.getEndDate());
         promotion.setPercent(promotionDTO.getPercent());
         //promotion.setService(ServiceMapper.toService(promotionDTO.getService()));
         return promotion;
@@ -22,10 +22,10 @@ public class PromotionMapper {
         promotionDTO.setId(promotion.getPromotionId());
         promotionDTO.setName(promotion.getName());
         promotionDTO.setDescription(promotion.getDescription());
-        promotionDTO.setDateFrom(promotion.getDateFrom());
-        promotionDTO.setDateTo(promotion.getDateTo());
+        promotionDTO.setStartDate(promotion.getDateFrom());
+        promotionDTO.setEndDate(promotion.getDateTo());
         promotionDTO.setPercent(promotion.getPercent());
-        promotionDTO.setService(ServiceMapper.toServiceDTO(promotion.getService()));
+        //promotionDTO.setService(ServiceMapper.toServiceDTO(promotion.getService()));
         return promotionDTO;
     }
 }
