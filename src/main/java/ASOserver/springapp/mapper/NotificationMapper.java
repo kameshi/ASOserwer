@@ -9,7 +9,7 @@ public class NotificationMapper {
     public static NotificationDTO toNotificationDTO(Notification notification) {
         NotificationDTO notificationDTO = new NotificationDTO();
         notificationDTO.setId(notification.getNotificationId());
-        notificationDTO.setType(NotificationType.NotificationTypeEnum.valueOf(notification.getType()));
+        notificationDTO.setType(NotificationType.NotificationTypeEnum.getNotificationType(notification.getType()));
         notificationDTO.setDescription(notification.getDescription());
         return notificationDTO;
     }

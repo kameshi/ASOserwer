@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarDAO extends CrudRepository<Car, Long> {
-    @Query("SELECT v FROM Car v WHERE v.vin like ?1")
+    @Query("SELECT v FROM Car v WHERE v.vin like %?1%")
     Iterable<Car> findCarByVin(@Param("vin") String vin);
 }

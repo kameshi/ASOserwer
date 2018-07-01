@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/aso/rest/employer")
+@RequestMapping(value = "/aso/rest/employees")
 public class EmpolyeeRestController {
     private final EmployeeService employeeService;
 

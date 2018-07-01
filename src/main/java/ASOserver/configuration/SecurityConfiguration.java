@@ -1,72 +1,73 @@
 package ASOserver.configuration;
 
-
 import ASOserver.model.enums.AccessRight;
 import ASOserver.springapp.dto.AccountDTO;
 import ASOserver.springapp.service.AccountService;
+import ch.qos.logback.core.db.DriverManagerConnectionSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.sql.DataSource;
 import java.util.List;
 
-/**
- * Created by user on 2018-06-20.
- */
+
 @Configuration
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     @Autowired
-    private AccountService accountService;
+    private DataSource dataSource;
+    @Autowired
+    public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery("SELECT a.login AS USERNAME, a.password AS PASSWORD , a.enable as ENABLED FROM Account a WHERE a.login=?")
+                .authoritiesByUsernameQuery("SELECT a.login AS USERNAME, a.ACCESS_RIGHT AS ROLE FROM Account a WHERE a.login =?  ");
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http
                 .authorizeRequests()
-                .antMatchers("/aso/rest/AccessRightsRest/accessRights").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())//AccessRights.AccessRightsEnum.ADMINISTRATOR//nie wiem dokładnie bedzei w bzie
-                .antMatchers(HttpMethod.GET, "/aso/rest/cars").permitAll()
-                .antMatchers("/aso/rest/cars").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
-                .antMatchers("/aso/rest/customers").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
-                .antMatchers("/aso/rest/employer").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
-                .antMatchers("/aso/rest/NotyficationTypesRest").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
-                .antMatchers("/aso/rest/parts").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
-                .antMatchers("/aso/rest/promotion").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
-                .antMatchers("/aso/rest/replacement-cars").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
-                .antMatchers(HttpMethod.GET, "/aso/rest/services").permitAll()
-                .antMatchers("/aso/rest/services").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
-                .antMatchers("/aso/rest/SpecificServicesExecutionStatusRest").hasRole(AccessRight.AccessRightEnum.OFFICEWORKER.getAccessRight())
+                .antMatchers(HttpMethod.GET, "/aso/rest/cars").hasAnyRole("klient", "biurowy", "administrator")
+                .antMatchers("/aso/rest/cars").hasAnyRole("biurowy", "administrator")
+                .antMatchers("/aso/rest/customers").hasAnyRole("biurowy", "administrator")
+                .antMatchers("/aso/rest/employees").hasAnyRole("biurowy", "administrator")
+                .antMatchers("/aso/rest/notification-types").hasAnyRole("biurowy", "administrator")
+                .antMatchers("/aso/rest/parts").hasAnyRole("biurowy", "administrator")
+                .antMatchers("/aso/rest/promotions").hasAnyRole("biurowy", "administrator")
+                .antMatchers("/aso/rest/replacement-cars").hasAnyRole("biurowy", "administrator")
+                .antMatchers(HttpMethod.GET, "/aso/rest/services").hasAnyRole("klient", "biurowy", "administrator")
+                .antMatchers("/aso/rest/services/serviceId").hasAnyRole("biurowy", "administrator", "mechanik")
+                .antMatchers("/aso/rest/services").hasAnyRole("biurowy", "administrator", "mechanik")
+                .antMatchers("/aso/rest/specific-services-statuses").hasAnyRole("biurowy", "administrator")
+                .antMatchers("/aso/rest/service-positions").hasAnyRole("biurowy", "administrator")
+                .antMatchers("/aso/rest/notifications").hasAnyRole("biurowy", "administrator")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .usernameParameter("login")
+                .passwordParameter("password")
                 .defaultSuccessUrl("http://localhost:4200/")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")
                 .and()
                 .csrf().disable();
-
-
     }
 
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        List<AccountDTO> accountList = accountService.getAccountDTO();
-        for(int i = 0; i < accountList.size(); ++i) {
-            auth
-                    .inMemoryAuthentication()
-                    .withUser(accountList.get(i).getLogin()).password(accountList.get(i).getPassword()).roles(accountList.get(i).getAccessRight().getAccessRight());
-        }
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

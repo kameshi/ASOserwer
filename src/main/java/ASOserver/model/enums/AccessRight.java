@@ -6,10 +6,10 @@ import java.util.List;
 public class AccessRight {
 
     public enum AccessRightEnum {
-        CUSTOMER("klient"),
-        ADMINISTRATOR("administrator"),
-        MECHANIC("mechanik"),
-        OFFICEWORKER("pracownik biurowy");
+        CUSTOMER("ROLE_klient"),
+        ADMINISTRATOR("ROLE_administrator"),
+        MECHANIC("ROLE_mechanik"),
+        OFFICEWORKER("ROLE_biurowy");
 
         private String accessRight;
 
@@ -19,6 +19,15 @@ public class AccessRight {
 
         public String getAccessRight() {
             return accessRight;
+        }
+
+        public static AccessRightEnum getAccessRight(String name) {
+            for(AccessRightEnum current : AccessRightEnum.values()) {
+                if(current.accessRight.equals(name)) {
+                    return current;
+                }
+            }
+            return null;
         }
     }
 

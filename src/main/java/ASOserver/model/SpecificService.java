@@ -56,7 +56,7 @@ public class SpecificService{
     @OneToMany(mappedBy = "specificService", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ServicePart> serviceParts;
 
-    public SpecificService() {
+    public SpecificService(Date startDate, Date endDate, Date insertDate, String specificServiceStatus, String description, Employee employee, Promotion promotion, CustomerCar customerCar, ReplacementCar replacementCar, Service service) {
     }
 
     public SpecificService(Date startDate, Date endDate, Date insertDate, SpecificServiceStatus.SpecificServiceStatusEnum status,
