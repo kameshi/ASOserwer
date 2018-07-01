@@ -59,8 +59,9 @@ public class SpecificServiceService {
     public void updateSpecificService(Long specificServiceId, SpecificServiceDTO specificServiceDTO) throws Exception {
         specificServiceDTO.setId(specificServiceId);
         SpecificService specificService = specificServiceDAO.findById(specificServiceId).get();
-        if(specificService.getStatus().equals(SpecificServiceStatus.SpecificServiceStatusEnum.DURING)){
-            if(specificServiceDTO.getStatus().equals(SpecificServiceStatus.SpecificServiceStatusEnum.DURING)){
+        if(specificService.getStatus().equals(SpecificServiceStatus.SpecificServiceStatusEnum.DURING.getSpecificServiceStatus())){
+            System.out.println(specificServiceDTO.getStatus().getSpecificServiceStatus());
+            if(specificServiceDTO.getStatus().equals(SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED)){
                 Notification notification = notificationDAO.findByType(NotificationType.NotificationTypeEnum.END.getNotificationType());
                 Sendgrid mail = new Sendgrid("","");
                 String text = String.format(notification.getDescription(), specificServiceDTO.getCar().getRegistrationNumber());
