@@ -1,7 +1,6 @@
 package ASOserver.springapp.dao;
 
 import ASOserver.model.Notification;
-import ASOserver.model.enums.NotificationType;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

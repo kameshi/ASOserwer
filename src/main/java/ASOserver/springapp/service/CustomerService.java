@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -61,7 +62,11 @@ public class CustomerService {
         Account account = this.accountService.updateAccount(customerDTO.getAccount().getId(), customerDTO.getAccount());
         Customer customer = CustomerMapper.toCustomer(customerDTO);
         customer.setAccount(account);
-        this.customerDAO.save(customer);
+        Customer updatedCustomer = customerDAO.save(customer);
+        List<Car> cars = carService.insertCars(customerDTO.getCars().stream()
+                .filter(tmpCar -> tmpCar.getId() == null)
+                .collect(Collectors.toList()));
+        customerCarService.insertCustomerCar(updatedCustomer, cars);
     }
 
     public void deleteCustomer(Long customerId) {

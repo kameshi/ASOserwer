@@ -2,7 +2,6 @@ package ASOserver.springapp.service;
 
 import ASOserver.model.*;
 import ASOserver.springapp.dao.AccountDAO;
-import ASOserver.springapp.dao.CustomerDAO;
 import ASOserver.springapp.dao.InvoiceDAO;
 import ASOserver.springapp.dto.InvoiceDTO;
 import ASOserver.springapp.dto.SpecificServiceDTO;
