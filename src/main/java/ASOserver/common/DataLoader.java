@@ -1,5 +1,6 @@
 package ASOserver.common;
 
+import ASOserver.configuration.SecurityConfiguration;
 import ASOserver.model.*;
 import ASOserver.model.enums.*;
 import ASOserver.springapp.dao.*;

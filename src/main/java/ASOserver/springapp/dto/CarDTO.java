@@ -26,7 +26,7 @@ public class CarDTO implements Serializable{
                 ", capacity=" + engineSize +
                 ", power=" + enginePower +
                 ", reviewDate='" + reviewDate + '\'' +
-                ", customerDTO=" + customer.toString() +
+                //", customerDTO=" + customer.toString() +
                 '}';
     }
 
