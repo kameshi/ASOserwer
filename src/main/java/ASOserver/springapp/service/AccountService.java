@@ -2,9 +2,7 @@ package ASOserver.springapp.service;
 
 import ASOserver.common.HashUtils;
 import ASOserver.model.Account;
-import ASOserver.model.enums.AccessRight;
 import ASOserver.springapp.dao.AccountDAO;
-
 import ASOserver.springapp.dto.AccountDTO;
 import ASOserver.springapp.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,13 +43,14 @@ public class AccountService {
             if (tmpAccount.getLogin().equals(login)) {
                 account.setAccessRight(tmpAccount.getAccessRight());
                 account.setLogin(tmpAccount.getLogin());
-                if (!tmpAccount.getAccessRight().equals(AccessRight.AccessRightEnum.CUSTOMER.getAccessRight())) {
+                account.setAccountId(tmpAccount.getAccountId());
+                /*if (!tmpAccount.getAccessRight().equals(AccessRight.AccessRightEnum.CUSTOMER.getAccessRight())) {
                     account.setAccountId(tmpAccount.getEmployee().getEmployeeId());
                     break;
                 } else {
                     account.setAccountId(tmpAccount.getCustomer().getCustomerId());
                     break;
-                }
+                }*/
             }
         }
         return account;
@@ -78,4 +77,8 @@ public class AccountService {
         this.accountDAO.deleteById(accountId);
     }
 
+    public void disableAccount(Account account) {
+        account.setEnable(false);
+        accountDAO.save(account);
+    }
 }

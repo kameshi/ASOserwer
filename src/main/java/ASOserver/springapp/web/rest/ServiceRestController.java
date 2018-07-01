@@ -1,7 +1,7 @@
 package ASOserver.springapp.web.rest;
 
-import ASOserver.springapp.dto.*;
-import ASOserver.springapp.service.*;
+import ASOserver.springapp.dto.ServiceDTO;
+import ASOserver.springapp.service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;

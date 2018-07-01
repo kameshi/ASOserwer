@@ -1,9 +1,9 @@
 package ASOserver.springapp.service;
 
-import ASOserver.model.Car;
-import ASOserver.model.enums.AccessRight;
 import ASOserver.model.Account;
+import ASOserver.model.Car;
 import ASOserver.model.Customer;
+import ASOserver.model.enums.AccessRight;
 import ASOserver.springapp.dao.CustomerDAO;
 import ASOserver.springapp.dto.CustomerDTO;
 import ASOserver.springapp.mapper.CustomerMapper;
@@ -57,6 +57,7 @@ public class CustomerService {
 
     public void updateCustomer(Long customerId, CustomerDTO customerDTO) throws Exception {
         customerDTO.setId(customerId);
+        customerDTO.getAccount().setAccessRight(AccessRight.AccessRightEnum.CUSTOMER);
         Account account = this.accountService.updateAccount(customerDTO.getAccount().getId(), customerDTO.getAccount());
         Customer customer = CustomerMapper.toCustomer(customerDTO);
         customer.setAccount(account);
@@ -64,14 +65,18 @@ public class CustomerService {
     }
 
     public void deleteCustomer(Long customerId) {
-        this.customerDAO.deleteById(customerId);
+        Customer customer = customerDAO.findById(customerId).get();
+        accountService.disableAccount(customer.getAccount());
+        //this.customerDAO.deleteById(customerId);
     }
 
     public List<CustomerDTO> getCustomers() {
         Iterable<Customer> customerIterable = this.customerDAO.findAll();
         List<CustomerDTO> customerDTOList = new ArrayList<>();
         for(Customer customer : customerIterable){
-            customerDTOList.add(CustomerMapper.toCustomerDTO(customer));
+            if(customer.getAccount().getEnable()) {
+                customerDTOList.add(CustomerMapper.toCustomerDTO(customer));
+            }
         }
         return customerDTOList;
     }

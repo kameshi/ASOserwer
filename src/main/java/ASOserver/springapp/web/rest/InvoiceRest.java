@@ -1,6 +1,5 @@
 package ASOserver.springapp.web.rest;
 
-import ASOserver.springapp.dto.EmployeeDTO;
 import ASOserver.springapp.dto.InvoiceDTO;
 import ASOserver.springapp.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import java.util.List;
 @RestController
 @Scope("request")
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/aso/rest/invoiceRest")
+@RequestMapping(value = "/aso/rest/invoices")
 public class InvoiceRest {
     private final InvoiceService invoiceService;
 
@@ -37,7 +36,7 @@ public class InvoiceRest {
     }
 
     @GetMapping()
-    private ResponseEntity<Object> getEmployees(){
+    private ResponseEntity<Object> getInvoices(){
         try {
             List<InvoiceDTO> invoiceDTOList = this.invoiceService.getInvoice();
             return new ResponseEntity<Object>(invoiceDTOList, HttpStatus.OK);
@@ -48,10 +47,10 @@ public class InvoiceRest {
         }
     }
 
-    @GetMapping(value = "/{invoiceID}")
-    private ResponseEntity findInvoice(@PathVariable Long invoiceID) {
+    @GetMapping(value = "/{invoiceId}")
+    private ResponseEntity findInvoice(@PathVariable Long invoiceId) {
         try {
-            InvoiceDTO invoiceDTO = invoiceService.findInvoice(invoiceID);
+            InvoiceDTO invoiceDTO = invoiceService.findInvoice(invoiceId);
             return new ResponseEntity(invoiceDTO, HttpStatus.OK);
         }
         catch(Exception e){
@@ -60,10 +59,10 @@ public class InvoiceRest {
         }
     }
 
-    @PatchMapping(value = "/{invoiceID}")
-    private ResponseEntity updateInvoice(@PathVariable Long invoiceID, @RequestBody InvoiceDTO invoiceDTO) {
+    @PatchMapping(value = "/{invoiceId}")
+    private ResponseEntity updateInvoice(@PathVariable Long invoiceId, @RequestBody InvoiceDTO invoiceDTO) {
         try {
-            invoiceService.updateInvoice(invoiceID, invoiceDTO);
+            invoiceService.updateInvoice(invoiceId, invoiceDTO);
             return new ResponseEntity(HttpStatus.OK);
         }
         catch(Exception e){
@@ -72,15 +71,28 @@ public class InvoiceRest {
         }
     }
 
-    @DeleteMapping(value = "/{invoiceID}")
-    private ResponseEntity deleteInvoice(@PathVariable Long invoiceID) {
+    @DeleteMapping(value = "/{invoiceId}")
+    private ResponseEntity deleteInvoice(@PathVariable Long invoiceId) {
         try {
-            invoiceService.deleteInvoice(invoiceID);
+            invoiceService.deleteInvoice(invoiceId);
             return new ResponseEntity(HttpStatus.OK);
         }
         catch(Exception e){
             e.printStackTrace();
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    @GetMapping(value = "/customers/{customerId}")
+    private ResponseEntity<Object> getInvoicesByCustomerId(@PathVariable Long customerId){
+        try {
+            List<InvoiceDTO> invoiceDTOList = this.invoiceService.getInvoiceByCustomerId(customerId);
+            return new ResponseEntity<Object>(invoiceDTOList, HttpStatus.OK);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

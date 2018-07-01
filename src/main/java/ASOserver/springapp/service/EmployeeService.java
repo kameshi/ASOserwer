@@ -40,15 +40,19 @@ public class EmployeeService{
         this.employeeDAO.save(EmployeeMapper.toEmployee(employeeDTO));
     }
 
-    public void deleteEmployee(Long customerId) {
-        this.employeeDAO.deleteById(customerId);
+    public void deleteEmployee(Long employeeId) {
+        Employee employee = employeeDAO.findById(employeeId).get();
+        accountService.disableAccount(employee.getAccount());
+        //this.employeeDAO.deleteById(employeeId);
     }
 
     public List<EmployeeDTO> getEmployees() {
         Iterable<Employee> employeeIterable = this.employeeDAO.findAll();
         List<EmployeeDTO> employeeDTOList = new ArrayList<>();
         for(Employee employee : employeeIterable){
-            employeeDTOList.add(EmployeeMapper.toEmployeeDTO(employee));
+            if(employee.getAccount().getEnable()) {
+                employeeDTOList.add(EmployeeMapper.toEmployeeDTO(employee));
+            }
         }
         return employeeDTOList;
     }

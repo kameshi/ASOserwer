@@ -1,7 +1,9 @@
 package ASOserver.springapp.service;
 
 import ASOserver.model.*;
-import ASOserver.springapp.dao.*;
+import ASOserver.springapp.dao.AccountDAO;
+import ASOserver.springapp.dao.CarDAO;
+import ASOserver.springapp.dao.SpecificServiceDAO;
 import ASOserver.springapp.dto.SpecificServiceDTO;
 import ASOserver.springapp.mapper.SpecificServiceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,15 @@ public class SpecificServiceService {
     private final SpecificServiceDAO specificServiceDAO;
     private final AccountDAO accountDAO;
     private final CarDAO carDAO;
+    private final InvoiceService invoiceService;
 
     @Autowired
-    public SpecificServiceService(SpecificServiceDAO specificServiceDAO, AccountDAO accountDAO, CarDAO carDAO) {
+    public SpecificServiceService(SpecificServiceDAO specificServiceDAO, AccountDAO accountDAO, CarDAO carDAO,
+                                  InvoiceService invoiceService) {
         this.specificServiceDAO = specificServiceDAO;
         this.accountDAO = accountDAO;
         this.carDAO = carDAO;
+        this.invoiceService = invoiceService;
     }
 
     public List<SpecificServiceDTO> findSpecificServices() throws Exception {
@@ -37,8 +42,9 @@ public class SpecificServiceService {
         return SpecificServiceMapper.toSpecificServiceDTO(specificServiceDAO.findById(specificServiceId).get());
     }
 
-    public void insertSpecificService(SpecificServiceDTO SpecificServiceDTO) throws Exception {
-        this.specificServiceDAO.save(SpecificServiceMapper.toSpecificService(SpecificServiceDTO));
+    public void insertSpecificService(SpecificServiceDTO specificServiceDTO) throws Exception {
+        SpecificService specificService = specificServiceDAO.save(SpecificServiceMapper.toSpecificService(specificServiceDTO));
+        invoiceService.insertInvoice(specificService, specificServiceDTO);
     }
 
     public void updateSpecificService(Long specificServiceId, SpecificServiceDTO specificServiceDTO) throws Exception {
