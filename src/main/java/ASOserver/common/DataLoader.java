@@ -87,10 +87,10 @@ public class DataLoader implements ApplicationRunner {
 
     private List<Car> loadCars() {
         List<Car> cars = new ArrayList<>();
-        cars.add(carDAO.save(new Car("Seat", "Leon", "TSA AU74", "JTJHW31U560039130", (float) 1.6, 102, Date.valueOf("2018-07-01"))));
-        cars.add(carDAO.save(new Car("Renault", "Megan", "TST HF43G", "WF0AXXWPMAGR69936", (float) 1.9, 101, Date.valueOf("2018-07-01"))));
-        cars.add(carDAO.save(new Car("Volkswagen", "Polo", "TK GF53G", "WAUZZZ8E86A040764", (float) 1.2, 75, Date.valueOf("2019-07-01"))));
-        cars.add(carDAO.save(new Car("Citroen", "Saxo", "TK G45SH", "WF0AXXWPMAFY46539", (float) 1.1, 55, Date.valueOf("2018-07-01"))));
+        cars.add(carDAO.save(new Car("Seat", "Leon", "TSA AU74", "JTJHW31U560039130", (float) 1.6, 102, Date.valueOf("2018-07-02"))));
+        cars.add(carDAO.save(new Car("Renault", "Megan", "TST HF43G", "WF0AXXWPMAGR69936", (float) 1.9, 101, Date.valueOf("2018-07-02"))));
+        cars.add(carDAO.save(new Car("Volkswagen", "Polo", "TK GF53G", "WAUZZZ8E86A040764", (float) 1.2, 75, Date.valueOf("2019-07-02"))));
+        cars.add(carDAO.save(new Car("Citroen", "Saxo", "TK G45SH", "WF0AXXWPMAFY46539", (float) 1.1, 55, Date.valueOf("2018-07-02"))));
         return cars;
     }
 
@@ -122,8 +122,8 @@ public class DataLoader implements ApplicationRunner {
 
     private List<Notification> loadNotifications() {
         List<Notification> notifications = new ArrayList<>();
-        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.END.getNotificationType(), "przypominamy o przeglądzie samochodu dnia ")));
-        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.PROMOTION.getNotificationType(), "Nowa promocja \"%s\" od %s do %s")));
+        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.END.getNotificationType(), "Zakończyliśmy pracę na samochodem o numerze rejestracyjnym %s. Zapraszamy po odbiór")));
+        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.PROMOTION.getNotificationType(), "Nowa promocja \"%s\" od %s do %s. Po więcej informacji zapraszamy do warsztatu.")));
         notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.OVERVIEW.getNotificationType(), "Dla samochodu %s w dniu %s kończy się ważność przeglądu")));
         return notifications;
     }
@@ -172,7 +172,7 @@ public class DataLoader implements ApplicationRunner {
                 Date.valueOf("2018-4-20"),
                 Date.valueOf("2018-4-20"),
                 Date.valueOf("2018-4-20"),
-                SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED.getSpecificServiceStatus(),
+                SpecificServiceStatus.SpecificServiceStatusEnum.DURING.getSpecificServiceStatus(),
                 "przegląd samochodu seat leon 2 b+g",
                 employees.get(0), promotions.get(0), customerCars.get(0), replacementCars.get(0), services.get(1)
         )));
@@ -180,7 +180,7 @@ public class DataLoader implements ApplicationRunner {
                 Date.valueOf("2018-5-20"),
                 Date.valueOf("2018-5-20"),
                 Date.valueOf("2018-5-20"),
-                SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED.getSpecificServiceStatus(),
+                SpecificServiceStatus.SpecificServiceStatusEnum.DURING.getSpecificServiceStatus(),
                 "przegląd samochodu renault megan diesel",
                 employees.get(1), promotions.get(1), customerCars.get(1), replacementCars.get(1), services.get(2)
         )));
@@ -188,7 +188,7 @@ public class DataLoader implements ApplicationRunner {
                 Date.valueOf("2018-5-20"),
                 Date.valueOf("2018-5-20"),
                 Date.valueOf("2018-5-20"),
-                SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED.getSpecificServiceStatus(),
+                SpecificServiceStatus.SpecificServiceStatusEnum.DURING.getSpecificServiceStatus(),
                 "przegląd samochodu seat leon 2 b+g",
                 employees.get(1), promotions.get(1), customerCars.get(1), replacementCars.get(1), services.get(2)
         )));

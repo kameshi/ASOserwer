@@ -1,6 +1,5 @@
 package ASOserver.common;
 
-import ASOserver.model.Car;
 import ASOserver.model.CustomerCar;
 import ASOserver.model.Notification;
 import ASOserver.model.enums.NotificationType;
@@ -19,33 +18,32 @@ import java.time.LocalDate;
 public class EmailSenderRunnable implements Runnable {
 
     @Autowired
-    public CarDAO carDAO;
+    public CustomerCarDAO customerCarDAO;
     @Autowired
     public NotificationDAO notificationDAO;
+    @Autowired
+    public CustomerDAO customerDAO;
+    @Autowired
+    public CarDAO carDAO;
 
     public void run(){
-        System.out.println("Jestem");
-        Iterable<Car> carsIterable = carDAO.findAll();
+        Iterable<CustomerCar> customerCarIterable = customerCarDAO.findAll();
         Date localDate = Date.valueOf(LocalDate.now());
         Notification notification = notificationDAO.findByType(NotificationType.NotificationTypeEnum.END.getNotificationType());
-        for (Car car : carsIterable) {
-            System.out.println("Jestem1");
-            System.out.println(localDate + " " + car.getReviewDate());
-            if(localDate.equals(car.getReviewDate())){
-                System.out.println("Jestem2");
-                for (CustomerCar customerCar : car.getCustomerCars()){
-                    System.out.println("Jestem3");
-                    Sendgrid mail = new Sendgrid("Kameshi9303","333221Marekm");
-                    String text = String.format(notification.getDescription(), car.getRegistrationNumber(), car.getReviewDate());
-                    mail.setTo(customerCar.getCustomer().geteMail())
-                            .setFrom("aso@aso.com")
-                            .setSubject("Powaidomienie ASO")
-                            .setText(text);
-                    try {
-                        mail.send();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+        for(CustomerCar customerCar : customerCarIterable){
+            System.out.println(customerCar.toString());
+            if(localDate.equals(customerCar.getCar().getReviewDate())){
+                Sendgrid mail = new Sendgrid("","");
+                String text = String.format(notification.getDescription(), customerCar.getCar().getRegistrationNumber(), customerCar.getCar().getReviewDate());
+                System.out.println(customerCar.getCustomer().geteMail());
+                mail.setTo(customerCar.getCustomer().geteMail())
+                        .setFrom("aso@aso.com")
+                        .setSubject("Powaidomienie ASO")
+                        .setText(text);
+                try {
+                    mail.send();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         }
