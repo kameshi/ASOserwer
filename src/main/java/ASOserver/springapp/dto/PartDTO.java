@@ -6,6 +6,7 @@ public class PartDTO implements Serializable {
 
     private Long id;
     private String name;
+    private Integer quantity;
     private double price;
 
     @Override
@@ -31,6 +32,14 @@ public class PartDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public double getPrice() {

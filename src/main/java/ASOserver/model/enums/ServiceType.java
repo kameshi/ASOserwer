@@ -1,5 +1,8 @@
 package ASOserver.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +17,16 @@ public class ServiceType {
 
         private ServiceTypeEnum(String serviceType) {
             this.serviceType = serviceType;
+        }
+
+        @JsonCreator
+        public static ServiceTypeEnum fromValue(String value) {
+            return getServiceType(value);
+        }
+
+        @JsonValue
+        public String toJson() {
+            return getServiceType();
         }
 
         public String getServiceType() {

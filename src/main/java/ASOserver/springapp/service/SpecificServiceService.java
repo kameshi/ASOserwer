@@ -13,15 +13,13 @@ import java.util.List;
 @Service
 public class SpecificServiceService {
     private final SpecificServiceDAO specificServiceDAO;
-    private final EmployeeDAO employeeDAO;
-    private final CustomerDAO customerDAO;
+    private final AccountDAO accountDAO;
     private final CarDAO carDAO;
 
     @Autowired
-    public SpecificServiceService(SpecificServiceDAO specificServiceDAO, EmployeeDAO employeeDAO, CustomerDAO customerDAO, CarDAO carDAO) {
+    public SpecificServiceService(SpecificServiceDAO specificServiceDAO, AccountDAO accountDAO, CarDAO carDAO) {
         this.specificServiceDAO = specificServiceDAO;
-        this.employeeDAO = employeeDAO;
-        this.customerDAO = customerDAO;
+        this.accountDAO = accountDAO;
         this.carDAO = carDAO;
     }
 
@@ -52,9 +50,20 @@ public class SpecificServiceService {
         specificServiceDAO.deleteById(specificServiceId);
     }
 
-    public List<SpecificServiceDTO> findSpecificServicesByEmployeeId(Long employeeId) throws Exception {
-        Employee employee = employeeDAO.findById(employeeId).get();
+    public List<SpecificServiceDTO> findSpecificServicesByEmployeeId(Long accountId) throws Exception {
+        Account account = accountDAO.findById(accountId).get();
+
+        if(account.getEmployee() == null) {
+            return null;
+        }
+
+        Employee employee = account.getEmployee();
         List<SpecificServiceDTO> specificServiceDTOList = new ArrayList<>();
+
+        if(employee.getSpecificService().size() == 0){
+            return null;
+        }
+
         for(SpecificService tmpSpecificService : employee.getSpecificService()){
             specificServiceDTOList.add(SpecificServiceMapper.toSpecificServiceDTO(tmpSpecificService));
         }
@@ -62,9 +71,19 @@ public class SpecificServiceService {
         return specificServiceDTOList;
     }
 
-    public List<SpecificServiceDTO> findSpecificServicesByCustomerId(Long customerId) throws Exception {
-        Customer customer = customerDAO.findById(customerId).get();
+    public List<SpecificServiceDTO> findSpecificServicesByCustomerId(Long accountId) throws Exception {
+        Account account = accountDAO.findById(accountId).get();
+
+        if(account.getCustomer() == null) {
+            return null;
+        }
+
+        Customer customer = account.getCustomer();
         List<SpecificServiceDTO> specificServiceDTOList = new ArrayList<>();
+
+        if(customer.getCustomerCars().size() == 0) {
+            return null;
+        }
 
         for(CustomerCar tmpCustomerCar : customer.getCustomerCars()) {
             for (SpecificService tmpSpecificService : tmpCustomerCar.getSpecificServices()) {

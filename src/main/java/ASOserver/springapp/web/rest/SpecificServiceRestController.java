@@ -82,10 +82,10 @@ public class SpecificServiceRestController {
         }
     }
 
-    @GetMapping(value = "/employees/{employeeId}")
-    private ResponseEntity findSpecificServicesByEmployeeId(@PathVariable Long employeeId){
+    @GetMapping(value = "/employees/{accountId}")
+    private ResponseEntity findSpecificServicesByEmployeeId(@PathVariable Long accountId){
         try {
-            List<SpecificServiceDTO> specificServiceDTOList = specificServiceService.findSpecificServicesByEmployeeId(employeeId);
+            List<SpecificServiceDTO> specificServiceDTOList = specificServiceService.findSpecificServicesByEmployeeId(accountId);
             return new ResponseEntity(specificServiceDTOList, HttpStatus.OK);
         }
         catch(Exception e){
@@ -94,10 +94,10 @@ public class SpecificServiceRestController {
         }
     }
 
-    @GetMapping(value = "/clients/{customerId}")
-    private ResponseEntity findSpecificServicesByCustomerId(@PathVariable Long customerId){
+    @GetMapping(value = "/clients/{accountId}")
+    private ResponseEntity findSpecificServicesByCustomerId(@PathVariable Long accountId){
         try {
-            List<SpecificServiceDTO> specificServiceDTOList = specificServiceService.findSpecificServicesByCustomerId(customerId);
+            List<SpecificServiceDTO> specificServiceDTOList = specificServiceService.findSpecificServicesByCustomerId(accountId);
             return new ResponseEntity(specificServiceDTOList, HttpStatus.OK);
         }
         catch(Exception e){

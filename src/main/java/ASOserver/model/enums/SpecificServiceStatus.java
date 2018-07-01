@@ -1,5 +1,8 @@
 package ASOserver.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +16,16 @@ public class SpecificServiceStatus {
 
         private SpecificServiceStatusEnum(String specificServiceStatus) {
             this.specificServiceStatus = specificServiceStatus;
+        }
+
+        @JsonCreator
+        public static SpecificServiceStatusEnum fromValue(String value) {
+            return getSpecificServiceStatus(value);
+        }
+
+        @JsonValue
+        public String toJson() {
+            return getSpecificServiceStatus();
         }
 
         public String getSpecificServiceStatus() {

@@ -1,5 +1,8 @@
 package ASOserver.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +18,16 @@ public class AccessRight {
 
         private AccessRightEnum(String accessRight) {
             this.accessRight = accessRight;
+        }
+
+        @JsonCreator
+        public static AccessRightEnum fromValue(String value) {
+            return getAccessRight(value);
+        }
+
+        @JsonValue
+        public String toJson() {
+            return getAccessRight();
         }
 
         public String getAccessRight() {

@@ -1,5 +1,8 @@
 package ASOserver.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +16,16 @@ public class PaymentMethod {
 
         private PaymentMethodEnum(String paymentMethod) {
             this.paymentMethod = paymentMethod;
+        }
+
+        @JsonCreator
+        public static PaymentMethodEnum fromValue(String value) {
+            return getPaymentMethod(value);
+        }
+
+        @JsonValue
+        public String toJson() {
+            return getPaymentMethod();
         }
 
         public String getPaymentMethod() {

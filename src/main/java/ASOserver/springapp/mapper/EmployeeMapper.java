@@ -14,7 +14,8 @@ public class EmployeeMapper {
         employee.seteMail(employeeDTO.getEmail());
         employee.setPesel(employeeDTO.getPesel());
         employee.setPhoneNumber(employeeDTO.getPhoneNumber());
-        employee.setAccount(AccountMapper.toAccount(employeeDTO.getAccount()));
+        if(employeeDTO.getAccount() != null)
+            employee.setAccount(AccountMapper.toAccount(employeeDTO.getAccount()));
         return employee;
     }
 

@@ -1,5 +1,8 @@
 package ASOserver.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +16,16 @@ public class NotificationType {
 
         private NotificationTypeEnum(String notificationType) {
             this.notificationType = notificationType;
+        }
+
+        @JsonCreator
+        public static NotificationTypeEnum fromValue(String value) {
+            return getNotificationType(value);
+        }
+
+        @JsonValue
+        public String toJson() {
+            return getNotificationType();
         }
 
         public String getNotificationType() {
