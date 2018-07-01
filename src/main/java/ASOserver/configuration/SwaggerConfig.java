@@ -1,5 +1,6 @@
 package ASOserver.configuration;
 
+import io.swagger.annotations.Api;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -26,12 +27,12 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("ASO SERVER API")
-                .description("ASO SERVER API")
+                .title("SpringMVC Example API")
+                .description("SpringMVC Example API reference for developers")
                 .termsOfServiceUrl("http://hantsy.blogspot.com")
                 .license("Apache License Version 2.0")
                 .licenseUrl("https://github.com/springfox/springfox/blob/master/LICENSE")
-                .version("1.0")
+                .version("2.0")
                 .build();
     }
 }

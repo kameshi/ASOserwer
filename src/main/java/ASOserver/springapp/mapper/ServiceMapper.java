@@ -20,7 +20,7 @@ public class ServiceMapper {
         serviceDTO.setId(service.getServiceId());
         serviceDTO.setName(service.getName());
         serviceDTO.setPrice(service.getPrice());
-        serviceDTO.setType(ServiceType.ServiceTypeEnum.getServiceType(service.getType()));
+        serviceDTO.setType(ServiceType.ServiceTypeEnum.valueOf(service.getType()));
         return serviceDTO;
     }
 }

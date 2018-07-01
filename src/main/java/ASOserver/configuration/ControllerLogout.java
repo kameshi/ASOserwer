@@ -53,7 +53,7 @@ public class ControllerLogout {
         AccountDTO accountDTO = new AccountDTO();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
-            UserDetails userDetails = (UserDetails) (UserDetails) auth.getPrincipal();
+            UserDetails userDetails = (UserDetails) auth.getPrincipal();
             accountDTO.setLogin(userDetails.getUsername());
         }
         try {

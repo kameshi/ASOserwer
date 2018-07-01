@@ -31,15 +31,6 @@ public class SpecificServiceStatus {
         public String getSpecificServiceStatus() {
             return specificServiceStatus;
         }
-
-        public static SpecificServiceStatusEnum getSpecificServiceStatus(String name) {
-            for(SpecificServiceStatusEnum current : SpecificServiceStatusEnum.values()) {
-                if(current.specificServiceStatus.equals(name)) {
-                    return current;
-                }
-            }
-            return null;
-        }
     }
 
     public List<String> getSpecificServiceStatuses() {

@@ -20,7 +20,7 @@ public class AccountMapper {
         accountDTO.setId(account.getAccountId());
         accountDTO.setLogin(account.getLogin());
         accountDTO.setPassword(account.getPassword());
-        accountDTO.setAccessRight(AccessRight.AccessRightEnum.getAccessRight(account.getAccessRight()));
+        accountDTO.setAccessRight(AccessRight.AccessRightEnum.valueOf(account.getAccessRight()));
         return accountDTO;
     }
 }
