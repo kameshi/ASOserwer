@@ -84,10 +84,10 @@ public class InvoiceRest {
     }
 
 
-    @GetMapping(value = "/customers/{customerId}")
-    private ResponseEntity<Object> getInvoicesByCustomerId(@PathVariable Long customerId){
+    @GetMapping(value = "/customers/{accountId}")
+    private ResponseEntity<Object> getInvoicesByCustomerId(@PathVariable Long accountId){
         try {
-            List<InvoiceDTO> invoiceDTOList = this.invoiceService.getInvoiceByCustomerId(customerId);
+            List<InvoiceDTO> invoiceDTOList = this.invoiceService.getInvoiceByCustomerId(accountId);
             return new ResponseEntity<Object>(invoiceDTOList, HttpStatus.OK);
         }
         catch(Exception e){

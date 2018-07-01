@@ -1,9 +1,7 @@
 package ASOserver.springapp.service;
 
-import ASOserver.model.Customer;
-import ASOserver.model.CustomerCar;
-import ASOserver.model.Invoice;
-import ASOserver.model.SpecificService;
+import ASOserver.model.*;
+import ASOserver.springapp.dao.AccountDAO;
 import ASOserver.springapp.dao.CustomerDAO;
 import ASOserver.springapp.dao.InvoiceDAO;
 import ASOserver.springapp.dto.InvoiceDTO;
@@ -18,12 +16,12 @@ import java.util.List;
 @Service
 public class InvoiceService {
     private final InvoiceDAO invoiceDAO;
-    private final CustomerDAO customerDAO;
+    private final AccountDAO accountDAO;
 
     @Autowired
-    public InvoiceService(InvoiceDAO invoiceDAO, CustomerDAO customerDAO) {
+    public InvoiceService(InvoiceDAO invoiceDAO, AccountDAO accountDAO) {
         this.invoiceDAO = invoiceDAO;
-        this.customerDAO = customerDAO;
+        this.accountDAO = accountDAO;
     }
 
     public void insertInvoice(InvoiceDTO invoiceDTO) {
@@ -52,8 +50,14 @@ public class InvoiceService {
         this.invoiceDAO.deleteById(invoiceID);
     }
 
-    public List<InvoiceDTO> getInvoiceByCustomerId(Long customerId) {
-        Customer customer = customerDAO.findById(customerId).get();
+    public List<InvoiceDTO> getInvoiceByCustomerId(Long accountId) {
+        Account account = accountDAO.findById(accountId).get();
+
+        if(account.getCustomer() == null) {
+            return null;
+        }
+
+        Customer customer = account.getCustomer();
         List<InvoiceDTO> invoiceDTOS = new ArrayList<>();
         for(CustomerCar customerCar : customer.getCustomerCars()) {
             for(SpecificService specificService : customerCar.getSpecificServices()) {
