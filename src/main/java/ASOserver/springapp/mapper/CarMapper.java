@@ -31,4 +31,17 @@ public class CarMapper {
         carDTO.setCustomer(CustomerMapper.toCustomerDTO(car.getCustomerCars().stream().findFirst().get().getCustomer()));
         return carDTO;
     }
+
+    public static CarDTO toCarDTOWithoutCustomer(Car car) {
+        CarDTO carDTO = new CarDTO();
+        carDTO.setId(car.getCarId());
+        carDTO.setMake(car.getMake());
+        carDTO.setModel(car.getModel());
+        carDTO.setRegistrationNumber(car.getRegistrationNumber());
+        carDTO.setVin(car.getVin());
+        carDTO.setEngineSize(car.getCapacity());
+        carDTO.setEnginePower(car.getPower());
+        carDTO.setReviewDate(car.getReviewDate());
+        return carDTO;
+    }
 }

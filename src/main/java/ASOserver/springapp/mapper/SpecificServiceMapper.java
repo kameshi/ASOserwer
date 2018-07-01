@@ -40,8 +40,8 @@ public class SpecificServiceMapper {
         specificServiceDTO.setPromotion(PromotionMapper.toPromotionDTO(specificService.getPromotion()));
         specificServiceDTO.setDescription(specificService.getDescription());
         specificServiceDTO.setEmployee(EmployeeMapper.toEmployeeDTO(specificService.getEmployee()));
-        specificServiceDTO.setCar(CarMapper.toCarDTO(specificService.getCustomerCar().getCar()));
-        specificServiceDTO.setClient(CustomerMapper.toCustomerDTO(specificService.getCustomerCar().getCustomer()));
+        specificServiceDTO.setCar(CarMapper.toCarDTOWithoutCustomer(specificService.getCustomerCar().getCar()));
+        specificServiceDTO.setClient(CustomerMapper.toCustomerDTOWithoutCars(specificService.getCustomerCar().getCustomer()));
         return specificServiceDTO;
     }
 }
