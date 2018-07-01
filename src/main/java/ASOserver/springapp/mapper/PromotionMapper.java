@@ -13,7 +13,8 @@ public class PromotionMapper {
         promotion.setDateFrom(promotionDTO.getStartDate());
         promotion.setDateTo(promotionDTO.getEndDate());
         promotion.setPercent(promotionDTO.getPercent());
-        //promotion.setService(ServiceMapper.toService(promotionDTO.getService()));
+        if(promotionDTO.getService() != null)
+            promotion.setService(ServiceMapper.toService(promotionDTO.getService()));
         return promotion;
     }
 
@@ -25,7 +26,8 @@ public class PromotionMapper {
         promotionDTO.setStartDate(promotion.getDateFrom());
         promotionDTO.setEndDate(promotion.getDateTo());
         promotionDTO.setPercent(promotion.getPercent());
-        //promotionDTO.setService(ServiceMapper.toServiceDTO(promotion.getService()));
+        if(promotion.getService() != null)
+            promotionDTO.setService(ServiceMapper.toServiceDTO(promotion.getService()));
         return promotionDTO;
     }
 }

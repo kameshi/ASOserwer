@@ -76,7 +76,7 @@ public class SpecificServiceService {
         SpecificService specificServiceToAdd = SpecificServiceMapper.buildSpecificServiceToAdd(specificServiceDTO, customerCar);
         specificServiceToAdd.setEmployee(employee);
         SpecificService updatedSpecificService = specificServiceDAO.save(specificServiceToAdd);
-        invoiceService.insertOrUpdateInvoice(updatedSpecificService, specificServiceDTO);
+        //invoiceService.insertOrUpdateInvoice(updatedSpecificService, specificServiceDTO);
     }
 
     public void deleteSpecificService(Long specificServiceId) throws Exception {

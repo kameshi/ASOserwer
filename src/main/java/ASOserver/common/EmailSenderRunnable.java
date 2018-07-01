@@ -5,8 +5,6 @@ import ASOserver.model.CustomerCar;
 import ASOserver.model.Notification;
 import ASOserver.model.enums.NotificationType;
 import ASOserver.springapp.dao.CarDAO;
-import ASOserver.springapp.dao.CustomerCarDAO;
-import ASOserver.springapp.dao.CustomerDAO;
 import ASOserver.springapp.dao.NotificationDAO;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
