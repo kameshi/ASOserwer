@@ -2,6 +2,7 @@ package ASOserver.springapp.mapper;
 
 import ASOserver.model.CustomerCar;
 import ASOserver.model.SpecificService;
+import ASOserver.model.enums.SpecificServiceStatus;
 import ASOserver.springapp.dto.SpecificServiceDTO;
 
 public class SpecificServiceMapper {
@@ -14,17 +15,11 @@ public class SpecificServiceMapper {
         specificService.setStartDate(specificServiceDTO.getStartDate());
         specificService.setEndDate(specificServiceDTO.getEndDate());
         specificService.setInsertDate(specificServiceDTO.getInsertionDate());
-
         specificService.setStatus(specificServiceDTO.getStatus().getSpecificServiceStatus());
         if(specificServiceDTO.getReplacementCar() != null)
             specificService.setReplacementCar(ReplacementCarMapper.toReplacementCar(specificServiceDTO.getReplacementCar()));
         if(specificServiceDTO.getPromotion() != null)
             specificService.setPromotion(PromotionMapper.toPromotion(specificServiceDTO.getPromotion()));
-
-        specificService.setStatus(specificServiceDTO.getStatus());
-        specificService.setReplacementCar(ReplacementCarMapper.toReplacementCar(specificServiceDTO.getReplacementCar()));
-        specificService.setPromotion(PromotionMapper.toPromotion(specificServiceDTO.getPromotion()));
-
         specificService.setDescription(specificServiceDTO.getDescription());
         specificService.setEmployee(EmployeeMapper.toEmployee(specificServiceDTO.getEmployee()));
         specificService.setCustomerCar(new CustomerCar());
@@ -40,7 +35,7 @@ public class SpecificServiceMapper {
         specificServiceDTO.setStartDate(specificService.getStartDate());
         specificServiceDTO.setEndDate(specificService.getEndDate());
         specificServiceDTO.setInsertionDate(specificService.getInsertDate());
-        specificServiceDTO.setStatus(specificService.getStatus());
+        specificServiceDTO.setStatus(SpecificServiceStatus.SpecificServiceStatusEnum.getSpecificServiceStatus(specificService.getStatus()));
         specificServiceDTO.setReplacementCar(ReplacementCarMapper.toReplacementCarDTO(specificService.getReplacementCar()));
         specificServiceDTO.setPromotion(PromotionMapper.toPromotionDTO(specificService.getPromotion()));
         specificServiceDTO.setDescription(specificService.getDescription());

@@ -32,6 +32,15 @@ public class ServiceType {
         public String getServiceType() {
             return serviceType;
         }
+
+        public static ServiceTypeEnum getServiceType(String name) {
+            for(ServiceTypeEnum current : ServiceTypeEnum.values()) {
+                if(current.serviceType.equals(name)) {
+                    return current;
+                }
+            }
+            return null;
+        }
     }
 
     public List<String> getServiceTypes() {

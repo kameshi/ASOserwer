@@ -54,13 +54,13 @@ public class DashboardService {
     private void countSpecificServicesByStatus(DashboardDTO dashboardDTO) throws Exception {
         long newServices = 0, activeServices = 0, finishedServices = 0;
         for(SpecificService tmpSpecificService : specificServiceDAO.findAll()) {
-            if(tmpSpecificService.getStatus() == SpecificServiceStatus.SpecificServiceStatusEnum.NEW) {
+            if(tmpSpecificService.getStatus() == SpecificServiceStatus.SpecificServiceStatusEnum.NEW.getSpecificServiceStatus()) {
                 newServices++;
             }
-            else if(tmpSpecificService.getStatus() == SpecificServiceStatus.SpecificServiceStatusEnum.DURING) {
+            else if(tmpSpecificService.getStatus() == SpecificServiceStatus.SpecificServiceStatusEnum.DURING.getSpecificServiceStatus()) {
                 activeServices++;
             }
-            else if(tmpSpecificService.getStatus() == SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED) {
+            else if(tmpSpecificService.getStatus() == SpecificServiceStatus.SpecificServiceStatusEnum.FINISHED.getSpecificServiceStatus()) {
                 finishedServices++;
             }
         }

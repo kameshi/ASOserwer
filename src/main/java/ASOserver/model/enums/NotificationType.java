@@ -12,10 +12,10 @@ public class NotificationType {
         REMINDER("przypomnienie"),
         DEMAND("wezwanie");
 
-        private String NotificationType;
+        private String notificationType;
 
-        private NotificationTypeEnum(String NotificationType) {
-            this.NotificationType = NotificationType;
+        private NotificationTypeEnum(String notificationType) {
+            this.notificationType = notificationType;
         }
 
         @JsonCreator
@@ -29,7 +29,16 @@ public class NotificationType {
         }
 
         public String getNotificationType() {
-            return NotificationType;
+            return notificationType;
+        }
+
+        public static NotificationTypeEnum getNotificationType(String type) {
+            for(NotificationTypeEnum current : NotificationTypeEnum.values()) {
+                if(current.notificationType.equals(type)) {
+                    return current;
+                }
+            }
+            return null;
         }
     }
 

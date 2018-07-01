@@ -31,6 +31,15 @@ public class PaymentMethod {
         public String getPaymentMethod() {
             return paymentMethod;
         }
+
+        public static PaymentMethodEnum getPaymentMethod(String name) {
+            for(PaymentMethodEnum current : PaymentMethodEnum.values()) {
+                if(current.paymentMethod.equals(name)) {
+                    return current;
+                }
+            }
+            return null;
+        }
     }
 
     public List<String> getPaymentMethods() {
