@@ -49,7 +49,7 @@ public class ControllerLogout {
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/login?logout";//strona logowania
+        return "/login";//strona logowania
     }
     @RequestMapping(value = "/aso/rest/get", method = RequestMethod.GET)
     public ResponseEntity getAccountUserDTO() throws UnauthorizedException {
@@ -62,11 +62,14 @@ public class ControllerLogout {
         try {
             Account account = accountService.getAccountIdiCos(accountDTO.getLogin());
             accountDTO = AccountMapper.toAccountDTO(account);
+            if(!accountDTO.getLogin().equals(null)){
+                return new ResponseEntity(accountDTO, HttpStatus.OK);
+            }else {
+                return new ResponseEntity(accountDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         } catch (Exception e) {
             e.printStackTrace();
+            return new ResponseEntity(accountDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-
-        return new ResponseEntity(accountDTO, HttpStatus.OK);
     }
 }
