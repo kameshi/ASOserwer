@@ -8,9 +8,9 @@ import java.util.List;
 
 public class NotificationType {
     public enum NotificationTypeEnum {
-        NOTIFICATION("powiadomienie"),
-        REMINDER("przypomnienie"),
-        DEMAND("wezwanie");
+        OVERVIEW("przeglad"),
+        PROMOTION("promocja"),
+        END("zakończenie");
 
         private String notificationType;
 

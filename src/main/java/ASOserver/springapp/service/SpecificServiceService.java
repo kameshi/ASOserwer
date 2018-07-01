@@ -1,8 +1,12 @@
 package ASOserver.springapp.service;
 
+import ASOserver.common.Sendgrid;
 import ASOserver.model.*;
+import ASOserver.model.enums.NotificationType;
+import ASOserver.model.enums.SpecificServiceStatus;
 import ASOserver.springapp.dao.AccountDAO;
 import ASOserver.springapp.dao.CarDAO;
+import ASOserver.springapp.dao.NotificationDAO;
 import ASOserver.springapp.dao.SpecificServiceDAO;
 import ASOserver.springapp.dto.SpecificServiceDTO;
 import ASOserver.springapp.mapper.SpecificServiceMapper;
@@ -18,14 +22,16 @@ public class SpecificServiceService {
     private final AccountDAO accountDAO;
     private final CarDAO carDAO;
     private final InvoiceService invoiceService;
+    private final NotificationDAO notificationDAO;
 
     @Autowired
     public SpecificServiceService(SpecificServiceDAO specificServiceDAO, AccountDAO accountDAO, CarDAO carDAO,
-                                  InvoiceService invoiceService) {
+                                  InvoiceService invoiceService, NotificationDAO notificationDAO) {
         this.specificServiceDAO = specificServiceDAO;
         this.accountDAO = accountDAO;
         this.carDAO = carDAO;
         this.invoiceService = invoiceService;
+        this.notificationDAO = notificationDAO;
     }
 
     public List<SpecificServiceDTO> findSpecificServices() throws Exception {
@@ -48,7 +54,20 @@ public class SpecificServiceService {
     }
 
     public void updateSpecificService(Long specificServiceId, SpecificServiceDTO specificServiceDTO) throws Exception {
-        specificServiceDTO.setId(specificServiceId);
+        specificServiceDTO.setId(specificServiceId);;
+        SpecificService specificService = specificServiceDAO.findById(specificServiceId).get();
+        if(specificService.getStatus().equals(SpecificServiceStatus.SpecificServiceStatusEnum.DURING)){
+            if(specificServiceDTO.getStatus().equals(SpecificServiceStatus.SpecificServiceStatusEnum.DURING)){
+                Notification notification = notificationDAO.findByType(NotificationType.NotificationTypeEnum.END.getNotificationType());
+                Sendgrid mail = new Sendgrid("Kameshi9303","333221Marekm");
+                String text = String.format(notification.getDescription(), specificServiceDTO.getCar().getRegistrationNumber());
+                mail.setTo(specificServiceDTO.getClient().getEmail())
+                        .setFrom("aso@aso.com")
+                        .setSubject("Powaidomienie ASO")
+                        .setText(text);
+                mail.send();
+            }
+        }
         specificServiceDAO.save(SpecificServiceMapper.toSpecificService(specificServiceDTO));
     }
 

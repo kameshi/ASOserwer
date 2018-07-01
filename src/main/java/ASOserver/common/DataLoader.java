@@ -86,19 +86,19 @@ public class DataLoader implements ApplicationRunner {
 
     private List<Car> loadCars() {
         List<Car> cars = new ArrayList<>();
-        cars.add(carDAO.save(new Car("Seat", "Leon", "TSA AU74", "JTJHW31U560039130", (float) 1.6, 102, Date.valueOf("2018-10-20"))));
-        cars.add(carDAO.save(new Car("Renault", "Megan", "TST HF43G", "WF0AXXWPMAGR69936", (float) 1.9, 101, Date.valueOf("2018-9-07"))));
-        cars.add(carDAO.save(new Car("Volkswagen", "Polo", "TK GF53G", "WAUZZZ8E86A040764", (float) 1.2, 75, Date.valueOf("2019-03-1"))));
-        cars.add(carDAO.save(new Car("Citroen", "Saxo", "TK G45SH", "WF0AXXWPMAFY46539", (float) 1.1, 55, Date.valueOf("2018-7-13"))));
+        cars.add(carDAO.save(new Car("Seat", "Leon", "TSA AU74", "JTJHW31U560039130", (float) 1.6, 102, Date.valueOf("2018-07-01"))));
+        cars.add(carDAO.save(new Car("Renault", "Megan", "TST HF43G", "WF0AXXWPMAGR69936", (float) 1.9, 101, Date.valueOf("2018-07-01"))));
+        cars.add(carDAO.save(new Car("Volkswagen", "Polo", "TK GF53G", "WAUZZZ8E86A040764", (float) 1.2, 75, Date.valueOf("2019-07-01"))));
+        cars.add(carDAO.save(new Car("Citroen", "Saxo", "TK G45SH", "WF0AXXWPMAFY46539", (float) 1.1, 55, Date.valueOf("2018-07-01"))));
         return cars;
     }
 
     private List<Customer> loadCustomers(List<Account> accounts) {
         List<Customer> customers = new ArrayList<>();
-        customers.add(customerDAO.save(new Customer("Marek", "Madeła", "93121244674", "marekm@aso.pl", "666710482", accounts.get(2))));
-        customers.add(customerDAO.save(new Customer("Mateusz", "Maciąg", "93121245739", "mateuszm@aso.pl", "534565452", accounts.get(3))));
-        customers.add(customerDAO.save(new Customer("Damian", "Łyżwa", "95121275636", "damianl@aso.pl", "666710482", accounts.get(4))));
-        customers.add(customerDAO.save(new Customer("Karol", "Marchewka", "93121278979", "karolm@aso.pl", "654656325", accounts.get(1))));
+        customers.add(customerDAO.save(new Customer("Marek", "Madeła", "93121244674", "marek.madela@onet.pl", "666710482", accounts.get(2))));
+        customers.add(customerDAO.save(new Customer("Mateusz", "Maciąg", "93121245739", "marek.madela@onet.pl", "534565452", accounts.get(3))));
+        customers.add(customerDAO.save(new Customer("Damian", "Łyżwa", "95121275636", "marek.madela@onet.pl", "666710482", accounts.get(4))));
+        customers.add(customerDAO.save(new Customer("Karol", "Marchewka", "93121278979", "marek.madela@onet.pl", "654656325", accounts.get(1))));
         return customers;
     }
 
@@ -121,9 +121,9 @@ public class DataLoader implements ApplicationRunner {
 
     private List<Notification> loadNotifications() {
         List<Notification> notifications = new ArrayList<>();
-        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.REMINDER.getNotificationType(), "przypominamy o przeglądzie samochodu dnia ")));
-        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.NOTIFICATION.getNotificationType(), "promocja na przeglad samochodu z instalacją gazową w -20% w dniach ")));
-        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.NOTIFICATION.getNotificationType(), "promocja na przeglad samochodu bez instalacji gazowej -20% w dniach ")));
+        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.END.getNotificationType(), "przypominamy o przeglądzie samochodu dnia ")));
+        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.PROMOTION.getNotificationType(), "Nowa promocja \"%s\" od %s do %s")));
+        notifications.add(notificationDAO.save(new Notification(NotificationType.NotificationTypeEnum.OVERVIEW.getNotificationType(), "Dla samochodu %s w dniu %s kończy się ważność przeglądu")));
         return notifications;
     }
 
